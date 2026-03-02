@@ -53,16 +53,8 @@
     font-style: normal;
 }
 
-@font-face {
-    font-family: 'PP Neue Montreal Mono';
-    src: url(../assets/fonts/PPNeueMontrealMono-Book.otf) format('opentype');
-    font-weight: 400;
-    font-style: normal;
-}
-
 @theme static {
     --font-sans: 'ABC Monument Grotesk', sans-serif;
-    --font-mono: 'PP Neue Montreal Mono', monospace;
     --text-nav: utopia.clamp(16, 20);
     --text-heading-xl: utopia.clamp(60, 96);
     --text-heading-lg: utopia.clamp(10, 80);

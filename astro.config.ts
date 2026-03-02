@@ -59,7 +59,7 @@ export default defineConfig({
         fonts: [
             {
                 provider: 'local',
-                name: 'Octave',
+                name: 'ABC Monument Grotesk',
                 cssVariable: '--custom-font-sans',
                 fallbacks: ['sans-serif'],
                 variants: [
@@ -67,13 +67,13 @@ export default defineConfig({
                         weight: 400,
                         style: 'normal',
                         display: 'swap',
-                        src: ['src/assets/fonts/Octave-Regular.woff2']
+                        src: ['../assets/fonts/ABCMonumentGrotesk-Regular.ttf)']
                     },
                     {
                         weight: 500,
                         style: 'normal',
                         display: 'swap',
-                        src: ['src/assets/fonts/Octave-Medium.woff2']
+                        src: ['../assets/fonts/ABCMonumentGrotesk-Medium.ttf)']
                     }
                 ]
             }
