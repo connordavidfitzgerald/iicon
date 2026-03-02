@@ -67,13 +67,13 @@ export default defineConfig({
                         weight: 400,
                         style: 'normal',
                         display: 'swap',
-                        src: ['../assets/fonts/ABCMonumentGrotesk-Regular.ttf)']
+                        src: ['../assets/fonts/ABCMonumentGrotesk-Regular.ttf']
                     },
                     {
                         weight: 500,
                         style: 'normal',
                         display: 'swap',
-                        src: ['../assets/fonts/ABCMonumentGrotesk-Medium.ttf)']
+                        src: ['../assets/fonts/ABCMonumentGrotesk-Medium.ttf']
                     }
                 ]
             }
