@@ -5,14 +5,11 @@ import postcssTailwindShortcuts from '@locomotivemtl/postcss-tailwind-shortcuts'
 import tailwindcss from '@tailwindcss/postcss';
 
 import react from '@astrojs/react';
-import sanity from '@sanity/astro';
 import { defineConfig } from 'astro/config';
 import { fileURLToPath } from 'url';
 import path from 'path';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
-const isProd = import.meta.env.PROD;
 
 // https://astro.build/config
 export default defineConfig({
@@ -47,12 +44,6 @@ export default defineConfig({
     integrations: [
         icon({
             iconDir: './src/assets/svgs'
-        }),
-        sanity({
-            projectId: 'x5h383xf',
-            dataset: 'production',
-            // Set useCdn to false if you're building statically.
-            useCdn: false
         }),
         react()
     ],
