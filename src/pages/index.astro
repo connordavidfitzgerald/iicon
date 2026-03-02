@@ -13,6 +13,7 @@ import exp from '../assets/images/experiential.png';
 import strategy from '../assets/images/strategy.png';
 import product from '../assets/images/product.png';
 import graphic from '../assets/images/graphic.png';
+import { Icon } from 'astro-icon/components';
 
 import SplitReveal from '@components/SplitReveal/SplitReveal.astro';
 import SplitRevealAlt from '@components/SplitReveal/SplitRevealAlt.astro';
@@ -53,11 +54,7 @@ const services = [
     <div class="bg-white">
         <div class="flex h-fit w-full flex-col justify-end pt-40">
             <div class="pointer-events-none z-50 h-auto w-full pt-4 pr-4 pb-4 pl-4">
-                <img
-                    src="/src/assets/svgs/iicon.svg"
-                    alt="IICON Logo"
-                    class="pointer-events-auto object-cover"
-                />
+                <Icon name="iicon" class="pointer-events-auto h-auto w-full object-cover" />
             </div>
         </div>
     </div>

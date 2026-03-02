@@ -1,6 +1,7 @@
 ---
 import SplitRevealColour from '@components/SplitReveal/SplitRevealColour.astro';
 import SplitReveal from '@components/SplitReveal/SplitReveal.astro';
+import { Icon } from 'astro-icon/components';
 ---
 
 <nav
@@ -8,11 +9,7 @@ import SplitReveal from '@components/SplitReveal/SplitReveal.astro';
 >
     <div class="flex h-fit flex-row items-center justify-start gap-7">
         <div class="h-8 pb-1">
-            <img
-                src="/src/assets/svgs/iicon.svg"
-                alt="IICON Logo"
-                class="pointer-events-auto h-full w-auto"
-            />
+            <Icon name="iicon" class="pointer-events-auto h-full w-auto" />
         </div>
         <div class="flex h-fit flex-row justify-start gap-5 pt-1 pb-0.5">
             <a class="hover-underline" href="/">About</a>

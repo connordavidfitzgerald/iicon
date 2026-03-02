@@ -4,14 +4,6 @@ import { Font, type CssVariable } from 'astro:assets';
 import { SEO } from 'astro-seo';
 import { defaultSeo } from '@data/seo';
 import { getSeo } from '@scripts/utils/seo';
-import Icon from '../components/Icon/Icon.astro';
-import { Image } from 'astro:assets';
-import bgImage from './src/assets/images/djtalbg.png';
-import Menu from '@components/Menu/Menu.astro';
-import Button from '@components/Button/Button.astro';
-import SplitReveal from '@components/SplitReveal/SplitReveal.astro';
-import SplitRevealAlt from '@components/SplitReveal/SplitRevealAlt.astro';
-import SplitRevealColour from '@components/SplitReveal/SplitRevealColour.astro';
 const { title, seo = {} } = Astro.props;
 
 const seoData = getSeo(seo, defaultSeo, title);
