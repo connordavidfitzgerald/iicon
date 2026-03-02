@@ -41,14 +41,14 @@
 
 @font-face {
     font-family: 'ABC Monument Grotesk';
-    src: url(src/assets/fonts/ABCMonumentGrotesk-Regular.ttf);
+    src: url(src/assets/fonts/ABCMonumentGrotesk-Regular.ttf) format('truetype');
     font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'ABC Monument Grotesk';
-    src: url(src/assets/fonts/ABCMonumentGrotesk-Medium.ttf);
+    src: url(src/assets/fonts/ABCMonumentGrotesk-Medium.ttf) format('truetype');
     font-weight: 500;
     font-style: normal;
 }

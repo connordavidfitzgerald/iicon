@@ -12,7 +12,7 @@
 :root {
     --color-primary: colorCode('black');
     --color-secondary: colorCode('white');
-    --custom-font-sans: 'Helvetica Now Text', sans-serif;
+    --custom-font-sans: 'ABC Monument Grotesk', sans-serif;
 }
 
 html {
