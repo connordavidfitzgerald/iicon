@@ -1,9 +1,13 @@
-import { defineConfig } from 'astro/config';
 import icon from 'astro-icon';
 import postcssUtopia from 'postcss-utopia';
 import postcssHelpersFunctions from '@locomotivemtl/postcss-helpers-functions';
 import postcssTailwindShortcuts from '@locomotivemtl/postcss-tailwind-shortcuts';
 import tailwindcss from '@tailwindcss/postcss';
+
+import react from '@astrojs/react';
+import sanity from '@sanity/astro';
+import { defineConfig } from 'astro/config';
+import { astroImageTools } from 'astro-imagetools';
 
 const isProd = import.meta.env.PROD;
 
@@ -15,7 +19,17 @@ export default defineConfig({
             postcss: {
                 plugins: [
                     tailwindcss(),
-                    postcssUtopia(),
+                    postcssUtopia({
+                        minWidth: 320,
+                        maxWidth: 1920,
+                        minSize: 12,
+                        maxSize: 18,
+                        positiveSteps: [1.5, 2, 3, 4, 6],
+                        negativeSteps: [0.75, 0.5, 0.25],
+                        customSizes: ['s-l'],
+                        prefix: 'space',
+                        relativeTo: 'container'
+                    }),
                     postcssHelpersFunctions(),
                     postcssTailwindShortcuts()
                 ]
@@ -25,7 +39,14 @@ export default defineConfig({
     integrations: [
         icon({
             iconDir: './src/assets/svgs'
-        })
+        }),
+        sanity({
+            projectId: 'x5h383xf',
+            dataset: 'production',
+            // Set useCdn to false if you're building statically.
+            useCdn: false
+        }),
+        react()
     ],
     devToolbar: {
         enabled: false
@@ -38,7 +59,7 @@ export default defineConfig({
         fonts: [
             {
                 provider: 'local',
-                name: 'Source Sans Pro',
+                name: 'Octave',
                 cssVariable: '--custom-font-sans',
                 fallbacks: ['sans-serif'],
                 variants: [
@@ -46,13 +67,13 @@ export default defineConfig({
                         weight: 400,
                         style: 'normal',
                         display: 'swap',
-                        src: ['./src/assets/fonts/SourceSans3-Regular.woff2']
+                        src: ['src/assets/fonts/Octave-Regular.woff2']
                     },
                     {
-                        weight: 700,
+                        weight: 500,
                         style: 'normal',
                         display: 'swap',
-                        src: ['./src/assets/fonts/SourceSans3-Bold.woff2']
+                        src: ['src/assets/fonts/Octave-Medium.woff2']
                     }
                 ]
             }

@@ -3,15 +3,77 @@
 :root {
     --unit-sm: 10px;
     --unit-md: 20px;
+    --custom-font-sans: 'Helvetica Now Text', sans-serif;
+    --ease-power1-in: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+    --ease-power1-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --ease-power1-inOut: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    --ease-power2-in: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    --ease-power2-out: cubic-bezier(0.215, 0.61, 0.355, 1);
+    --ease-power2-inOut: cubic-bezier(0.645, 0.045, 0.355, 1);
+    --ease-power3-in: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+    --ease-power3-out: cubic-bezier(0.165, 0.84, 0.44, 1);
+    --ease-power3-inOut: cubic-bezier(0.77, 0, 0.175, 1);
+    --ease-power4-in: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    --ease-power4-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-power4-inOut: cubic-bezier(0.86, 0, 0.07, 1);
+    --ease-expo-in: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+    --ease-expo-out: cubic-bezier(0.19, 1, 0.22, 1);
+    --ease-expo-inOut: cubic-bezier(1, 0, 0, 1);
+    --ease-back-in: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+    --ease-back-out: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --ease-back-inOut: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --ease-sine-in: cubic-bezier(0.47, 0, 0.745, 0.715);
+    --ease-sine-out: cubic-bezier(0.39, 0.575, 0.565, 1);
+    --ease-sine-inOut: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    --ease-circ-in: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+    --ease-circ-out: cubic-bezier(0.075, 0.82, 0.165, 1);
+    --ease-circ-inOut: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    --ease-bounce: cubic-bezier(0.17, 0.67, 0.3, 1.33);
+    --ease-slow-out: cubic-bezier(0, 1, 0.4, 1);
+    --ease-smooth: cubic-bezier(0.38, 0, 0.215, 1);
+    --ease: var(--ease-smooth);
+    --transition-duration: 0.3s;
+
+    ::selection {
+        @apply bg-[#ff9000] text-black;
+    }
+}
+
+@font-face {
+    font-family: 'ABC Monument Grotesk';
+    src: url(src/assets/fonts/ABCMonumentGrotesk-Regular.ttf);
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ABC Monument Grotesk';
+    src: url(src/assets/fonts/ABCMonumentGrotesk-Medium.ttf);
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PP Neue Montreal Mono';
+    src: url(src/assets/fonts/PPNeueMontrealMono-Book.otf) format('opentype');
+    font-weight: 400;
+    font-style: normal;
 }
 
 @theme static {
-    --font-sans: var(--custom-font-sans);
-
-    --text-heading-xl: utopia.clamp(60, 120);
-    --text-heading-lg: utopia.clamp(48, 80);
+    --font-sans: 'ABC Monument Grotesk', sans-serif;
+    --font-mono: 'PP Neue Montreal Mono', monospace;
+    --text-nav: utopia.clamp(16, 20);
+    --text-heading-xl: utopia.clamp(60, 96);
+    --text-heading-lg: utopia.clamp(10, 80);
+    --text-heading-md: utopia.clamp(10, 32);
+    --text-body-md: utopia.clamp(16, 24);
+    --text-body-lg: utopia.clamp(20, 32);
     --text-body-sm: utopia.clamp(14, 16);
     --text-button: utopia.clamp(16, 20);
+    --text-footer: utopia.clamp(24, 48);
+    --text-services: utopia.clamp(24, 72);
+    --text-body-caption: utopia.clamp(14, 20);
 
     --color-black: #000000;
     --color-white: #ffffff;
@@ -52,4 +114,31 @@
     --z-index: 0;
     --z-index-above: 1;
     --z-index-below: -1;
+    --animate-fade: fadeIn 0.3s ease-in-out;
+
+    --orange: #ff9000;
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateX(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+}
+
+@tailwind base;
+@tailwind utilities;
+
+@layer base {
+    * {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+        text-rendering: optimizeLegibility;
+    }
 }

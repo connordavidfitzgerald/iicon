@@ -5,12 +5,13 @@ import { SEO } from 'astro-seo';
 import { defaultSeo } from '@data/seo';
 import { getSeo } from '@scripts/utils/seo';
 import Icon from '../components/Icon/Icon.astro';
-
-interface Props {
-    title: string;
-    seo?: Seo;
-}
-
+import { Image } from 'astro:assets';
+import bgImage from './src/assets/images/djtalbg.png';
+import Menu from '@components/Menu/Menu.astro';
+import Button from '@components/Button/Button.astro';
+import SplitReveal from '@components/SplitReveal/SplitReveal.astro';
+import SplitRevealAlt from '@components/SplitReveal/SplitRevealAlt.astro';
+import SplitRevealColour from '@components/SplitReveal/SplitRevealColour.astro';
 const { title, seo = {} } = Astro.props;
 
 const seoData = getSeo(seo, defaultSeo, title);
@@ -33,43 +34,10 @@ const FONTS: CssVariable[] = ['--custom-font-sans'];
     </head>
     <body>
         <script src="../scripts/app.ts"></script>
-
-        <div class="container grid grid-cols-2 py-fluid-md">
-            <div>
-                <Icon name="logo" />
-            </div>
-            <nav class="flex gap-gutter justify-self-end">
-                <a href="/">Index</a>
-                <a href="/about">About</a>
-                <a href="/post">The post</a>
-            </nav>
-        </div>
-
         <main id="swup" class="transition-fade">
             <div id="content">
                 <slot />
             </div>
         </main>
-
-        <footer class="container flex justify-between py-fluid-xs">
-            <div>
-                &copy;{new Date().getFullYear()}
-            </div>
-
-            <nav class="flex gap-gutter">
-                <a href="/">Index</a>
-                <a href="/about">About</a>
-            </nav>
-        </footer>
-
-        <script>
-            import { setViewportSize } from '@scripts/utils/setViewportSize';
-            import { $screenDebounce } from '@scripts/stores/screen';
-
-            // Set viewport size
-            $screenDebounce.subscribe(() => {
-                setViewportSize();
-            });
-        </script>
     </body>
 </html>

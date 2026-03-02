@@ -1,66 +1,436 @@
 ---
 import Layout from '@layouts/Layout.astro';
-import Button from '@components/Button/Button.astro';
+import Navbar from '@components/Navbar/Navbar.astro';
+import Image from '@components/Image/Image.astro';
+import { Picture } from 'astro:assets';
+import bwImage from '/src/assets/images/iicon_bw.png';
+import mountains from 'src/assets/images/mountains.png';
 import Wysiwyg from '@components/Wysiwyg/Wysiwyg.astro';
-import Accordion from '@components/Accordion/Accordion.astro';
+import bgImage from '/src/assets/images/djtalbg.png';
+import mbTire from 'src/assets/images/mobiletire.png';
+import Usc from 'src/assets/images/usc.png';
+import Carpenters from 'src/assets/images/carpenters.png';
+
+import exp from 'src/assets/images/experiential.png';
+import strategy from 'src/assets/images/strategy.png';
+import product from 'src/assets/images/product.png';
+import graphic from 'src/assets/images/graphic.png';
+
+import SplitReveal from '@components/SplitReveal/SplitReveal.astro';
+import SplitRevealAlt from '@components/SplitReveal/SplitRevealAlt.astro';
+import SplitRevealColour from '@components/SplitReveal/SplitRevealColour.astro';
+
+import Button from '@components/Button/Button.astro';
+import Footer from '@components/Footer/Footer.astro';
+
+const services = [
+    {
+        label: 'Product Sourcing',
+        image: product.src,
+        caption:
+            'Every product is personally selected with your brand and values in mind, with a focus on Canadian-made and sustainably sourced merchandise — no catalogs, no guesswork.'
+    },
+    {
+        label: 'Brand Strategy',
+        image: strategy.src,
+        caption:
+            'We develop intentional brand strategies that align your merchandise with your core identity — ensuring every touchpoint reinforces what your brand stands for.'
+    },
+    {
+        label: 'Visual Identity',
+        image: graphic.src,
+        caption:
+            'From typography to colour systems, we craft cohesive visual identities that translate seamlessly across every product and platform.'
+    },
+    {
+        label: 'Experiential Marketing',
+        image: exp.src,
+        caption:
+            'We design immersive brand experiences and activations that leave a lasting impression — turning moments into memories and customers into advocates.'
+    }
+];
 ---
 
-<Layout title="Welcome to the Locomotive Astro Boilerplate.">
-    <header class="container">
-        <h1 class="heading-lg">Welcome to the Locomotive Astro Boilerplate.</h1>
-    </header>
-
-    <div class="container mt-fluid-xl">
-        <div class="grid grid-cols-12 gap-gutter">
-            <div class="text-body col-span-full md:col-span-4">
-                <Wysiwyg>
-                    <Fragment
-                        set:html={`<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque quam, nam omnis sunt laudantium tenetur obcaecati? Inventore eos vitae id repellat cum possimus voluptates nam voluptatum, assumenda, atque nesciunt debitis?</p>`}
-                    />
-                </Wysiwyg>
-
-                <Button href="/about" class="mt-fluid-sm"> Learn More </Button>
+<Layout title="Home">
+    <div class="bg-white">
+        <div class="flex h-fit w-full flex-col justify-end pt-40">
+            <div class="pointer-events-none z-50 h-auto w-full pt-4 pr-4 pb-4 pl-4">
+                <img
+                    src="/src/assets/svgs/iicon.svg"
+                    alt="IICON Logo"
+                    class="pointer-events-auto object-cover"
+                />
             </div>
+        </div>
+    </div>
+    <div class="bg-white">
+        <div class="sticky top-0 z-50">
+            <Navbar />
+        </div>
+        <div class="h-fit w-full pr-4 pl-4">
+            <Picture
+                src={bwImage}
+                class="min-h-full min-w-full object-cover"
+                alt="IICON BW Image"
+            />
+        </div>
 
-            <div class="col-span-full text-body-sm md:col-span-4">
-                <Wysiwyg tag="article">
-                    <Fragment
-                        set:html={`<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque quam, nam omnis sunt laudantium tenetur obcaecati? Inventore eos vitae id repellat cum possimus voluptates nam voluptatum, assumenda, atque nesciunt debitis?</p>`}
-                    />
-                    <Button href="https://google.ca" target="_blank" class="mt-fluid-sm">
-                        Visit Us
-                    </Button>
-                </Wysiwyg>
-            </div>
+        <!-- Our Approach -->
+        <div class="flex h-fit w-full flex-col pt-40">
+            <div class="grid grid-cols-12 pr-4 pl-4">
+                <div class="sticky top-9 z-10 col-span-12 flex h-fit flex-col bg-white pt-3 pb-2">
+                    <div class="body-sm font-normal tracking-[-2%]">Our Approach</div>
+                </div>
+                <SplitReveal
+                    class="col-span-8 pt-20 pb-60 text-heading-lg leading-[110%] font-normal tracking-[-4%] text-black"
+                >
+                    We believe your merch should reflect your brand's values, not compromise them.
+                </SplitReveal>
+                <div class="col-span-4"></div>
 
-            <div class="col-span-full text-body-sm md:col-span-4">
-                <Wysiwyg>
-                    <Fragment
-                        set:html={`<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque quam, nam omnis sunt laudantium tenetur obcaecati? Inventore eos vitae id repellat cum possimus voluptates nam voluptatum, assumenda, atque nesciunt debitis?</p>`}
-                    />
-                </Wysiwyg>
-            </div>
-
-            <div class="col-span-full text-body-sm md:col-span-4">
-                <Accordion label="Accordion summary">
-                    <Wysiwyg>
-                        <Fragment
-                            set:html={`<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque quam, nam omnis sunt laudantium tenetur obcaecati? Inventore eos vitae id repellat cum possimus voluptates nam voluptatum, assumenda, atque nesciunt debitis?</p>`}
-                        />
-                    </Wysiwyg>
-                </Accordion>
-                <Accordion label="Accordion summary">
-                    <Wysiwyg>
-                        <Fragment
-                            set:html={`<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque quam, nam omnis sunt laudantium tenetur obcaecati? Inventore eos vitae id repellat cum possimus voluptates nam voluptatum, assumenda, atque nesciunt debitis?</p>`}
-                        />
-                    </Wysiwyg>
-                </Accordion>
+                <div class="col-span-1"></div>
+                <div class="col-span-11 flex flex-col">
+                    <Picture src={mountains} class="w-full" alt="Canadian Mountains" />
+                    <div class="grid grid-cols-11 pt-5 font-normal text-black">
+                        <div class="col-span-6 text-body-md leading-[110%] tracking-[-2%]">
+                            Our personalized approach combines strategic product selection with a
+                            commitment to Canadian-made and sustainable merchandise. We partner with
+                            you to source products that create meaningful connections with your
+                            customers while making an environmental impact you can actually feel
+                            good about.
+                        </div>
+                        <div
+                            class="col-span-5 flex flex-row items-end justify-end pr-5 text-body-sm leading-[110%] tracking-[0%]"
+                        >
+                            <Button
+                                class="h-fit w-fit text-body-sm leading-[100%] font-medium tracking-[-2%]"
+                                >Learn More</Button
+                            >
+                        </div>
+                    </div>
+                    <div
+                        class="grid grid-cols-10 pt-20 pr-5 text-[20px] leading-[110%] font-normal tracking-[-3%] text-black"
+                    >
+                        <div class="col-span-2">Awards</div>
+                        <div class="col-span-8 flex flex-col">
+                            <div
+                                class="col-span-8 grid grid-cols-8 border-b-1 border-b-black pt-1 pb-1"
+                            >
+                                <div class="col-span-2">2025</div>
+                                <div class="col-span-2">PPPC</div>
+                                <div class="col-span-4">International Gold Pyramid</div>
+                            </div>
+                            <div
+                                class="col-span-8 grid grid-cols-8 border-b-1 border-b-black pt-1 pb-1"
+                            >
+                                <div class="col-span-2">2025</div>
+                                <div class="col-span-2">PPPC</div>
+                                <div class="col-span-4">International Gold Pyramid</div>
+                            </div>
+                            <div
+                                class="col-span-8 grid grid-cols-8 border-b-1 border-b-black pt-1 pb-1"
+                            >
+                                <div class="col-span-2">2025</div>
+                                <div class="col-span-2">PPPC</div>
+                                <div class="col-span-4">International Gold Pyramid</div>
+                            </div>
+                            <div
+                                class="col-span-8 grid grid-cols-8 border-b-1 border-b-black pt-1 pb-1"
+                            >
+                                <div class="col-span-2">2025</div>
+                                <div class="col-span-2">PPPC</div>
+                                <div class="col-span-4">International Gold Pyramid</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-12 grid grid-cols-12 gap-gutter pt-30 pr-4 pb-15 pl-4">
+                    <div
+                        class="col-span-10 col-start-3 grid aspect-video grid-cols-10 bg-[#E1E1DF] p-7"
+                    >
+                        <div class="col-span-8 col-start-2 flex flex-col justify-center gap-5">
+                            <SplitRevealAlt
+                                class="text-body-lg leading-[110%] font-normal tracking-[-2%] text-[#464646]"
+                            >
+                                "Rose has been a pleasure to partner with on our corporate branding
+                                requirements. She has the patience and experience to offer a
+                                professional customized approach to our firm’s marketing needs.
+                                Optics play a key role in perception and IICON’s approach is
+                                unsurpassable."
+                            </SplitRevealAlt>
+                            <p
+                                class="text-[18px] leading-[110%] font-normal tracking-[-2%] text-[#464646]"
+                            >
+                                John Krasko, <br />
+                                Vice President, OHL Construction Canada
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Placeholder -->
-        <div class="mt-fluid-xl h-[50vh] w-full bg-black opacity-50"></div>
-        <div class="bg-grey mt-fluid-xl h-[50vh] w-full"></div>
+        <div class="flex flex-col gap-0">
+            <div
+                class="sticky top-9 z-10 col-span-12 flex h-fit flex-row items-center justify-start bg-white pt-3 pr-4 pb-2 pl-4"
+            >
+                <div class="text-body-sm font-normal tracking-[-2%] text-black">Services</div>
+            </div>
+
+            <div
+                id="services-section"
+                class="grid w-full grid-cols-12 items-start justify-start gap-gutter pt-20 pr-4 pb-40 pl-4"
+            >
+                <div class="col-span-12 grid grid-cols-12">
+                    <!-- Left: Service Labels -->
+                    <div
+                        id="services-list"
+                        class="relative col-span-6 flex h-fit flex-col items-start justify-start pt-3 pb-20 font-normal text-[#111111]"
+                    >
+                        {
+                            services.map((service, i) => (
+                                <SplitReveal
+                                    class="service-label relative w-full cursor-default text-services leading-[115%] font-normal tracking-[-4%]"
+                                    data-index={i}
+                                >
+                                    {service.label}
+                                </SplitReveal>
+                            ))
+                        }
+                    </div>
+
+                    <!-- Right: Image + Caption -->
+                    <div class="col-span-6 flex flex-col justify-start gap-4">
+                        <div
+                            id="services-image-wrap"
+                            class="relative w-full mix-blend-multiply"
+                            style="aspect-ratio: 4/3;"
+                        >
+                            {
+                                services.map((service, i) => (
+                                    <img
+                                        src={service.image}
+                                        alt={service.label}
+                                        class="service-image absolute inset-0 h-full w-full object-cover"
+                                        data-index={i}
+                                    />
+                                ))
+                            }
+                        </div>
+
+                        <div id="services-caption-wrap" class="relative" style="min-height: 80px;">
+                            {
+                                services.map((service, i) => (
+                                    <p
+                                        class="service-caption absolute top-0 left-0 w-[80%] text-body-md leading-[115%] font-normal tracking-[-2%]"
+                                        data-index={i}
+                                        style="opacity: 0"
+                                    >
+                                        {service.caption}
+                                    </p>
+                                ))
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects -->
+        <div class="b-10">
+            <div
+                class="sticky top-9 z-10 col-span-12 flex h-fit flex-row items-center justify-start bg-white pt-3 pr-4 pb-2 pl-4"
+            >
+                <div class="text-body-sm font-normal tracking-[-2%] text-black">
+                    Selected Projects
+                </div>
+            </div>
+            <div class="grid h-fit grid-cols-12 items-start gap-4 pr-4 pb-20 pl-4">
+                <div class="project col-span-6 flex flex-col gap-4">
+                    <Picture
+                        src={mbTire}
+                        alt="Mobile Tire"
+                        class="-lazy-load w-full object-cover grayscale transition duration-300 hover:grayscale-0"
+                    />
+                    <div
+                        class="flex flex-col text-body-caption leading-[100%] font-normal tracking-[-2%]"
+                    >
+                        <p class="text-black">Mobile Tire</p>
+                        <p class="text-gray-400">Product Sourcing, Brand Strategy</p>
+                    </div>
+                </div>
+                <div class="project col-span-6 flex flex-col gap-4">
+                    <Picture
+                        src={Carpenters}
+                        alt="Carpenter's Union"
+                        class="-lazy-load w-full object-cover grayscale transition duration-300 hover:grayscale-0"
+                    />
+                    <div
+                        class="flex flex-col text-body-caption leading-[100%] font-normal tracking-[-2%]"
+                    >
+                        <p class="text-black">Carpenter's Union</p>
+                        <p class="text-gray-400">Product Sourcing, Brand Strategy</p>
+                    </div>
+                </div>
+                <div class="project col-span-6 flex flex-col gap-5">
+                    <Picture
+                        src={Usc}
+                        alt="USC Consulting"
+                        class="-lazy-load w-full object-cover grayscale duration-300 hover:grayscale-0"
+                    />
+                    <div
+                        class="flex flex-col text-body-caption leading-[100%] font-normal tracking-[-2%]"
+                    >
+                        <p class="text-black">USC Consulting</p>
+                        <p class="text-gray-400">Product Sourcing, Brand Strategy</p>
+                    </div>
+                </div>
+                <div class="project col-span-6 flex flex-col gap-5">
+                    <Picture
+                        src={mbTire}
+                        alt="Mobile Tire"
+                        class="-lazy-load w-full object-cover grayscale duration-300 hover:grayscale-0"
+                    />
+                    <div
+                        class="flex flex-col text-body-caption leading-[100%] font-normal tracking-[-2%]"
+                    >
+                        <p class="text-black">Mobile Tire</p>
+                        <p class="text-gray-400">Product Sourcing, Brand Strategy</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    <footer>
+        <Footer />
+    </footer>
 </Layout>
+
+<script>
+    import gsap from 'gsap';
+    import { SplitText } from 'gsap/SplitText';
+    import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+    gsap.registerPlugin(SplitText);
+    gsap.registerPlugin(ScrollTrigger);
+
+    const projects = document.querySelectorAll<HTMLElement>('.project');
+
+    projects.forEach((project, i) => {
+        gsap.fromTo(
+            project,
+            { y: 40, opacity: 0 },
+            {
+                y: 0,
+                opacity: 1,
+                duration: 1,
+                delay: (i % 2) * 0.15,
+                scrollTrigger: { trigger: project, start: 'top 80%' }
+            }
+        );
+    });
+
+    const labels = document.querySelectorAll<HTMLElement>('.service-label');
+    const images = document.querySelectorAll<HTMLElement>('.service-image');
+    const captions = document.querySelectorAll<HTMLElement>('.service-caption');
+
+    let currentIndex = -1;
+
+    const splitCaptions = [...captions].map((caption) =>
+        SplitText.create(caption, {
+            type: 'lines',
+            linesClass: 'caption-line',
+            autoSplit: true,
+            mask: 'lines',
+            onSplit: (self) => {
+                // Runs on initial split AND any re-split — always start hidden
+                gsap.set(self.lines, { y: '110%' });
+            }
+        })
+    );
+
+    splitCaptions.forEach((split) => gsap.set(split.lines, { y: '110%' }));
+    captions.forEach((caption) => gsap.set(caption, { opacity: 0 }));
+    labels.forEach((el) => gsap.set(el, { opacity: 0.1, x: 0 }));
+    images.forEach((el) => gsap.set(el, { opacity: 0 }));
+
+    function deactivateService(index: number) {
+        gsap.to(labels[index], { opacity: 0.1, x: 0, duration: 0.3, ease: 'power2.in' });
+        gsap.to(images[index], { opacity: 0, y: -10, duration: 0.3, ease: 'power2.in' });
+        gsap.to(splitCaptions[index].lines, {
+            y: '110%',
+            duration: 0.3,
+            ease: 'power2.in',
+            stagger: 0.04
+        });
+        gsap.to(captions[index], { opacity: 0, duration: 0.3 });
+    }
+
+    function activateService(index: number) {
+        if (index === currentIndex) return;
+
+        // Deactivate the previous one before activating the new one
+        if (currentIndex !== -1) {
+            deactivateService(currentIndex);
+        }
+
+        currentIndex = index;
+
+        gsap.killTweensOf(labels[index]);
+        gsap.killTweensOf(images[index]);
+        gsap.killTweensOf(splitCaptions[index].lines);
+
+        gsap.fromTo(
+            labels[index],
+            { opacity: 0.1, x: 0 },
+            { opacity: 1, x: 20, duration: 0.4, ease: 'power2.out' }
+        );
+        gsap.fromTo(
+            images[index],
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }
+        );
+        gsap.fromTo(
+            splitCaptions[index].lines,
+            { y: '110%' },
+            {
+                y: '0%',
+                duration: 0.6,
+                ease: 'power3.out',
+                stagger: 0.08,
+                delay: 0.3
+            }
+        );
+        gsap.to(captions[index], { opacity: 1 });
+    }
+
+    // Wire up hover listeners
+    labels.forEach((label, i) => {
+        label.addEventListener('mouseenter', () => activateService(i));
+    });
+
+    // Activate the first service by default
+    gsap.delayedCall(0.1, () => activateService(0));
+
+    labels.forEach((label, i) => {
+        label.addEventListener('mouseenter', () => activateService(i));
+
+        label.addEventListener('mouseleave', () => {
+            currentIndex = -1;
+
+            gsap.killTweensOf(label);
+            gsap.to(label, { opacity: 0.1, x: 0, duration: 0.4, ease: 'power2.out' });
+
+            gsap.killTweensOf(images[i]);
+            gsap.to(images[i], { opacity: 0, duration: 0.2, ease: 'power2.out' });
+
+            gsap.killTweensOf(splitCaptions[i].lines);
+            gsap.to(splitCaptions[i].lines, {
+                y: '110%',
+                duration: 0.2,
+                ease: 'power3.in',
+                stagger: 0.04
+            });
+        });
+    });
+</script>

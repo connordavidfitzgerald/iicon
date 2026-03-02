@@ -1,0 +1,96 @@
+---
+interface Props {
+    tag?: 'h1' | 'h2' | 'h3' | 'p' | 'span';
+    class?: string;
+    color?: string;
+}
+
+const { tag: Tag = 'p', class: className = '', color = '#FF6B35' } = Astro.props;
+---
+
+<div class="split-reveal-wrapper relative" data-color={color}>
+    <Tag data-split class={className}>
+        <slot />
+    </Tag>
+</div>
+
+<script>
+    import gsap from 'gsap';
+    import { ScrollTrigger } from 'gsap/ScrollTrigger';
+    import { SplitText } from 'gsap/SplitText';
+
+    gsap.registerPlugin(ScrollTrigger, SplitText);
+
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.split-reveal-wrapper').forEach((wrapper) => {
+            const el = wrapper as HTMLElement;
+            const color = el.dataset.color || '#FF6B35';
+            const textEl = wrapper.querySelector('[data-split]');
+
+            // overlay sits on the wrapper, outside of SplitText's reach
+            const overlay = document.createElement('div');
+            Object.assign(overlay.style, {
+                position: 'absolute',
+                inset: '0',
+                background: color,
+                transform: 'scaleX(0)',
+                transformOrigin: 'left center',
+                zIndex: '1',
+                pointerEvents: 'none'
+            });
+            wrapper.appendChild(overlay);
+
+            new SplitText(textEl, {
+                type: 'words, lines',
+                mask: 'lines',
+                autoSplit: true,
+                onSplit(self) {
+                    const tl = gsap.timeline({
+                        scrollTrigger: {
+                            trigger: wrapper,
+                            start: 'top 100%',
+                            once: true
+                        },
+                        paused: true, // ← prevent auto-play before ST takes over
+                        onStart: () => ScrollTrigger.refresh()
+                    });
+
+                    tl
+                        // Set initial word state as first timeline step, not outside it
+                        .set(self.words, { yPercent: 110, rotation: 1 })
+                        .to(overlay, {
+                            scaleX: 1,
+                            duration: 0.5,
+                            ease: 'power3.inOut'
+                        })
+                        .to(overlay, {
+                            scaleX: 0,
+                            transformOrigin: 'right center',
+                            duration: 0.5,
+                            ease: 'power3.inOut'
+                        })
+                        .to(
+                            self.words,
+                            {
+                                yPercent: 0,
+                                rotation: 0,
+                                duration: 1,
+                                ease: 'power3.out',
+                                stagger: 0.025
+                            },
+                            '<+=0.05' // ← only a tiny overlap, after overlay is nearly gone
+                        );
+
+                    ScrollTrigger.create({
+                        trigger: wrapper,
+                        start: 'top 100%',
+                        once: true,
+                        onEnter: () => tl.play()
+                    });
+                }
+            });
+        });
+
+        ScrollTrigger.refresh();
+    });
+</script>

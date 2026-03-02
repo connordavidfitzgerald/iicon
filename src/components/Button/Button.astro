@@ -41,12 +41,119 @@ const computedAriaHidden = ariaHidden ? 'true' : undefined;
 >
     <span class="c-button_inner">
         <span class="c-button_label">
-            <slot />
+            <span class="c-button_label_default"><slot /></span>
+            <span class="c-button_label_hover" aria-hidden="true"></span>
         </span>
         {Tag === 'a' && target === '_blank' && <span aria-hidden="true">&#x2197;</span>}
     </span>
 </Tag>
 
 <style>
-    @import 'Button.css';
+    @reference '../../styles/main.css';
+    .c-button_label {
+        position: relative;
+        overflow: hidden;
+        display: block;
+    }
+
+    .c-button_label_hover {
+        position: absolute;
+        inset: 0;
+    }
+    .c-button_inner {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        background-color: black;
+        color: white;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        padding-right: 2rem;
+        padding-left: 2rem;
+        height: fit-content;
+        width: fit-content;
+        @apply text-white hover:bg-orange-400;
+    }
 </style>
+
+<script>
+    import { gsap } from 'gsap';
+    import { SplitText } from 'gsap/SplitText';
+    gsap.registerPlugin(SplitText);
+
+    document.querySelectorAll('.c-button').forEach((btn) => {
+        const defaultLabel = btn.querySelector('.c-button_label_default');
+        const hoverLabel = btn.querySelector('.c-button_label_hover');
+
+        if (!defaultLabel || !hoverLabel) return;
+
+        // Mirror the text into the hover layer
+        hoverLabel.textContent = defaultLabel.textContent;
+
+        const splitDefault = new SplitText(defaultLabel, { type: 'chars' });
+        const splitHover = new SplitText(hoverLabel, { type: 'chars' });
+
+        // Park hover chars below the baseline
+        gsap.set(splitHover.chars, { y: '105%' });
+
+        let tween: gsap.core.Timeline | null = null;
+
+        btn.addEventListener('mouseenter', () => {
+            tween?.kill();
+            tween = gsap.timeline();
+
+            // Default chars go up and out
+            tween.to(
+                splitDefault.chars,
+                {
+                    y: '-105%',
+                    duration: 0.4,
+                    stagger: 0.02,
+                    ease: 'power2.inOut'
+                },
+                0
+            );
+
+            // Hover chars come up into place
+            tween.to(
+                splitHover.chars,
+                {
+                    y: '0%',
+                    duration: 0.4,
+                    stagger: 0.02,
+                    ease: 'power2.inOut'
+                },
+                0
+            );
+        });
+
+        btn.addEventListener('mouseleave', () => {
+            tween?.kill();
+            tween = gsap.timeline();
+
+            // Default chars come back down into place
+            tween.to(
+                splitDefault.chars,
+                {
+                    y: '0%',
+                    duration: 0.4,
+                    stagger: 0.02,
+                    ease: 'power2.inOut'
+                },
+                0
+            );
+
+            // Hover chars go back down below
+            tween.to(
+                splitHover.chars,
+                {
+                    y: '105%',
+                    duration: 0.4,
+                    stagger: 0.02,
+                    ease: 'power2.inOut'
+                },
+                0
+            );
+        });
+    });
+</script>

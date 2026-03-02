@@ -1,0 +1,70 @@
+---
+import Button from '@components/Button/Button.astro';
+import SplitRevealColour from '@components/SplitReveal/SplitRevealColour.astro';
+import SplitReveal from '@components/SplitReveal/SplitReveal.astro';
+---
+
+<div
+    class="relative flex h-[900px] flex-col justify-between gap-gutter bg-white pr-4 pb-4 pl-4 text-black"
+>
+    <div
+        class="grid w-full grid-cols-12 border-t border-black/10 pt-12 text-footer leading-[100%] font-normal tracking-[-3%] text-black"
+    >
+        <SplitReveal class="col-span-7 leading-[115%]"
+            >Let's build something<br />
+            meaningful.</SplitReveal
+        >
+        <form id="contact-form" class="col-span-5 flex flex-col justify-start">
+            <input type="hidden" name="access_key" value="3cb859b7-eb03-4988-a1d8-38cf672ee0c8" />
+            <label for="name" class="block text-body-sm font-medium opacity-75">
+                What's your name?*
+            </label>
+            <input
+                type="text"
+                class="mb-5 w-full border-b border-black pt-3 pr-4 pb-3 pl-4 text-sm font-medium outline-0"
+                name="name"
+                placeholder="Name"
+                required
+            />
+            <label for="email" class="block text-body-sm font-medium opacity-75">
+                Your email*
+            </label>
+            <input
+                type="email"
+                name="email"
+                class="mb-5 w-full border-b border-black pt-3 pr-4 pb-3 pl-4 text-sm font-medium outline-0"
+                placeholder="Email"
+                required
+            />
+            <label for="message" class="block text-body-sm font-medium opacity-75">
+                What did you have in mind?*
+            </label>
+            <textarea
+                name="message"
+                rows="3"
+                class="mb-5 w-full border-b border-black pt-3 pr-4 pb-3 pl-4 text-sm font-medium outline-0"
+                placeholder="Message"
+                required></textarea>
+            <div class="h-fit w-full">
+                <Button
+                    id="submit-btn"
+                    class="h-fit w-fit text-body-sm leading-[100%] font-medium"
+                    type="submit">Submit</Button
+                >
+            </div>
+        </form>
+    </div>
+    <div class="grid grid-cols-12 pb-6">
+        <div class="col-span-4 flex flex-row items-center gap-8 tracking-[-1%]">
+            <h3 class="pt-1 text-body-sm">Email</h3>
+            <SplitRevealColour color="#ff922d" class="text-body-lg">rose@iicon.ca</SplitRevealColour
+            >
+        </div>
+        <div class="col-span-4 flex flex-row items-center gap-8 tracking-[-1%]">
+            <h3 class="pt-1 text-body-sm">Phone</h3>
+            <SplitRevealColour color="#ff922d" class="text-body-lg"
+                >+1 416 509 4715</SplitRevealColour
+            >
+        </div>
+    </div>
+</div>

@@ -2,70 +2,130 @@
 import Layout from '@layouts/Layout.astro';
 import Image from '@components/Image/Image.astro';
 import Wysiwyg from '@components/Wysiwyg/Wysiwyg.astro';
+import Navbar from '@components/Navbar/Navbar.astro';
+import SplitReveal from '@components/SplitReveal/SplitReveal.astro';
+import Footer from '@components/Footer/Footer.astro';
+import Button from '@components/Button/Button.astro';
+import SplitRevealColour from '@components/SplitReveal/SplitRevealColour.astro';
 ---
 
 <Layout title="About">
-    <header class="container">
-        <h1 class="heading-h1">About</h1>
-    </header>
-
-    <div class="mt-fluid-xl h-[20vh] w-full bg-black"></div>
-
-    <div class="container mt-fluid-xl">
-        <div>
-            <Image
-                src={import('@images/printer.jpg')}
-                alt="Placeholder alt"
-                caption="Static image & Loading eager"
-                loading="eager"
-                width={500}
-                height={200}
-            />
+    <div class="relative flex flex-col justify-start">
+        <div class="fixed top-0 right-0 left-0 z-50 h-fit bg-black">
+            <Navbar />
         </div>
-        <div class="grid grid-cols-2 gap-gutter">
-            <div>
-                <Image
-                    src="https://locomotive.ca/uploads/careers/pltropics-2000w.jpg"
-                    alt="Placeholder alt"
-                    caption="Loading lazy native"
-                    loading="lazy"
-                    width={500}
-                    height={500}
-                />
-            </div>
-            <div>
-                <Image
-                    src="https://locomotive.ca/uploads/careers/fullscreen-image-2000w.jpg"
-                    alt="Placeholder alt"
-                    caption="Loading lazy native + locomotive-scroll inview anim"
-                    loading="lazy"
-                    width={500}
-                    height={500}
-                    data-scroll
-                    data-scroll-repeat
-                />
-            </div>
-        </div>
-        <div class="grid grid-cols-12 gap-gutter">
-            <div class="col-span-full text-body-sm md:col-span-6">
-                <Wysiwyg>
-                    <Fragment
-                        set:html={`<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque quam, nam omnis sunt laudantium tenetur obcaecati? Inventore eos vitae id repellat cum possimus voluptates nam voluptatum, assumenda, atque nesciunt debitis?</p>`}
-                    />
-                </Wysiwyg>
+        <div class="flex h-fit w-full flex-col justify-start gap-24 bg-white pt-24 pr-4 pb-24 pl-4">
+            <div class="grid grid-cols-12 gap-4">
+                <h3 class="col-span-4 h-fit text-body-sm font-normal text-black">Information</h3>
+                <SplitReveal
+                    class="col-span-8 h-fit pt-2 text-heading-md leading-[110%] font-medium tracking-[-2%] text-black/90"
+                >
+                    IICON Creative Strategies is a specialist branding studio that combines
+                    strategic thinking with the science of human connection. We source merchandise
+                    responsibly, design with cultural and psychological intention, and partner with
+                    clients who share our commitment to quality and ethical practice.   As a
+                    minority woman-owned and Canadian company, we are selective yet
+                    comprehensive—delivering branded work that earns its place in people's lives.
+                </SplitReveal>
             </div>
 
-            <div class="col-span-full text-body-sm md:col-span-6">
-                <Wysiwyg>
-                    <Fragment
-                        set:html={`<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque quam, nam omnis sunt laudantium tenetur obcaecati? Inventore eos vitae id repellat cum possimus voluptates nam voluptatum, assumenda, atque nesciunt debitis?</p>`}
-                    />
-                </Wysiwyg>
+            <div class="grid grid-cols-12 gap-4">
+                <h3 class="col-span-4 h-fit text-body-sm font-normal text-black">Our Values</h3>
+                <p
+                    class="col-span-4 h-fit pt-2 text-nav leading-[110%] font-normal tracking-[-1%] text-black/90"
+                >
+                    The products we choose, the suppliers we partner with, and the standards we hold
+                    ourselves to are all rooted in the same values: sustainability, ethics, and
+                    responsibility. We focus on products that are sustainably sourced, ethically
+                    made, and built to last.<br /><br />Quality and responsibility go hand in hand,
+                    and the best way to reduce waste is to create things people actually want to
+                    keep.
+                </p>
+                <p
+                    class="fontnormal col-span-4 h-fit pt-2 text-nav leading-[110%] tracking-[-1%] text-black/90"
+                >
+                    Every manufacturer in our network is held to strong ethical, social, and safety
+                    standards, supported by third-party audits and environmental accountability.
+                    Whether Made in Canada, Made in North America, or ethically sourced offshore, we
+                    stand behind what we offer.<br /><br />
+                    Our relationships — with clients and supplier partners — are our greatest asset. We
+                    invest in them for the long term.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-12 gap-4">
+                <h3 class="col-span-4 h-fit text-body-sm font-normal text-black">Contact</h3>
+                <div
+                    class="col-span-8 grid h-fit grid-cols-2 gap-4 pt-2 text-nav leading-[110%] font-normal tracking-[-1%] text-black/90"
+                >
+                    <div class="flex flex-row gap-8">
+                        <a class="hover-underline">rose@iicon.ca</a>
+                        <a class="hover-underline">+1 416 509 4715</a>
+                    </div>
+                    <div class="flex flex-row gap-8">
+                        <a class="hover-underline">Instagram</a>
+                        <a class="hover-underline">Facebook</a>
+                        <a class="hover-underline">LinkedIn</a>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <!-- Placeholder -->
-        <div class="mt-fluid-xl h-[50vh] w-full bg-black opacity-50"></div>
-        <div class="mt-fluid-xl h-[50vh] w-full bg-gray-200"></div>
     </div>
+    <footer>
+        <div
+            class="relative flex h-fit flex-col justify-between gap-gutter bg-white pr-4 pb-24 pl-4 text-black"
+        >
+            <div
+                class="grid w-full grid-cols-12 border-t border-black/10 pt-12 text-footer leading-[100%] font-normal tracking-[-3%] text-black"
+            >
+                <SplitReveal class="col-span-7 leading-[115%]"
+                    >Let's build something<br />
+                    meaningful.</SplitReveal
+                >
+                <form id="contact-form" class="col-span-5 flex flex-col justify-start">
+                    <input
+                        type="hidden"
+                        name="access_key"
+                        value="3cb859b7-eb03-4988-a1d8-38cf672ee0c8"
+                    />
+                    <label for="name" class="block text-body-sm font-medium opacity-75">
+                        What's your name?*
+                    </label>
+                    <input
+                        type="text"
+                        class="mb-5 w-full border-b border-black pt-3 pr-4 pb-3 pl-4 text-sm font-medium outline-0"
+                        name="name"
+                        placeholder="Name"
+                        required
+                    />
+                    <label for="email" class="block text-body-sm font-medium opacity-75">
+                        Your email*
+                    </label>
+                    <input
+                        type="email"
+                        name="email"
+                        class="mb-5 w-full border-b border-black pt-3 pr-4 pb-3 pl-4 text-sm font-medium outline-0"
+                        placeholder="Email"
+                        required
+                    />
+                    <label for="message" class="block text-body-sm font-medium opacity-75">
+                        What did you have in mind?*
+                    </label>
+                    <textarea
+                        name="message"
+                        rows="3"
+                        class="mb-5 w-full border-b border-black pt-3 pr-4 pb-3 pl-4 text-sm font-medium outline-0"
+                        placeholder="Message"
+                        required></textarea>
+                    <div class="h-fit w-full">
+                        <Button
+                            id="submit-btn"
+                            class="h-fit w-fit text-body-sm leading-[100%] font-medium"
+                            type="submit">Submit</Button
+                        >
+                    </div>
+                </form>
+            </div>
+        </div>
+    </footer>
 </Layout>
