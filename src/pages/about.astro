@@ -1,12 +1,8 @@
 ---
 import Layout from '@layouts/Layout.astro';
-import Image from '@components/Image/Image.astro';
-import Wysiwyg from '@components/Wysiwyg/Wysiwyg.astro';
 import Navbar from '@components/Navbar/Navbar.astro';
 import SplitReveal from '@components/SplitReveal/SplitReveal.astro';
-import Footer from '@components/Footer/Footer.astro';
 import Button from '@components/Button/Button.astro';
-import SplitRevealColour from '@components/SplitReveal/SplitRevealColour.astro';
 ---
 
 <Layout title="About">
@@ -23,9 +19,9 @@ import SplitRevealColour from '@components/SplitReveal/SplitRevealColour.astro';
                     IICON Creative Strategies is a specialist branding studio that combines
                     strategic thinking with the science of human connection. We source merchandise
                     responsibly, design with cultural and psychological intention, and partner with
-                    clients who share our commitment to quality and ethical practice.   As a
-                    minority woman-owned and Canadian company, we are selective yet
-                    comprehensive—delivering branded work that earns its place in people's lives.
+                    clients who share our commitment to quality and ethical practice. As a minority
+                    woman-owned and Canadian company, we are selective yet comprehensive—delivering
+                    branded work that earns its place in people's lives.
                 </SplitReveal>
             </div>
 
@@ -93,7 +89,7 @@ import SplitRevealColour from '@components/SplitReveal/SplitRevealColour.astro';
                         <input
                             type="text"
                             class="mb-5 w-full border-b border-black pt-3 pr-4 pb-3 pl-4 text-sm font-medium outline-0"
-                            name="name"
+                            id="name"
                             placeholder="Name"
                             required
                         />
@@ -102,7 +98,7 @@ import SplitRevealColour from '@components/SplitReveal/SplitRevealColour.astro';
                         </label>
                         <input
                             type="email"
-                            name="email"
+                            id="email"
                             class="mb-5 w-full border-b border-black pt-3 pr-4 pb-3 pl-4 text-sm font-medium outline-0"
                             placeholder="Email"
                             required
@@ -111,7 +107,7 @@ import SplitRevealColour from '@components/SplitReveal/SplitRevealColour.astro';
                             What did you have in mind?*
                         </label>
                         <textarea
-                            name="message"
+                            id="message"
                             rows="3"
                             class="mb-5 w-full border-b border-black pt-3 pr-4 pb-3 pl-4 text-sm font-medium outline-0"
                             placeholder="Message"
