@@ -10,7 +10,7 @@ import SplitRevealColour from '@components/SplitReveal/SplitRevealColour.astro';
 ---
 
 <Layout title="About">
-    <div class="relative flex flex-col justify-start">
+    <div class="relative flex h-screen flex-col">
         <div class="fixed top-0 right-0 left-0 z-50 h-fit bg-black">
             <Navbar />
         </div>
@@ -70,62 +70,62 @@ import SplitRevealColour from '@components/SplitReveal/SplitRevealColour.astro';
                 </div>
             </div>
         </div>
-    </div>
-    <footer>
-        <div
-            class="relative flex h-fit flex-col justify-between gap-gutter bg-white pr-4 pb-24 pl-4 text-black"
-        >
+        <footer>
             <div
-                class="grid w-full grid-cols-12 border-t border-black/10 pt-12 text-footer leading-[100%] font-normal tracking-[-3%] text-black"
+                class="relative flex h-fit flex-col justify-between gap-gutter bg-white pr-4 pb-24 pl-4 text-black"
             >
-                <SplitReveal class="col-span-7 leading-[115%]"
-                    >Let's build something<br />
-                    meaningful.</SplitReveal
+                <div
+                    class="grid w-full grid-cols-12 border-t border-black/10 pt-12 text-footer leading-[100%] font-normal tracking-[-3%] text-black"
                 >
-                <form id="contact-form" class="col-span-5 flex flex-col justify-start">
-                    <input
-                        type="hidden"
-                        name="access_key"
-                        value="3cb859b7-eb03-4988-a1d8-38cf672ee0c8"
-                    />
-                    <label for="name" class="block text-body-sm font-medium opacity-75">
-                        What's your name?*
-                    </label>
-                    <input
-                        type="text"
-                        class="mb-5 w-full border-b border-black pt-3 pr-4 pb-3 pl-4 text-sm font-medium outline-0"
-                        name="name"
-                        placeholder="Name"
-                        required
-                    />
-                    <label for="email" class="block text-body-sm font-medium opacity-75">
-                        Your email*
-                    </label>
-                    <input
-                        type="email"
-                        name="email"
-                        class="mb-5 w-full border-b border-black pt-3 pr-4 pb-3 pl-4 text-sm font-medium outline-0"
-                        placeholder="Email"
-                        required
-                    />
-                    <label for="message" class="block text-body-sm font-medium opacity-75">
-                        What did you have in mind?*
-                    </label>
-                    <textarea
-                        name="message"
-                        rows="3"
-                        class="mb-5 w-full border-b border-black pt-3 pr-4 pb-3 pl-4 text-sm font-medium outline-0"
-                        placeholder="Message"
-                        required></textarea>
-                    <div class="h-fit w-full">
-                        <Button
-                            id="submit-btn"
-                            class="h-fit w-fit text-body-sm leading-[100%] font-medium"
-                            type="submit">Submit</Button
-                        >
-                    </div>
-                </form>
+                    <SplitReveal class="col-span-7 leading-[115%]"
+                        >Let's build something<br />
+                        meaningful.</SplitReveal
+                    >
+                    <form id="contact-form" class="col-span-5 flex flex-col justify-start">
+                        <input
+                            type="hidden"
+                            name="access_key"
+                            value="3cb859b7-eb03-4988-a1d8-38cf672ee0c8"
+                        />
+                        <label for="name" class="block text-body-sm font-medium opacity-75">
+                            What's your name?*
+                        </label>
+                        <input
+                            type="text"
+                            class="mb-5 w-full border-b border-black pt-3 pr-4 pb-3 pl-4 text-sm font-medium outline-0"
+                            name="name"
+                            placeholder="Name"
+                            required
+                        />
+                        <label for="email" class="block text-body-sm font-medium opacity-75">
+                            Your email*
+                        </label>
+                        <input
+                            type="email"
+                            name="email"
+                            class="mb-5 w-full border-b border-black pt-3 pr-4 pb-3 pl-4 text-sm font-medium outline-0"
+                            placeholder="Email"
+                            required
+                        />
+                        <label for="message" class="block text-body-sm font-medium opacity-75">
+                            What did you have in mind?*
+                        </label>
+                        <textarea
+                            name="message"
+                            rows="3"
+                            class="mb-5 w-full border-b border-black pt-3 pr-4 pb-3 pl-4 text-sm font-medium outline-0"
+                            placeholder="Message"
+                            required></textarea>
+                        <div class="h-fit w-full">
+                            <Button
+                                id="submit-btn"
+                                class="h-fit w-fit text-body-sm leading-[100%] font-medium"
+                                type="submit">Submit</Button
+                            >
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
-    </footer>
+        </footer>
+    </div>
 </Layout>
