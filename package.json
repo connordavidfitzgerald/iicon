@@ -55,8 +55,7 @@
         "tailwind": "^2.3.1",
         "tailwindcss": "^4.1.17",
         "ts-debounce": "^4.0.0",
-        "typescript": "^5.9.3",
-        "wrangler": "^4.72.0"
+        "typescript": "^5.9.3"
     },
     "devDependencies": {
         "@locomotivemtl/postcss-helpers-functions": "^1.0.4",
@@ -66,7 +65,8 @@
         "prettier": "^3.6.2",
         "prettier-plugin-astro": "^0.14.1",
         "prettier-plugin-tailwindcss": "^0.7.1",
-        "simple-git-hooks": "^2.13.1"
+        "simple-git-hooks": "^2.13.1",
+        "wrangler": "^4.72.0"
     },
     "simple-git-hooks": {
         "pre-commit": "npm run format"

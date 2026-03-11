@@ -1,0 +1,5 @@
+{
+    "name": "iicon",
+    "compatibility_date": "2026-03-11", // Update to the day you deploy
+    "pages_build_output_dir": "./dist"
+}

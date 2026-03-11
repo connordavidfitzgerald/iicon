@@ -13,6 +13,9 @@ import product from '../assets/images/product.png';
 import graphic from '../assets/images/graphic.png';
 import { Icon } from 'astro-icon/components';
 
+import thirtysix from '@images/36-products-3.jpg';
+import isead from '@images/isead-awards-still.jpg';
+
 import SplitReveal from '@components/SplitReveal/SplitReveal.astro';
 import SplitRevealAlt from '@components/SplitReveal/SplitRevealAlt.astro';
 
@@ -359,30 +362,33 @@ const services = [
                             <p class="text-gray-400">Product Sourcing, Brand Strategy</p>
                         </div>
                     </a>
-                    <a class="project col-span-6 flex flex-col gap-fluid-twenty" href="/usc">
+                    <a
+                        class="project col-span-6 flex flex-col gap-fluid-twenty"
+                        href="/thirty6xposures"
+                    >
                         <Picture
-                            src={Usc}
-                            alt="USC Consulting"
+                            src={thirtysix}
+                            alt="thirty6xposures"
                             class="-lazy-load w-full object-cover grayscale duration-300 hover:grayscale-0"
                         />
                         <div
                             class="flex flex-col text-body-caption leading-[100%] font-normal tracking-[-2%]"
                         >
-                            <p class="text-black">USC Consulting</p>
-                            <p class="text-gray-400">Product Sourcing, Brand Strategy</p>
+                            <p class="text-black">Thirty6Xposures</p>
+                            <p class="text-gray-400">Product Sourcing, Event</p>
                         </div>
                     </a>
-                    <a class="project col-span-6 flex flex-col gap-fluid-twenty" href="isead">
+                    <a class="project col-span-6 flex flex-col gap-fluid-twenty" href="/isead">
                         <Picture
-                            src={mbTire}
-                            alt="Mobile Tire"
+                            src={isead}
+                            alt="ISEAD Awards"
                             class="-lazy-load w-full object-cover grayscale duration-300 hover:grayscale-0"
                         />
                         <div
                             class="flex flex-col text-body-caption leading-[100%] font-normal tracking-[-2%]"
                         >
-                            <p class="text-black">Mobile Tire</p>
-                            <p class="text-gray-400">Product Sourcing, Brand Strategy</p>
+                            <p class="text-black">ISEAD</p>
+                            <p class="text-gray-400">Product Sourcing, Event</p>
                         </div>
                     </a>
                 </div>
@@ -411,8 +417,9 @@ const services = [
                                     <p class="text-gray-400">Product Sourcing, Brand Strategy</p>
                                 </div>
                             </a>
-                            <div
+                            <a
                                 class="projects-slide flex w-full shrink-0 flex-col gap-fluid-twenty px-fluid-twenty"
+                                href="/carpenters"
                             >
                                 <Picture
                                     src={Carpenters}
@@ -425,37 +432,39 @@ const services = [
                                     <p class="text-black">Carpenter's Union</p>
                                     <p class="text-gray-400">Product Sourcing, Brand Strategy</p>
                                 </div>
-                            </div>
-                            <div
+                            </a>
+                            <a
                                 class="projects-slide flex w-full shrink-0 flex-col gap-fluid-twenty px-fluid-twenty"
+                                href="/thirty6Xposures"
                             >
                                 <Picture
-                                    src={Usc}
-                                    alt="USC Consulting"
+                                    src={thirtysix}
+                                    alt="thirty6xposures"
                                     class="pointer-events-none w-full object-cover grayscale"
                                 />
                                 <div
                                     class="flex flex-col text-body-caption leading-[100%] font-normal tracking-[-2%]"
                                 >
-                                    <p class="text-black">USC Consulting</p>
-                                    <p class="text-gray-400">Product Sourcing, Brand Strategy</p>
+                                    <p class="text-black">Thirty6Xposures</p>
+                                    <p class="text-gray-400">Product Sourcing, Event</p>
                                 </div>
-                            </div>
-                            <div
+                            </a>
+                            <a
                                 class="projects-slide flex w-full shrink-0 flex-col gap-fluid-twenty px-fluid-twenty"
+                                href="/isead"
                             >
                                 <Picture
-                                    src={mbTire}
-                                    alt="Mobile Tire"
+                                    src={isead}
+                                    alt="ISEAD Awards"
                                     class="pointer-events-none w-full object-cover grayscale"
                                 />
                                 <div
                                     class="flex flex-col text-body-caption leading-[100%] font-normal tracking-[-2%]"
                                 >
-                                    <p class="text-black">Mobile Tire</p>
-                                    <p class="text-gray-400">Product Sourcing, Brand Strategy</p>
+                                    <p class="text-black">ISEAD</p>
+                                    <p class="text-gray-400">Product Sourcing, Event</p>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                     <!-- Dot indicators -->

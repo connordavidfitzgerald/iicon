@@ -1,0 +1,72 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Navbar from '@components/Navbar/Navbar.astro';
+import SplitReveal from '@components/SplitReveal/SplitReveal.astro';
+import Button from '@components/Button/Button.astro';
+import Footer from '@components/Footer/Footer.astro';
+import mbTire from '../assets/images/mobiletire.png';
+import Usc from '../assets/images/usc.png';
+import Carpenters from '../assets/images/carpenters.png';
+import thirtysix from '@images/36-products-3.jpg';
+import isead from '@images/isead-awards-still.jpg';
+
+import { Picture } from 'astro:assets';
+---
+
+<Layout title="Contact">
+    <Navbar />
+    <div
+        class="h-fit w-full pt-fluid-160 pr-fluid-twenty pb-fluid-twenty pl-fluid-twenty text-body-sm leading-[120%] tracking-[-3%]"
+    >
+        <h1>Selected Projects</h1>
+    </div>
+    <div
+        class="flex h-fit flex-col items-start gap-fluid-twenty pr-fluid-twenty pb-fluid-eighty pl-fluid-twenty md:grid md:grid-cols-12"
+    >
+        <a class="project col-span-6 flex flex-col gap-fluid-twenty" href="/mobile-tire">
+            <Picture
+                src={mbTire}
+                alt="Mobile Tire"
+                class="-lazy-load aspect-square w-full object-cover grayscale transition duration-300 hover:grayscale-0"
+            />
+            <div class="flex flex-col text-body-caption leading-[100%] font-normal tracking-[-2%]">
+                <p class="text-black">Mobile Tire</p>
+                <p class="text-gray-400">Product Sourcing, Brand Strategy</p>
+            </div>
+        </a>
+        <a class="project col-span-6 flex flex-col gap-fluid-twenty" href="/carpenters">
+            <Picture
+                src={Carpenters}
+                alt="Carpenter's Union"
+                class="-lazy-load aspect-square w-full object-cover grayscale transition duration-300 hover:grayscale-0"
+            />
+            <div class="flex flex-col text-body-caption leading-[100%] font-normal tracking-[-2%]">
+                <p class="text-black">Carpenter's Union</p>
+                <p class="text-gray-400">Product Sourcing, Brand Strategy</p>
+            </div>
+        </a>
+        <a class="project col-span-6 flex flex-col gap-fluid-twenty" href="/thirty6xposures">
+            <Picture
+                src={thirtysix}
+                alt="thirty6xposures"
+                class="-lazy-load aspect-square w-full object-cover grayscale duration-300 hover:grayscale-0"
+            />
+            <div class="flex flex-col text-body-caption leading-[100%] font-normal tracking-[-2%]">
+                <p class="text-black">Thirty6Xposures</p>
+                <p class="text-gray-400">Product Sourcing, Event</p>
+            </div>
+        </a>
+        <a class="project col-span-6 flex flex-col gap-fluid-twenty" href="/isead">
+            <Picture
+                src={isead}
+                alt="ISEAD Awards"
+                class="-lazy-load aspect-square w-full object-cover grayscale duration-300 hover:grayscale-0"
+            />
+            <div class="flex flex-col text-body-caption leading-[100%] font-normal tracking-[-2%]">
+                <p class="text-black">ISEAD</p>
+                <p class="text-gray-400">Product Sourcing, Event</p>
+            </div>
+        </a>
+    </div>
+    <Footer />
+</Layout>
