@@ -15,7 +15,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // https://astro.build/config
 export default defineConfig({
     adapter: cloudflare(),
-    site: 'https://locomotive-astro-boilerplate.vercel.app',
+    output: 'server',
+    site: 'iicon.ca',
     vite: {
         resolve: {
             alias: {
