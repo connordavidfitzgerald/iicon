@@ -4,6 +4,7 @@ import postcssHelpersFunctions from '@locomotivemtl/postcss-helpers-functions';
 import postcssTailwindShortcuts from '@locomotivemtl/postcss-tailwind-shortcuts';
 import tailwindcss from '@tailwindcss/postcss';
 
+import cloudflare from '@astrojs/cloudflare';
 import react from '@astrojs/react';
 import { defineConfig } from 'astro/config';
 import { fileURLToPath } from 'url';
@@ -13,6 +14,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // https://astro.build/config
 export default defineConfig({
+    adapter: cloudflare(),
     site: 'https://locomotive-astro-boilerplate.vercel.app',
     vite: {
         resolve: {
