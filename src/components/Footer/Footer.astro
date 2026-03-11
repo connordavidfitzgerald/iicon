@@ -5,16 +5,20 @@ import SplitReveal from '@components/SplitReveal/SplitReveal.astro';
 ---
 
 <div
-    class="relative flex h-[900px] flex-col justify-between gap-gutter bg-white pr-4 pb-4 pl-4 text-black"
+    class="relative flex h-[800px] flex-col justify-between pr-fluid-twenty pb-fluid-forty pl-fluid-twenty"
 >
     <div
-        class="grid w-full grid-cols-12 border-t border-black/10 pt-12 text-footer leading-[100%] font-normal tracking-[-3%] text-black"
+        class="grid w-full grid-cols-12 border-t border-black/10 pt-fluid-forty font-normal tracking-[-3%] text-black"
     >
-        <SplitReveal class="col-span-7 leading-[115%]"
+        <SplitReveal
+            class="col-span-12 pt-fluid-eighty pb-fluid-270 text-footer leading-[115%] md:col-span-7 md:pt-0 md:pb-0"
             >Let's build something<br />
             meaningful.</SplitReveal
         >
-        <form id="contact-form" class="col-span-5 flex flex-col justify-start">
+        <form
+            id="contact-form"
+            class="col-span-12 flex flex-col justify-start gap-fluid-ten leading-[120%] md:col-span-5"
+        >
             <input type="hidden" name="access_key" value="3cb859b7-eb03-4988-a1d8-38cf672ee0c8" />
             <label for="name" class="block text-body-sm font-medium opacity-75">
                 What's your name?*
@@ -54,15 +58,20 @@ import SplitReveal from '@components/SplitReveal/SplitReveal.astro';
             </div>
         </form>
     </div>
-    <div class="grid grid-cols-12 pb-6">
-        <div class="col-span-4 flex flex-row items-center gap-8 tracking-[-1%]">
+    <div class="grid h-fit grid-cols-12">
+        <div
+            class="col-span-6 flex flex-row items-center gap-fluid-forty tracking-[-1%] md:col-span-4"
+        >
             <h3 class="pt-1 text-body-sm">Email</h3>
-            <SplitRevealColour color="#ff922d" class="text-body-lg">rose@iicon.ca</SplitRevealColour
+            <SplitRevealColour color="#ff922d" class="text-body-lg leading-[120%]"
+                >rose@iicon.ca</SplitRevealColour
             >
         </div>
-        <div class="col-span-4 flex flex-row items-center gap-8 tracking-[-1%]">
+        <div
+            class="col-span-6 flex flex-row items-center gap-fluid-forty tracking-[-1%] md:col-span-4"
+        >
             <h3 class="pt-1 text-body-sm">Phone</h3>
-            <SplitRevealColour color="#ff922d" class="text-body-lg"
+            <SplitRevealColour color="#ff922d" class="z-10 text-body-lg leading-[120%]" tag="p"
                 >+1 416 509 4715</SplitRevealColour
             >
         </div>

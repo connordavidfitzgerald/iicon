@@ -26,7 +26,7 @@ export default defineConfig({
                     tailwindcss(),
                     postcssUtopia({
                         minWidth: 320,
-                        maxWidth: 1920,
+                        maxWidth: 2560,
                         minSize: 12,
                         maxSize: 18,
                         positiveSteps: [1.5, 2, 3, 4, 6],

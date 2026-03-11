@@ -21,16 +21,17 @@ const { tag: Tag = 'p', class: className = '' } = Astro.props;
     document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('[data-split]').forEach((el) => {
             new SplitText(el, {
-                type: 'words',
-                mask: 'words',
+                type: 'lines',
+                mask: 'lines',
                 autoSplit: true,
                 onSplit(self) {
-                    gsap.from(self.words, {
-                        yPercent: 110,
-                        rotation: 1,
+                    gsap.from(self.lines, {
+                        yPercent: 120,
                         duration: 1,
+                        delay: 0.5,
                         ease: 'power3.out',
-                        stagger: 0.025,
+                        stagger: 0.1,
+                        onComplete: () => self.revert(),
                         scrollTrigger: {
                             trigger: el,
                             start: 'top 100%',
@@ -44,3 +45,10 @@ const { tag: Tag = 'p', class: className = '' } = Astro.props;
         ScrollTrigger.refresh();
     });
 </script>
+
+<style>
+    [data-split] {
+        font-kerning: none;
+        text-rendering: optimizeSpeed;
+    }
+</style>

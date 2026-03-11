@@ -5,10 +5,15 @@ interface Props {
     color?: string;
 }
 
-const { tag: Tag = 'p', class: className = '', color = '#FF6B35' } = Astro.props;
+const { tag: Tag = 'p', class: className = '', color = '#ff922d' } = Astro.props;
 ---
 
-<div class="split-reveal-wrapper relative" data-color={color}>
+<div class="src-wrapper" style="position: relative; display: inline-block;">
+    <div
+        class="src-overlay"
+        style={`position: absolute; inset: 0; background: ${color}; z-index: 1; pointer-events: none;`}
+    >
+    </div>
     <Tag data-split class={className}>
         <slot />
     </Tag>
@@ -21,76 +26,48 @@ const { tag: Tag = 'p', class: className = '', color = '#FF6B35' } = Astro.props
 
     gsap.registerPlugin(ScrollTrigger, SplitText);
 
-    document.addEventListener('DOMContentLoaded', () => {
-        document.querySelectorAll('.split-reveal-wrapper').forEach((wrapper) => {
-            const el = wrapper as HTMLElement;
-            const color = el.dataset.color || '#FF6B35';
-            const textEl = wrapper.querySelector('[data-split]');
+    function init() {
+        document.querySelectorAll('.src-wrapper').forEach((wrapper) => {
+            if (wrapper.hasAttribute('data-src-init')) return;
+            wrapper.setAttribute('data-src-init', '');
 
-            // overlay sits on the wrapper, outside of SplitText's reach
-            const overlay = document.createElement('div');
-            Object.assign(overlay.style, {
-                position: 'absolute',
-                inset: '0',
-                background: color,
-                transform: 'scaleX(0)',
-                transformOrigin: 'left center',
-                zIndex: '1',
-                pointerEvents: 'none'
+            const overlay = wrapper.querySelector('.src-overlay') as HTMLElement;
+            const textEl = wrapper.querySelector('[data-split]') as HTMLElement;
+            if (!overlay || !textEl) return;
+
+            // Split into words + lines, but DON'T use SplitText's built-in mask
+            // (it uses clip-path internally which breaks near the bottom of the viewport)
+            const split = SplitText.create(textEl, {
+                type: 'words'
             });
-            wrapper.appendChild(overlay);
 
-            new SplitText(textEl, {
-                type: 'words, lines',
-                mask: 'lines',
-                autoSplit: true,
-                onSplit(self) {
-                    const tl = gsap.timeline({
-                        scrollTrigger: {
-                            trigger: wrapper,
-                            start: 'top 100%',
-                            once: true
-                        },
-                        paused: true, // ← prevent auto-play before ST takes over
-                        onStart: () => ScrollTrigger.refresh()
-                    });
-
-                    tl
-                        // Set initial word state as first timeline step, not outside it
-                        .set(self.words, { yPercent: 110, rotation: 1 })
-                        .to(overlay, {
-                            scaleX: 1,
-                            duration: 0.5,
-                            ease: 'power3.inOut'
-                        })
-                        .to(overlay, {
-                            scaleX: 0,
-                            transformOrigin: 'right center',
-                            duration: 0.5,
-                            ease: 'power3.inOut'
-                        })
-                        .to(
-                            self.words,
-                            {
-                                yPercent: 0,
-                                rotation: 0,
-                                duration: 1,
-                                ease: 'power3.out',
-                                stagger: 0.025
-                            },
-                            '<+=0.05' // ← only a tiny overlap, after overlay is nearly gone
-                        );
-
-                    ScrollTrigger.create({
-                        trigger: wrapper,
-                        start: 'top 100%',
-                        once: true,
-                        onEnter: () => tl.play()
-                    });
+            var tl = gsap.timeline({
+                ScrollTrigger: {
+                    trigger: wrapper,
+                    start: 'top 100%'
                 }
             });
+            tl.fromTo(
+                overlay,
+                { scaleX: 0, transformOrigin: 'left center' },
+                {
+                    scaleX: 1,
+                    duration: 0.45,
+                    ease: 'power3.inOut'
+                }
+            );
+            tl.to(overlay, {
+                transformOrigin: 'right center',
+                scaleX: 0,
+                duration: 0.45,
+                ease: 'power3.inOut'
+            });
         });
+    }
 
-        ScrollTrigger.refresh();
-    });
+    // Initial page load
+    init();
+
+    // Re-init after Swup page transitions
+    document.addEventListener('app:page-ready', init);
 </script>

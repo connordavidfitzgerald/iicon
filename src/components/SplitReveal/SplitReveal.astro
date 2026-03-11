@@ -7,9 +7,11 @@ interface Props {
 const { tag: Tag = 'p', class: className = '' } = Astro.props;
 ---
 
-<Tag data-split class={className}>
-    <slot />
-</Tag>
+<split-reveal style="display: contents;">
+    <Tag data-split class={className}>
+        <slot />
+    </Tag>
+</split-reveal>
 
 <script>
     import gsap from 'gsap';
@@ -18,30 +20,47 @@ const { tag: Tag = 'p', class: className = '' } = Astro.props;
 
     gsap.registerPlugin(ScrollTrigger, SplitText);
 
-    document.addEventListener('DOMContentLoaded', () => {
-        document.querySelectorAll('[data-split]').forEach((el) => {
-            new SplitText(el, {
-                type: 'words,chars',
-                mask: 'words',
-                wordClass: 'word',
-                autoSplit: true,
-                onSplit(self) {
-                    gsap.from(self.words, {
-                        yPercent: -110,
-                        rotation: -1,
-                        duration: 0.75,
-                        ease: 'power3.out',
-                        stagger: 0.015,
-                        scrollTrigger: {
-                            trigger: el,
-                            start: 'top 80%',
-                            once: true
-                        }
-                    });
-                }
-            });
-        });
+    class SplitReveal extends HTMLElement {
+        connectedCallback() {
+            const el = this.querySelector('[data-split]');
+            if (!el) return;
 
-        ScrollTrigger.refresh();
-    });
+            document.fonts.ready.then(() => {
+                new SplitText(el, {
+                    type: 'words',
+                    mask: 'words',
+                    wordsClass: 'word++',
+                    autoSplit: true,
+
+                    onSplit(self) {
+                        (gsap.set(self.masks, {
+                            overflowX: 'visible'
+                        }),
+                            gsap.from(self.words, {
+                                yPercent: -120,
+                                duration: 1,
+                                ease: 'power3.out',
+                                stagger: 0.02,
+
+                                onComplete: () => self.revert(),
+                                scrollTrigger: {
+                                    trigger: el,
+                                    start: 'top 100%',
+                                    once: true
+                                }
+                            }));
+                    }
+                });
+
+                ScrollTrigger.refresh();
+            });
+        }
+    }
 </script>
+
+<style>
+    [data-split] {
+        font-kerning: none;
+        text-rendering: optimizeSpeed;
+    }
+</style>

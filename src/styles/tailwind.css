@@ -55,17 +55,19 @@
 
 @theme static {
     --font-sans: 'ABC Monument Grotesk', sans-serif;
-    --text-nav: utopia.clamp(16, 20);
+    --text-nav: utopia.clamp(14, 18);
     --text-heading-xl: utopia.clamp(60, 96);
-    --text-heading-lg: utopia.clamp(10, 80);
-    --text-heading-md: utopia.clamp(10, 32);
+    --text-heading-lg: utopia.clamp(26, 60);
+    --text-heading-md: utopia.clamp(20, 32);
     --text-body-md: utopia.clamp(16, 24);
     --text-body-lg: utopia.clamp(20, 32);
-    --text-body-sm: utopia.clamp(14, 16);
+    --text-body-sm: utopia.clamp(12, 16);
     --text-button: utopia.clamp(16, 20);
     --text-footer: utopia.clamp(24, 48);
-    --text-services: utopia.clamp(24, 72);
-    --text-body-caption: utopia.clamp(14, 20);
+    --text-services: utopia.clamp(32, 72);
+    --text-body-caption: utopia.clamp(16, 20);
+    --text-body-project: utopia.clamp(14, 18);
+    --text-testimonial: utopia.clamp(18, 32);
 
     --color-black: #000000;
     --color-white: #ffffff;
@@ -82,9 +84,20 @@
     --spacing-fluid-3xl: utopia.clamp(80, 128);
     --spacing-fluid-4xl: utopia.clamp(128, 160);
 
+    --spacing-fluid-ten: utopia.clamp(4, 15);
+    --spacing-fluid-fifteen: utopia.clamp(6, 25);
+    --spacing-fluid-twenty: utopia.clamp(8, 30);
+    --spacing-fluid-thirty: utopia.clamp(12, 45);
+    --spacing-fluid-forty: utopia.clamp(16, 60);
+    --spacing-fluid-sixty: utopia.clamp(20, 90);
+    --spacing-fluid-eighty: utopia.clamp(24, 120);
+    --spacing-fluid-160: utopia.clamp(32, 264);
+    --spacing-fluid-270: utopia.clamp(54, 444);
+    --spacing-fluid-540: utopia.clamp(108, 888);
+
     --breakpoint-2xs: 340px;
-    --breakpoint-xs: 500px;
-    --breakpoint-sm: 700px;
+    --breakpoint-xs: 675px;
+    --breakpoint-sm: 768px;
     --breakpoint-md: 1000px;
     --breakpoint-lg: 1200px;
     --breakpoint-xl: 1400px;

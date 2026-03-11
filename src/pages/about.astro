@@ -10,11 +10,17 @@ import Button from '@components/Button/Button.astro';
         <div class="fixed top-0 right-0 left-0 z-50 h-fit bg-black">
             <Navbar />
         </div>
-        <div class="flex h-fit w-full flex-col justify-start gap-24 bg-white pt-24 pr-4 pb-24 pl-4">
-            <div class="grid grid-cols-12 gap-4">
-                <h3 class="col-span-4 h-fit text-body-sm font-normal text-black">Information</h3>
-                <SplitReveal
-                    class="col-span-8 h-fit pt-2 text-heading-md leading-[110%] font-medium tracking-[-2%] text-black/90"
+        <div
+            class="flex h-fit w-full flex-col justify-start gap-fluid-270 bg-white pt-fluid-270 pr-fluid-twenty pb-fluid-eighty pl-fluid-twenty sm:pt-fluid-160"
+        >
+            <div class="grid grid-cols-12 gap-fluid-twenty">
+                <h3
+                    class="col-span-12 h-fit text-body-sm font-normal tracking-[-2%] text-black xs:col-span-4"
+                >
+                    Information
+                </h3>
+                <p
+                    class="col-span-12 h-fit w-full pt-2 text-heading-md leading-[115%] font-medium tracking-[-2%] text-black/90 xs:col-span-8"
                 >
                     IICON Creative Strategies is a specialist branding studio that combines
                     strategic thinking with the science of human connection. We source merchandise
@@ -22,13 +28,17 @@ import Button from '@components/Button/Button.astro';
                     clients who share our commitment to quality and ethical practice. As a minority
                     woman-owned and Canadian company, we are selective yet comprehensive—delivering
                     branded work that earns its place in people's lives.
-                </SplitReveal>
+                </p>
             </div>
 
-            <div class="grid grid-cols-12 gap-4">
-                <h3 class="col-span-4 h-fit text-body-sm font-normal text-black">Our Values</h3>
+            <div class="grid grid-cols-12 gap-fluid-twenty">
+                <h3
+                    class="col-span-12 h-fit text-body-sm font-normal tracking-[-2%] text-black xs:col-span-4"
+                >
+                    Our Values
+                </h3>
                 <p
-                    class="col-span-4 h-fit pt-2 text-nav leading-[110%] font-normal tracking-[-1%] text-black/90"
+                    class="col-span-12 h-fit pt-2 text-body-caption leading-[120%] font-normal tracking-[-2%] text-black/90 xs:col-span-4"
                 >
                     The products we choose, the suppliers we partner with, and the standards we hold
                     ourselves to are all rooted in the same values: sustainability, ethics, and
@@ -38,7 +48,7 @@ import Button from '@components/Button/Button.astro';
                     keep.
                 </p>
                 <p
-                    class="fontnormal col-span-4 h-fit pt-2 text-nav leading-[110%] tracking-[-1%] text-black/90"
+                    class="col-span-12 h-fit pt-2 text-body-caption leading-[120%] font-normal tracking-[-2%] text-black/90 xs:col-span-4"
                 >
                     Every manufacturer in our network is held to strong ethical, social, and safety
                     standards, supported by third-party audits and environmental accountability.
@@ -49,16 +59,20 @@ import Button from '@components/Button/Button.astro';
                 </p>
             </div>
 
-            <div class="grid grid-cols-12 gap-4">
-                <h3 class="col-span-4 h-fit text-body-sm font-normal text-black">Contact</h3>
-                <div
-                    class="col-span-8 grid h-fit grid-cols-2 gap-4 pt-2 text-nav leading-[110%] font-normal tracking-[-1%] text-black/90"
+            <div class="grid grid-cols-12 gap-fluid-twenty">
+                <h3
+                    class="col-span-12 h-fit text-body-sm font-normal tracking-[-2%] text-black xs:col-span-4"
                 >
-                    <div class="flex flex-row gap-8">
+                    Contact
+                </h3>
+                <div
+                    class="col-span-8 grid h-fit grid-cols-2 gap-fluid-twenty pt-2 text-nav leading-[110%] font-normal tracking-[-1%] text-black/90"
+                >
+                    <div class="col-span-2 flex flex-row gap-fluid-forty xs:col-span-1">
                         <a class="hover-underline">rose@iicon.ca</a>
                         <a class="hover-underline">+1 416 509 4715</a>
                     </div>
-                    <div class="flex flex-row gap-8">
+                    <div class="col-span-2 flex flex-row gap-fluid-forty xs:col-span-1">
                         <a class="hover-underline">Instagram</a>
                         <a class="hover-underline">Facebook</a>
                         <a class="hover-underline">LinkedIn</a>
@@ -66,18 +80,22 @@ import Button from '@components/Button/Button.astro';
                 </div>
             </div>
         </div>
+
         <footer>
             <div
-                class="relative flex h-fit flex-col justify-between gap-gutter bg-white pr-4 pb-24 pl-4 text-black"
+                class="relative flex h-fit flex-col justify-between gap-gutter bg-white pr-fluid-twenty pb-fluid-160 pl-fluid-twenty text-black"
             >
                 <div
                     class="grid w-full grid-cols-12 border-t border-black/10 pt-12 text-footer leading-[100%] font-normal tracking-[-3%] text-black"
                 >
-                    <SplitReveal class="col-span-7 leading-[115%]"
+                    <SplitReveal class="col-span-12 leading-[115%] xs:col-span-7"
                         >Let's build something<br />
                         meaningful.</SplitReveal
                     >
-                    <form id="contact-form" class="col-span-5 flex flex-col justify-start">
+                    <form
+                        id="contact-form"
+                        class="col-span-12 flex flex-col justify-start pt-fluid-160 xs:col-span-5 xs:pt-0"
+                    >
                         <input
                             type="hidden"
                             name="access_key"

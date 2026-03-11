@@ -18,6 +18,7 @@ import SplitRevealAlt from '@components/SplitReveal/SplitRevealAlt.astro';
 
 import Button from '@components/Button/Button.astro';
 import Footer from '@components/Footer/Footer.astro';
+import SplitRevealColour from '../components/SplitReveal/SplitRevealColour.astro';
 
 const services = [
     {
@@ -49,380 +50,731 @@ const services = [
 
 <Layout title="Home">
     <div class="bg-white">
-        <div class="flex h-fit w-full flex-col justify-end pt-40">
-            <div class="pointer-events-none z-50 h-auto w-full pt-4 pr-4 pb-4 pl-4">
+        <div class="flex h-fit w-full flex-col justify-end pt-fluid-160">
+            <div class="pointer-events-non h-auto w-full p-fluid-twenty">
                 <Icon name="iicon" class="pointer-events-auto h-auto w-full object-cover" />
             </div>
         </div>
-    </div>
-    <div class="bg-white">
         <div class="sticky top-0 z-50">
             <Navbar />
         </div>
-        <div class="h-fit w-full pr-4 pl-4">
+        <div class="h-fit w-full pr-fluid-twenty pl-fluid-twenty">
             <Picture
                 src={bwImage}
-                class="min-h-full min-w-full object-cover"
+                class="h-screen max-h-[1080px] min-h-[800px] min-w-full object-cover md:max-h-[1200px] md:min-h-full"
                 alt="IICON BW Image"
             />
         </div>
 
         <!-- Our Approach -->
-        <div class="flex h-fit w-full flex-col pt-40">
-            <div class="grid grid-cols-12 pr-4 pl-4">
-                <div class="sticky top-9 z-10 col-span-12 flex h-fit flex-col bg-white pt-3 pb-2">
-                    <div class="body-sm font-normal tracking-[-2%]">Our Approach</div>
-                </div>
-                <SplitReveal
-                    class="col-span-8 pt-20 pb-60 text-heading-lg leading-[110%] font-normal tracking-[-4%] text-black"
+        <div class="flex h-fit w-full flex-col">
+            <div
+                class="sticky top-9 z-10 col-span-12 flex h-fit flex-row items-center justify-start bg-white pt-fluid-thirty pr-fluid-twenty pb-fluid-ten pl-fluid-twenty"
+            >
+                <SplitRevealColour class="text-body-sm font-normal tracking-[-2%] text-black"
+                    >Our Approach</SplitRevealColour
                 >
-                    We believe your merch should reflect your brand's values, not compromise them.
-                </SplitReveal>
-                <div class="col-span-4"></div>
-
-                <div class="col-span-1"></div>
-                <div class="col-span-11 flex flex-col">
-                    <Picture src={mountains} class="w-full" alt="Canadian Mountains" />
-                    <div class="grid grid-cols-11 pt-5 font-normal text-black">
-                        <div class="col-span-6 text-body-md leading-[110%] tracking-[-2%]">
-                            Our personalized approach combines strategic product selection with a
-                            commitment to Canadian-made and sustainable merchandise. We partner with
-                            you to source products that create meaningful connections with your
-                            customers while making an environmental impact you can actually feel
-                            good about.
+            </div>
+            <div
+                class="grid grid-cols-12 pt-fluid-540 pr-fluid-twenty pl-fluid-twenty md:pt-fluid-160"
+            >
+                <SplitReveal
+                    class="col-span-12 text-heading-lg leading-[115%] font-normal tracking-[-3%] text-black"
+                >
+                    We believe your merchandise should honour the values of your brand. Every item
+                    we source is chosen with care, selected to reflect the story and standards that
+                    set your business apart.
+                    <div
+                        class="col-span-12 flex flex-col pt-fluid-540 md:col-span-11 md:col-start-2 md:pt-fluid-160"
+                    >
+                        <Picture src={mountains} class="w-full" alt="Canadian Mountains" />
+                        <div class="grid grid-cols-11 font-normal text-black md:pt-fluid-ten">
+                            <div
+                                class="col-span-12 pt-fluid-twenty text-body-md leading-[120%] tracking-[-2%] md:col-span-6 md:pt-0"
+                            >
+                                We take a personalized, intentional approach, curating merchandise
+                                from Union Made, Canadian Made, and Canadian‑owned suppliers, each
+                                chosen for their story of sustainability, responsible manufacturing,
+                                and reduced environmental impact.
+                            </div>
+                            <div
+                                class="col-span-12 flex flex-row items-end justify-start pt-fluid-forty pr-5 pb-fluid-forty text-body-sm leading-[110%] tracking-[0%] md:col-span-5 md:justify-end md:pt-0 md:pb-0"
+                            >
+                                <Button
+                                    class="h-fit w-fit text-body-sm leading-[100%] font-medium tracking-[-2%]"
+                                    >Learn More</Button
+                                >
+                            </div>
                         </div>
                         <div
-                            class="col-span-5 flex flex-row items-end justify-end pr-5 text-body-sm leading-[110%] tracking-[0%]"
+                            class="grid grid-cols-12 pt-fluid-forty text-body-md leading-[110%] font-normal tracking-[-2%] text-black md:grid-cols-10"
                         >
-                            <Button
-                                class="h-fit w-fit text-body-sm leading-[100%] font-medium tracking-[-2%]"
-                                >Learn More</Button
-                            >
+                            <div class="col-span-12 pb-fluid-forty md:col-span-2 md:pb-0">
+                                Awards
+                            </div>
+                            <div class="col-span-12 flex flex-col md:col-span-8">
+                                <div
+                                    class="col-span-8 grid grid-cols-8 border-b border-b-black pt-1 pb-1"
+                                >
+                                    <div class="col-span-2">2025</div>
+                                    <div class="col-span-2">PPPC</div>
+                                    <div class="col-span-4">International Gold Pyramid</div>
+                                </div>
+                                <div
+                                    class="col-span-8 grid grid-cols-8 border-b border-b-black pt-1 pb-1"
+                                >
+                                    <div class="col-span-2">2025</div>
+                                    <div class="col-span-2">PPPC</div>
+                                    <div class="col-span-4">International Gold Pyramid</div>
+                                </div>
+                                <div
+                                    class="col-span-8 grid grid-cols-8 border-b border-b-black pt-1 pb-1"
+                                >
+                                    <div class="col-span-2">2025</div>
+                                    <div class="col-span-2">PPPC</div>
+                                    <div class="col-span-4">International Gold Pyramid</div>
+                                </div>
+                                <div
+                                    class="col-span-8 grid grid-cols-8 border-b border-b-black pt-1 pb-1"
+                                >
+                                    <div class="col-span-2">2025</div>
+                                    <div class="col-span-2">PPPC</div>
+                                    <div class="col-span-4">International Gold Pyramid</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div
-                        class="grid grid-cols-10 pt-20 pr-5 text-[20px] leading-[110%] font-normal tracking-[-3%] text-black"
+                        class="col-span-12 grid grid-cols-12 gap-gutter pt-fluid-160 pb-fluid-sixty"
                     >
-                        <div class="col-span-2">Awards</div>
-                        <div class="col-span-8 flex flex-col">
+                        <div class="col-span-12 grid min-h-140 grid-cols-10 bg-[#EEEEEE] p-7">
                             <div
-                                class="col-span-8 grid grid-cols-8 border-b border-b-black pt-1 pb-1"
+                                class="col-span-12 flex flex-col justify-center gap-fluid-eighty sm:col-span-8 sm:col-start-2"
                             >
-                                <div class="col-span-2">2025</div>
-                                <div class="col-span-2">PPPC</div>
-                                <div class="col-span-4">International Gold Pyramid</div>
-                            </div>
-                            <div
-                                class="col-span-8 grid grid-cols-8 border-b border-b-black pt-1 pb-1"
-                            >
-                                <div class="col-span-2">2025</div>
-                                <div class="col-span-2">PPPC</div>
-                                <div class="col-span-4">International Gold Pyramid</div>
-                            </div>
-                            <div
-                                class="col-span-8 grid grid-cols-8 border-b border-b-black pt-1 pb-1"
-                            >
-                                <div class="col-span-2">2025</div>
-                                <div class="col-span-2">PPPC</div>
-                                <div class="col-span-4">International Gold Pyramid</div>
-                            </div>
-                            <div
-                                class="col-span-8 grid grid-cols-8 border-b border-b-black pt-1 pb-1"
-                            >
-                                <div class="col-span-2">2025</div>
-                                <div class="col-span-2">PPPC</div>
-                                <div class="col-span-4">International Gold Pyramid</div>
+                                <SplitRevealAlt
+                                    class="text-testimonial leading-[115%] font-normal tracking-[-2%] text-black"
+                                >
+                                    "Rose has been a pleasure to partner with on our corporate
+                                    branding requirements. She has the patience and experience to
+                                    offer a professional customized approach to our firm’s marketing
+                                    needs. Optics play a key role in perception and IICON’s approach
+                                    is unsurpassable."
+                                </SplitRevealAlt>
+                                <p
+                                    class="text-body-caption leading-[110%] font-normal tracking-[-2%] text-[#111111]"
+                                >
+                                    John Krasko, <br />
+                                    Vice President, OHL Construction Canada
+                                </p>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-span-12 grid grid-cols-12 gap-gutter pt-30 pr-4 pb-15 pl-4">
-                    <div
-                        class="col-span-10 col-start-3 grid aspect-video grid-cols-10 bg-[#E1E1DF] p-7"
-                    >
-                        <div class="col-span-8 col-start-2 flex flex-col justify-center gap-5">
-                            <SplitRevealAlt
-                                class="text-body-lg leading-[110%] font-normal tracking-[-2%] text-[#464646]"
-                            >
-                                "Rose has been a pleasure to partner with on our corporate branding
-                                requirements. She has the patience and experience to offer a
-                                professional customized approach to our firm’s marketing needs.
-                                Optics play a key role in perception and IICON’s approach is
-                                unsurpassable."
-                            </SplitRevealAlt>
-                            <p
-                                class="text-[18px] leading-[110%] font-normal tracking-[-2%] text-[#464646]"
-                            >
-                                John Krasko, <br />
-                                Vice President, OHL Construction Canada
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="flex flex-col gap-0">
-            <div
-                class="sticky top-9 z-10 col-span-12 flex h-fit flex-row items-center justify-start bg-white pt-3 pr-4 pb-2 pl-4"
-            >
-                <div class="text-body-sm font-normal tracking-[-2%] text-black">Services</div>
+                </SplitReveal>
             </div>
 
-            <div
-                id="services-section"
-                class="grid w-full grid-cols-12 items-start justify-start gap-gutter pt-20 pr-4 pb-40 pl-4"
-            >
-                <div class="col-span-12 grid grid-cols-12">
-                    <!-- Left: Service Labels -->
-                    <div
-                        id="services-list"
-                        class="relative col-span-6 flex h-fit flex-col items-start justify-start pt-3 pb-20 font-normal text-[#111111]"
+            <div class="flex flex-col gap-0">
+                <div
+                    class="sticky top-9 z-10 col-span-12 flex h-fit flex-row items-center justify-start bg-white pt-fluid-thirty pr-fluid-twenty pb-fluid-ten pl-fluid-twenty"
+                >
+                    <SplitRevealColour class="text-body-sm font-normal tracking-[-2%] text-black"
+                        >Services</SplitRevealColour
                     >
+                </div>
+
+                <div
+                    id="services-section"
+                    class="grid w-full grid-cols-12 items-start justify-start gap-gutter pt-fluid-eighty pr-fluid-twenty pb-fluid-160 pl-fluid-twenty"
+                >
+                    <div class="desktop-version col-span-12 grid grid-cols-12">
+                        <!-- Left: Service Labels -->
+                        <div
+                            id="services-list"
+                            class="relative col-span-7 flex h-fit flex-col items-start justify-start pt-3 pb-20 font-normal text-[#111111]"
+                        >
+                            {
+                                services.map((service, i) => (
+                                    <SplitReveal
+                                        class="service-label relative w-full cursor-default text-services leading-[115%] font-normal tracking-[-4%]"
+                                        data-index={i}
+                                    >
+                                        {service.label}
+                                    </SplitReveal>
+                                ))
+                            }
+                        </div>
+
+                        <!-- Right: Image + Caption -->
+                        <div class="col-span-5 flex flex-col justify-start gap-4">
+                            <div
+                                id="services-image-wrap"
+                                class="relative w-full mix-blend-multiply"
+                                style="aspect-ratio: 4/3;"
+                            >
+                                {
+                                    services.map((service, i) => (
+                                        <img
+                                            src={service.image}
+                                            alt={service.label}
+                                            class="service-image absolute inset-0 h-full w-full object-cover"
+                                            data-index={i}
+                                        />
+                                    ))
+                                }
+                            </div>
+
+                            <div
+                                id="services-caption-wrap"
+                                class="relative"
+                                style="min-height: 80px;"
+                            >
+                                {
+                                    services.map((service, i) => (
+                                        <p
+                                            class="service-caption absolute top-0 left-0 text-body-md leading-[115%] font-normal tracking-[-2%]"
+                                            data-index={i}
+                                            style="opacity: 0"
+                                        >
+                                            {service.caption}
+                                        </p>
+                                    ))
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mob-version col-span-12 flex flex-col">
                         {
                             services.map((service, i) => (
-                                <SplitReveal
-                                    class="service-label relative w-full cursor-default text-services leading-[115%] font-normal tracking-[-4%]"
-                                    data-index={i}
-                                >
-                                    {service.label}
-                                </SplitReveal>
+                                <div class="mob-accordion-item" data-mob-index={i}>
+                                    {/* Clickable header */}
+                                    <button
+                                        class="mob-accordion-trigger flex w-full cursor-pointer flex-row items-center justify-between py-fluid-twenty text-left"
+                                        aria-expanded="false"
+                                    >
+                                        <span class="text-services leading-[115%] font-normal tracking-[-4%] text-[#111111]">
+                                            {service.label}
+                                        </span>
+                                        {/* SVG plus / X icon */}
+                                        <span
+                                            class="mob-accordion-icon ml-4 shrink-0"
+                                            aria-hidden="true"
+                                        >
+                                            <svg
+                                                width="20"
+                                                height="20"
+                                                viewBox="0 0 20 20"
+                                                fill="none"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                {/* Horizontal line — always visible */}
+                                                <line
+                                                    class="mob-icon-vline2"
+                                                    x1="2"
+                                                    y1="10"
+                                                    x2="18"
+                                                    y2="10"
+                                                    stroke="#111111"
+                                                    stroke-width="1"
+                                                    stroke-linecap="round"
+                                                />
+                                                {/* Vertical line — rotates to form X */}
+                                                <line
+                                                    class="mob-icon-vline"
+                                                    x1="10"
+                                                    y1="2"
+                                                    x2="10"
+                                                    y2="18"
+                                                    stroke="#111111"
+                                                    stroke-width="1"
+                                                    stroke-linecap="round"
+                                                />
+                                            </svg>
+                                        </span>
+                                    </button>
+
+                                    {/* Collapsible body */}
+                                    <div
+                                        class="mob-accordion-body overflow-hidden"
+                                        style="height: 0;"
+                                    >
+                                        <div class="mob-accordion-inner flex flex-col gap-4 pb-6">
+                                            <img
+                                                src={service.image}
+                                                alt={service.label}
+                                                class="w-full object-cover mix-blend-multiply"
+                                                style="aspect-ratio: 4/3;"
+                                            />
+                                            <p class="text-body-md leading-[120%] font-normal tracking-[-2%] text-[#111111]">
+                                                {service.caption}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
                             ))
                         }
+                        {/* Bottom border to close the last row */}
+                        <div></div>
                     </div>
+                </div>
+            </div>
 
-                    <!-- Right: Image + Caption -->
-                    <div class="col-span-6 flex flex-col justify-start gap-4">
+            <!-- Projects -->
+            <div class="b-10">
+                <div
+                    class="sticky top-9 z-10 col-span-12 flex h-fit flex-row items-center justify-start bg-white pt-fluid-thirty pr-fluid-twenty pb-fluid-ten pl-fluid-twenty"
+                >
+                    <SplitRevealColour class="text-body-sm font-normal tracking-[-2%] text-black"
+                        >Selected Projects</SplitRevealColour
+                    >
+                </div>
+                <!-- Desktop: 2x2 grid (hidden on mobile) -->
+                <div
+                    class="desktop-version grid h-fit grid-cols-12 items-start gap-fluid-twenty pr-fluid-twenty pb-fluid-eighty pl-fluid-twenty"
+                >
+                    <a
+                        class="project col-span-6 flex flex-col gap-fluid-twenty"
+                        href="/mobile-tire"
+                    >
+                        <Picture
+                            src={mbTire}
+                            alt="Mobile Tire"
+                            class="-lazy-load w-full object-cover grayscale transition duration-300 hover:grayscale-0"
+                        />
                         <div
-                            id="services-image-wrap"
-                            class="relative w-full mix-blend-multiply"
-                            style="aspect-ratio: 4/3;"
+                            class="flex flex-col text-body-caption leading-[100%] font-normal tracking-[-2%]"
                         >
-                            {
-                                services.map((service, i) => (
-                                    <img
-                                        src={service.image}
-                                        alt={service.label}
-                                        class="service-image absolute inset-0 h-full w-full object-cover"
-                                        data-index={i}
-                                    />
-                                ))
-                            }
+                            <p class="text-black">Mobile Tire</p>
+                            <p class="text-gray-400">Product Sourcing, Brand Strategy</p>
                         </div>
+                    </a>
+                    <a class="project col-span-6 flex flex-col gap-fluid-twenty" href="/carpenters">
+                        <Picture
+                            src={Carpenters}
+                            alt="Carpenter's Union"
+                            class="-lazy-load w-full object-cover grayscale transition duration-300 hover:grayscale-0"
+                        />
+                        <div
+                            class="flex flex-col text-body-caption leading-[100%] font-normal tracking-[-2%]"
+                        >
+                            <p class="text-black">Carpenter's Union</p>
+                            <p class="text-gray-400">Product Sourcing, Brand Strategy</p>
+                        </div>
+                    </a>
+                    <a class="project col-span-6 flex flex-col gap-fluid-twenty" href="/usc">
+                        <Picture
+                            src={Usc}
+                            alt="USC Consulting"
+                            class="-lazy-load w-full object-cover grayscale duration-300 hover:grayscale-0"
+                        />
+                        <div
+                            class="flex flex-col text-body-caption leading-[100%] font-normal tracking-[-2%]"
+                        >
+                            <p class="text-black">USC Consulting</p>
+                            <p class="text-gray-400">Product Sourcing, Brand Strategy</p>
+                        </div>
+                    </a>
+                    <a class="project col-span-6 flex flex-col gap-fluid-twenty" href="isead">
+                        <Picture
+                            src={mbTire}
+                            alt="Mobile Tire"
+                            class="-lazy-load w-full object-cover grayscale duration-300 hover:grayscale-0"
+                        />
+                        <div
+                            class="flex flex-col text-body-caption leading-[100%] font-normal tracking-[-2%]"
+                        >
+                            <p class="text-black">Mobile Tire</p>
+                            <p class="text-gray-400">Product Sourcing, Brand Strategy</p>
+                        </div>
+                    </a>
+                </div>
 
-                        <div id="services-caption-wrap" class="relative" style="min-height: 80px;">
-                            {
-                                services.map((service, i) => (
-                                    <p
-                                        class="service-caption absolute top-0 left-0 w-[80%] text-body-md leading-[115%] font-normal tracking-[-2%]"
-                                        data-index={i}
-                                        style="opacity: 0"
-                                    >
-                                        {service.caption}
-                                    </p>
-                                ))
-                            }
+                <!-- Mobile: horizontal slider (hidden on md+) -->
+                <div class="mob-version w-full pb-20 sm:hidden">
+                    <div id="projects-slider-track-wrap" class="w-full overflow-hidden">
+                        <div
+                            id="projects-slider-track"
+                            class="flex will-change-transform"
+                            style="touch-action: pan-y;"
+                        >
+                            <a
+                                class="projects-slide flex w-full shrink-0 flex-col gap-fluid-twenty px-fluid-twenty"
+                                href="/mobile-tire"
+                            >
+                                <Picture
+                                    src={mbTire}
+                                    alt="Mobile Tire"
+                                    class="pointer-events-none w-full object-cover grayscale"
+                                />
+                                <div
+                                    class="flex flex-col text-body-caption leading-[100%] font-normal tracking-[-2%]"
+                                >
+                                    <p class="text-black">Mobile Tire</p>
+                                    <p class="text-gray-400">Product Sourcing, Brand Strategy</p>
+                                </div>
+                            </a>
+                            <div
+                                class="projects-slide flex w-full shrink-0 flex-col gap-fluid-twenty px-fluid-twenty"
+                            >
+                                <Picture
+                                    src={Carpenters}
+                                    alt="Carpenter's Union"
+                                    class="pointer-events-none w-full object-cover grayscale"
+                                />
+                                <div
+                                    class="flex flex-col text-body-caption leading-[100%] font-normal tracking-[-2%]"
+                                >
+                                    <p class="text-black">Carpenter's Union</p>
+                                    <p class="text-gray-400">Product Sourcing, Brand Strategy</p>
+                                </div>
+                            </div>
+                            <div
+                                class="projects-slide flex w-full shrink-0 flex-col gap-fluid-twenty px-fluid-twenty"
+                            >
+                                <Picture
+                                    src={Usc}
+                                    alt="USC Consulting"
+                                    class="pointer-events-none w-full object-cover grayscale"
+                                />
+                                <div
+                                    class="flex flex-col text-body-caption leading-[100%] font-normal tracking-[-2%]"
+                                >
+                                    <p class="text-black">USC Consulting</p>
+                                    <p class="text-gray-400">Product Sourcing, Brand Strategy</p>
+                                </div>
+                            </div>
+                            <div
+                                class="projects-slide flex w-full shrink-0 flex-col gap-fluid-twenty px-fluid-twenty"
+                            >
+                                <Picture
+                                    src={mbTire}
+                                    alt="Mobile Tire"
+                                    class="pointer-events-none w-full object-cover grayscale"
+                                />
+                                <div
+                                    class="flex flex-col text-body-caption leading-[100%] font-normal tracking-[-2%]"
+                                >
+                                    <p class="text-black">Mobile Tire</p>
+                                    <p class="text-gray-400">Product Sourcing, Brand Strategy</p>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+                    <!-- Dot indicators -->
+                    <div
+                        id="projects-slider-dots"
+                        class="flex items-center justify-center gap-2 pt-fluid-twenty"
+                    >
+                        <button
+                            class="slider-dot h-1.5 w-1.5 rounded-full bg-black opacity-100 transition-all duration-300"
+                            data-index="0"
+                            aria-label="Go to slide 1"></button>
+                        <button
+                            class="slider-dot h-1.5 w-1.5 rounded-full bg-black opacity-30 transition-all duration-300"
+                            data-index="1"
+                            aria-label="Go to slide 2"></button>
+                        <button
+                            class="slider-dot h-1.5 w-1.5 rounded-full bg-black opacity-30 transition-all duration-300"
+                            data-index="2"
+                            aria-label="Go to slide 3"></button>
+                        <button
+                            class="slider-dot h-1.5 w-1.5 rounded-full bg-black opacity-30 transition-all duration-300"
+                            data-index="3"
+                            aria-label="Go to slide 4"></button>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- Projects -->
-        <div class="b-10">
-            <div
-                class="sticky top-9 z-10 col-span-12 flex h-fit flex-row items-center justify-start bg-white pt-3 pr-4 pb-2 pl-4"
-            >
-                <div class="text-body-sm font-normal tracking-[-2%] text-black">
-                    Selected Projects
-                </div>
-            </div>
-            <div class="grid h-fit grid-cols-12 items-start gap-4 pr-4 pb-20 pl-4">
-                <div class="project col-span-6 flex flex-col gap-4">
-                    <Picture
-                        src={mbTire}
-                        alt="Mobile Tire"
-                        class="-lazy-load w-full object-cover grayscale transition duration-300 hover:grayscale-0"
-                    />
-                    <div
-                        class="flex flex-col text-body-caption leading-[100%] font-normal tracking-[-2%]"
-                    >
-                        <p class="text-black">Mobile Tire</p>
-                        <p class="text-gray-400">Product Sourcing, Brand Strategy</p>
-                    </div>
-                </div>
-                <div class="project col-span-6 flex flex-col gap-4">
-                    <Picture
-                        src={Carpenters}
-                        alt="Carpenter's Union"
-                        class="-lazy-load w-full object-cover grayscale transition duration-300 hover:grayscale-0"
-                    />
-                    <div
-                        class="flex flex-col text-body-caption leading-[100%] font-normal tracking-[-2%]"
-                    >
-                        <p class="text-black">Carpenter's Union</p>
-                        <p class="text-gray-400">Product Sourcing, Brand Strategy</p>
-                    </div>
-                </div>
-                <div class="project col-span-6 flex flex-col gap-5">
-                    <Picture
-                        src={Usc}
-                        alt="USC Consulting"
-                        class="-lazy-load w-full object-cover grayscale duration-300 hover:grayscale-0"
-                    />
-                    <div
-                        class="flex flex-col text-body-caption leading-[100%] font-normal tracking-[-2%]"
-                    >
-                        <p class="text-black">USC Consulting</p>
-                        <p class="text-gray-400">Product Sourcing, Brand Strategy</p>
-                    </div>
-                </div>
-                <div class="project col-span-6 flex flex-col gap-5">
-                    <Picture
-                        src={mbTire}
-                        alt="Mobile Tire"
-                        class="-lazy-load w-full object-cover grayscale duration-300 hover:grayscale-0"
-                    />
-                    <div
-                        class="flex flex-col text-body-caption leading-[100%] font-normal tracking-[-2%]"
-                    >
-                        <p class="text-black">Mobile Tire</p>
-                        <p class="text-gray-400">Product Sourcing, Brand Strategy</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <footer>
         <Footer />
-    </footer>
-</Layout>
+    </div>
 
-<script>
-    import gsap from 'gsap';
-    import { SplitText } from 'gsap/SplitText';
-    import { ScrollTrigger } from 'gsap/ScrollTrigger';
+    <script>
+        import gsap from 'gsap';
+        import { SplitText } from 'gsap/SplitText';
+        import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-    gsap.registerPlugin(SplitText);
-    gsap.registerPlugin(ScrollTrigger);
+        gsap.registerPlugin(SplitText, ScrollTrigger);
 
-    const projects = document.querySelectorAll<HTMLElement>('.project');
+        function initPage() {
+            const projects = document.querySelectorAll<HTMLElement>('.project');
 
-    projects.forEach((project, i) => {
-        gsap.fromTo(
-            project,
-            { y: 40, opacity: 0 },
-            {
-                y: 0,
-                opacity: 1,
-                duration: 1,
-                delay: (i % 2) * 0.15,
-                scrollTrigger: { trigger: project, start: 'top 80%' }
-            }
-        );
-    });
-
-    const labels = document.querySelectorAll<HTMLElement>('.service-label');
-    const images = document.querySelectorAll<HTMLElement>('.service-image');
-    const captions = document.querySelectorAll<HTMLElement>('.service-caption');
-
-    let currentIndex = -1;
-
-    const splitCaptions = [...captions].map((caption) =>
-        SplitText.create(caption, {
-            type: 'lines',
-            linesClass: 'caption-line',
-            autoSplit: true,
-            mask: 'lines',
-            onSplit: (self) => {
-                // Runs on initial split AND any re-split — always start hidden
-                gsap.set(self.lines, { y: '110%' });
-            }
-        })
-    );
-
-    splitCaptions.forEach((split) => gsap.set(split.lines, { y: '110%' }));
-    captions.forEach((caption) => gsap.set(caption, { opacity: 0 }));
-    labels.forEach((el) => gsap.set(el, { opacity: 0.1, x: 0 }));
-    images.forEach((el) => gsap.set(el, { opacity: 0 }));
-
-    function deactivateService(index: number) {
-        gsap.to(labels[index], { opacity: 0.1, x: 0, duration: 0.3, ease: 'power2.in' });
-        gsap.to(images[index], { opacity: 0, y: -10, duration: 0.3, ease: 'power2.in' });
-        gsap.to(splitCaptions[index].lines, {
-            y: '110%',
-            duration: 0.3,
-            ease: 'power2.in',
-            stagger: 0.04
-        });
-        gsap.to(captions[index], { opacity: 0, duration: 0.3 });
-    }
-
-    function activateService(index: number) {
-        if (index === currentIndex) return;
-
-        // Deactivate the previous one before activating the new one
-        if (currentIndex !== -1) {
-            deactivateService(currentIndex);
-        }
-
-        currentIndex = index;
-
-        gsap.killTweensOf(labels[index]);
-        gsap.killTweensOf(images[index]);
-        gsap.killTweensOf(splitCaptions[index].lines);
-
-        gsap.fromTo(
-            labels[index],
-            { opacity: 0.1, x: 0 },
-            { opacity: 1, x: 20, duration: 0.4, ease: 'power2.out' }
-        );
-        gsap.fromTo(
-            images[index],
-            { opacity: 0, y: 20 },
-            { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }
-        );
-        gsap.fromTo(
-            splitCaptions[index].lines,
-            { y: '110%' },
-            {
-                y: '0%',
-                duration: 0.6,
-                ease: 'power3.out',
-                stagger: 0.08,
-                delay: 0.3
-            }
-        );
-        gsap.to(captions[index], { opacity: 1 });
-    }
-
-    // Wire up hover listeners
-    labels.forEach((label, i) => {
-        label.addEventListener('mouseenter', () => activateService(i));
-    });
-
-    // Activate the first service by default
-    gsap.delayedCall(0.1, () => activateService(0));
-
-    labels.forEach((label, i) => {
-        label.addEventListener('mouseenter', () => activateService(i));
-
-        label.addEventListener('mouseleave', () => {
-            currentIndex = -1;
-
-            gsap.killTweensOf(label);
-            gsap.to(label, { opacity: 0.1, x: 0, duration: 0.4, ease: 'power2.out' });
-
-            gsap.killTweensOf(images[i]);
-            gsap.to(images[i], { opacity: 0, duration: 0.2, ease: 'power2.out' });
-
-            gsap.killTweensOf(splitCaptions[i].lines);
-            gsap.to(splitCaptions[i].lines, {
-                y: '110%',
-                duration: 0.2,
-                ease: 'power3.in',
-                stagger: 0.04
+            projects.forEach((project, i) => {
+                gsap.fromTo(
+                    project,
+                    { y: 40, opacity: 0 },
+                    {
+                        y: 0,
+                        opacity: 1,
+                        duration: 1,
+                        delay: (i % 2) * 0.15,
+                        scrollTrigger: { trigger: project, start: 'top 80%' }
+                    }
+                );
             });
-        });
-    });
-</script>
+
+            const labels = document.querySelectorAll<HTMLElement>('.service-label');
+            const images = document.querySelectorAll<HTMLElement>('.service-image');
+            const captions = document.querySelectorAll<HTMLElement>('.service-caption');
+
+            let currentIndex = -1;
+
+            const splitCaptions = [...captions].map((caption) =>
+                SplitText.create(caption, {
+                    type: 'lines',
+                    linesClass: 'caption-line',
+                    autoSplit: true,
+                    mask: 'lines',
+                    onSplit: (self) => {
+                        gsap.set(self.lines, { y: '110%' });
+                    }
+                })
+            );
+
+            splitCaptions.forEach((split) => gsap.set(split.lines, { y: '110%' }));
+            captions.forEach((caption) => gsap.set(caption, { opacity: 0 }));
+            labels.forEach((el) => gsap.set(el, { opacity: 0.1, x: 0 }));
+            images.forEach((el) => gsap.set(el, { opacity: 0 }));
+
+            function deactivateService(index: number) {
+                gsap.to(labels[index], { opacity: 0.1, x: 0, duration: 0.3, ease: 'power2.in' });
+                gsap.to(images[index], { opacity: 0, y: -10, duration: 0.3, ease: 'power2.in' });
+                gsap.to(splitCaptions[index].lines, {
+                    y: '110%',
+                    duration: 0.3,
+                    ease: 'power2.in',
+                    stagger: 0.04
+                });
+                gsap.to(captions[index], { opacity: 0, duration: 0.3 });
+            }
+
+            function activateService(index: number) {
+                if (index === currentIndex) return;
+                if (currentIndex !== -1) deactivateService(currentIndex);
+                currentIndex = index;
+
+                gsap.killTweensOf(labels[index]);
+                gsap.killTweensOf(images[index]);
+                gsap.killTweensOf(splitCaptions[index].lines);
+
+                gsap.fromTo(
+                    labels[index],
+                    { opacity: 0.1, x: 0 },
+                    { opacity: 1, x: 20, duration: 0.4, ease: 'power2.out' }
+                );
+                gsap.fromTo(
+                    images[index],
+                    { opacity: 0, y: 20 },
+                    { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }
+                );
+                gsap.fromTo(
+                    splitCaptions[index].lines,
+                    { y: '110%' },
+                    { y: '0%', duration: 0.6, ease: 'power3.out', stagger: 0.08, delay: 0.3 }
+                );
+                gsap.to(captions[index], { opacity: 1 });
+            }
+
+            labels.forEach((label, i) => {
+                label.addEventListener('mouseenter', () => activateService(i));
+                label.addEventListener('mouseleave', () => {
+                    currentIndex = -1;
+                    gsap.killTweensOf(label);
+                    gsap.to(label, { opacity: 0.1, x: 0, duration: 0.4, ease: 'power2.out' });
+                    gsap.killTweensOf(images[i]);
+                    gsap.to(images[i], { opacity: 0, duration: 0.2, ease: 'power2.out' });
+                    gsap.killTweensOf(splitCaptions[i].lines);
+                    gsap.to(splitCaptions[i].lines, {
+                        y: '110%',
+                        duration: 0.2,
+                        ease: 'power3.in',
+                        stagger: 0.04
+                    });
+                });
+            });
+
+            gsap.delayedCall(0.1, () => activateService(0));
+
+            // ── Projects Horizontal Slider ────────────────────────────────────────
+            const sliderTrack = document.getElementById(
+                'projects-slider-track'
+            ) as HTMLElement | null;
+            const sliderDots = document.querySelectorAll<HTMLElement>('.slider-dot');
+            const SLIDE_COUNT = 4;
+            let sliderCurrent = 0;
+            let sliderStartX = 0;
+            let sliderDragDelta = 0;
+            let sliderIsDragging = false;
+            let didDrag = false;
+
+            function goToSlide(index: number) {
+                sliderCurrent = Math.max(0, Math.min(index, SLIDE_COUNT - 1));
+                if (sliderTrack) {
+                    gsap.to(sliderTrack, {
+                        x: -sliderCurrent * sliderTrack.parentElement!.offsetWidth,
+                        duration: 0.55,
+                        ease: 'power3.out'
+                    });
+                }
+                sliderDots.forEach((dot, i) => {
+                    dot.style.opacity = i === sliderCurrent ? '1' : '0.3';
+                    dot.style.transform = i === sliderCurrent ? 'scale(1.35)' : 'scale(1)';
+                });
+            }
+
+            sliderDots.forEach((dot, i) => {
+                dot.addEventListener('click', () => goToSlide(i));
+            });
+
+            if (sliderTrack) {
+                sliderTrack.addEventListener(
+                    'touchstart',
+                    (e) => {
+                        sliderStartX = e.touches[0].clientX;
+                        sliderIsDragging = true;
+                    },
+                    { passive: true }
+                );
+
+                sliderTrack.addEventListener(
+                    'touchmove',
+                    (e) => {
+                        if (!sliderIsDragging) return;
+                        sliderDragDelta = e.touches[0].clientX - sliderStartX;
+                        const baseX = -sliderCurrent * sliderTrack.parentElement!.offsetWidth;
+                        gsap.set(sliderTrack, { x: baseX + sliderDragDelta });
+                    },
+                    { passive: true }
+                );
+
+                sliderTrack.addEventListener('touchend', () => {
+                    sliderIsDragging = false;
+                    const threshold = sliderTrack.parentElement!.offsetWidth * 0.2;
+                    if (sliderDragDelta < -threshold) goToSlide(sliderCurrent + 1);
+                    else if (sliderDragDelta > threshold) goToSlide(sliderCurrent - 1);
+                    else goToSlide(sliderCurrent);
+                    sliderDragDelta = 0;
+                });
+
+                sliderTrack.addEventListener('mousedown', (e) => {
+                    e.preventDefault();
+                    sliderStartX = e.clientX;
+                    sliderIsDragging = true;
+                    didDrag = false;
+                    sliderTrack.style.cursor = 'grabbing';
+                });
+
+                sliderTrack.addEventListener('mousemove', (e) => {
+                    if (!sliderIsDragging) return;
+                    sliderDragDelta = e.clientX - sliderStartX;
+                    if (Math.abs(sliderDragDelta) > 4) didDrag = true;
+                    const baseX = -sliderCurrent * sliderTrack.parentElement!.offsetWidth;
+                    gsap.set(sliderTrack, { x: baseX + sliderDragDelta });
+                });
+
+                const endDrag = () => {
+                    if (!sliderIsDragging) return;
+                    sliderIsDragging = false;
+                    sliderTrack.style.cursor = 'grab';
+                    const threshold = sliderTrack.parentElement!.offsetWidth * 0.2;
+                    if (sliderDragDelta < -threshold) goToSlide(sliderCurrent + 1);
+                    else if (sliderDragDelta > threshold) goToSlide(sliderCurrent - 1);
+                    else goToSlide(sliderCurrent);
+                    sliderDragDelta = 0;
+                };
+
+                sliderTrack.addEventListener('mouseup', endDrag);
+                sliderTrack.addEventListener('mouseleave', endDrag);
+
+                sliderTrack.addEventListener('click', (e) => {
+                    if (didDrag) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        didDrag = false;
+                    }
+                });
+
+                sliderTrack.style.cursor = 'grab';
+
+                // Reset drag state if Swup navigates away mid-drag (e.g. link click
+                // triggers swup before mouseup fires on the track).
+                document.addEventListener(
+                    'swup:page:view',
+                    () => {
+                        sliderIsDragging = false;
+                        sliderDragDelta = 0;
+                        didDrag = false;
+                    },
+                    { once: true }
+                );
+            }
+
+            // ── Mobile Accordion ──────────────────────────────────────────────────
+            const mobItems = document.querySelectorAll<HTMLElement>('.mob-accordion-item');
+            let mobOpenIndex: number | null = null;
+
+            function closeMobItem(item: HTMLElement) {
+                const body = item.querySelector<HTMLElement>('.mob-accordion-body')!;
+                const vline = item.querySelector<SVGLineElement>('.mob-icon-vline')!;
+                const trigger = item.querySelector<HTMLElement>('.mob-accordion-trigger')!;
+                trigger.setAttribute('aria-expanded', 'false');
+                gsap.to(body, { height: 0, duration: 0.75, ease: 'power3.inOut' });
+                gsap.to(vline, {
+                    rotation: 0,
+                    transformOrigin: '50% 50%',
+                    duration: 0.5,
+                    ease: 'power2.inOut'
+                });
+            }
+
+            function openMobItem(item: HTMLElement, index: number) {
+                const body = item.querySelector<HTMLElement>('.mob-accordion-body')!;
+                const inner = item.querySelector<HTMLElement>('.mob-accordion-inner')!;
+                const vline = item.querySelector<SVGLineElement>('.mob-icon-vline')!;
+                const trigger = item.querySelector<HTMLElement>('.mob-accordion-trigger')!;
+
+                if (mobOpenIndex !== null && mobOpenIndex !== index) {
+                    closeMobItem(mobItems[mobOpenIndex] as HTMLElement);
+                }
+
+                mobOpenIndex = index;
+                trigger.setAttribute('aria-expanded', 'true');
+
+                gsap.set(body, { height: 'auto' });
+                const targetHeight = body.offsetHeight;
+                gsap.fromTo(
+                    body,
+                    { height: 0 },
+                    { height: targetHeight, duration: 0.75, ease: 'power3.inOut' }
+                );
+                gsap.to(vline, {
+                    rotation: -90,
+                    transformOrigin: '50% 50%',
+                    duration: 0.5,
+                    ease: 'power2.inOut'
+                });
+                gsap.fromTo(
+                    inner,
+                    { opacity: 0 },
+                    { opacity: 1, duration: 0.3, delay: 0.15, ease: 'power2.out' }
+                );
+            }
+
+            mobItems.forEach((item, i) => {
+                const trigger = item.querySelector<HTMLElement>('.mob-accordion-trigger')!;
+                trigger.addEventListener('click', () => {
+                    const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+                    if (isOpen) {
+                        closeMobItem(item);
+                        mobOpenIndex = null;
+                    } else {
+                        openMobItem(item, i);
+                    }
+                });
+            });
+        } // end initPage
+
+        // Run immediately on first load (module executes once)
+        initPage();
+
+        // Re-run after every Swup navigation (document persists, so this listener survives)
+        document.addEventListener('app:page-ready', initPage);
+    </script>
+</Layout>

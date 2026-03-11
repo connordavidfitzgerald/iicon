@@ -3,19 +3,19 @@ import { Icon } from 'astro-icon/components';
 ---
 
 <nav
-    class="flex h-fit flex-row justify-between bg-white pt-1 pr-5 pb-1.5 pl-5 text-nav font-medium tracking-[-1%]"
+    class="z-50 flex h-fit flex-row justify-between bg-white pt-fluid-fifteen pr-fluid-twenty pb-fluid-ten pl-fluid-twenty text-nav font-medium tracking-[-1%]"
 >
-    <div class="flex h-fit flex-row items-center justify-start gap-7">
-        <div class="h-8 pb-1">
+    <div class="flex h-fit flex-row items-center justify-start gap-fluid-twenty">
+        <a class="h-6 pr-fluid-ten pb-0.5 md:pr-0" href="/">
             <Icon name="iicon" class="pointer-events-auto h-full w-auto" />
-        </div>
-        <div class="flex h-fit flex-row justify-start gap-5 pt-1 pb-0.5">
-            <a class="hover-underline" href="/">About</a>
+        </a>
+        <div class="flex h-fit flex-row justify-start gap-fluid-twenty pt-1.5 pb-0.5">
+            <a class="hover-underline" href="/about">About</a>
             <a class="hover-underline" href="/projects">Work</a>
             <a class="hover-underline" href="/contact">Contact</a>
         </div>
     </div>
-    <div class="flex flex-row justify-end pt-1 pb-0.5">
+    <div class="flex h-fit flex-row justify-end pt-1.5">
         <a class="hover-underline" href="/contact">Get in touch</a>
     </div>
 </nav>

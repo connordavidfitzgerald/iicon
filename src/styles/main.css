@@ -84,13 +84,6 @@ html.is-animating .transition-fade {
     animation-delay: 0.4s;
 }
 
-.line-mask,
-.char-mask,
-.word-mask {
-    padding-block: 0.1em;
-    margin-block: -0.1em;
-}
-
 .nav-item:nth-child(1) {
     animation-delay: 0.1s;
 }
@@ -131,5 +124,17 @@ html.is-animating .transition-fade {
     .hover-underline:hover:before {
         transform: scaleX(1);
         transform-origin: 0 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .desktop-version {
+        display: none;
+    }
+}
+
+@media (min-width: 769px) {
+    .mob-version {
+        display: none;
     }
 }

@@ -20,6 +20,16 @@ const FONTS: CssVariable[] = ['--custom-font-sans'];
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="generator" content={Astro.generator} />
 
+        {
+            /* Hide page before first paint when scroll restoration is pending,
+            to prevent the hero logo flashing on refresh. Revealed in Scroll.ts. */
+        }
+        <script is:inline>
+            if (sessionStorage.getItem('app:scrollY')) {
+                document.documentElement.style.visibility = 'hidden';
+            }
+        </script>
+
         <SEO {...seoData} />
 
         {FONTS.map((font) => <Font cssVariable={font} preload />)}

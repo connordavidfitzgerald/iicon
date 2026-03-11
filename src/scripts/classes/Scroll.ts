@@ -5,13 +5,22 @@ import LocomotiveScroll, {
     type ILenisScrollToOptions
 } from 'locomotive-scroll';
 
+const SCROLL_KEY = 'app:scrollY';
+
 export class Scroll {
     static locomotiveScroll: LocomotiveScroll;
+    private static _savePosition = () => {
+        sessionStorage.setItem(SCROLL_KEY, String(window.scrollY));
+    };
 
     // =============================================================================
     // Lifecycle
     // =============================================================================
     static init() {
+        // Keep exactly one beforeunload listener alive at all times
+        window.removeEventListener('beforeunload', this._savePosition);
+        window.addEventListener('beforeunload', this._savePosition);
+
         this.locomotiveScroll = new LocomotiveScroll({
             scrollCallback({ scroll, limit, velocity, direction, progress }) {
                 $scroll.set({
@@ -23,6 +32,23 @@ export class Scroll {
                 });
             }
         });
+
+        // Restore saved position (only on a true page refresh, not a Swup navigation)
+        const savedY = sessionStorage.getItem(SCROLL_KEY);
+        if (savedY !== null) {
+            sessionStorage.removeItem(SCROLL_KEY);
+            const y = parseFloat(savedY);
+            if (y > 0) {
+                // rAF gives Lenis time to finish its first layout pass before scrolling.
+                // Visibility was hidden in <head> to prevent the hero flash — reveal here.
+                requestAnimationFrame(() => {
+                    this.locomotiveScroll?.scrollTo(y, { immediate: true, force: true });
+                    document.documentElement.style.visibility = '';
+                });
+            } else {
+                document.documentElement.style.visibility = '';
+            }
+        }
     }
 
     static destroy() {

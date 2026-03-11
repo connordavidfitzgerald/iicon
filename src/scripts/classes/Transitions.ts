@@ -131,6 +131,7 @@ export class Transitions {
     onContentReplace(visit: VisitType) {
         Scroll?.init();
         this.updateDocumentAttributes(visit);
+        document.dispatchEvent(new CustomEvent('app:page-ready'));
     }
 
     /**
