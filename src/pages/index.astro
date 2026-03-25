@@ -227,7 +227,7 @@ const services = [
                     flex-direction: row;
                     gap: 1rem;
                     width: max-content;
-                    animation: marquee-scroll 60s linear infinite;
+                    will-change: transform;
                 }
 
                 .marquee-img {
@@ -241,15 +241,6 @@ const services = [
                 @media (max-width: 768px) {
                     .marquee-img {
                         height: 300px;
-                    }
-                }
-
-                @keyframes marquee-scroll {
-                    from {
-                        transform: translateX(0);
-                    }
-                    to {
-                        transform: translateX(-50%);
                     }
                 }
             </style>
@@ -584,6 +575,18 @@ const services = [
         gsap.registerPlugin(SplitText, ScrollTrigger);
 
         function initPage() {
+            // ── Marquee ───────────────────────────────────────────────────────────
+            const marqueeTrack = document.querySelector<HTMLElement>('.marquee-track');
+            if (marqueeTrack) {
+                // Tween to -50% (half the duplicated track width) then repeat seamlessly
+                gsap.to(marqueeTrack, {
+                    x: '-50%',
+                    duration: 40,
+                    ease: 'none',
+                    repeat: -1
+                });
+            }
+
             const projects = document.querySelectorAll<HTMLElement>('.project');
 
             projects.forEach((project, i) => {
