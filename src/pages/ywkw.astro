@@ -1,0 +1,99 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Navbar from '@components/Navbar/Navbar.astro';
+import SplitReveal from '@components/SplitReveal/SplitReveal.astro';
+import Button from '@components/Button/Button.astro';
+import { Picture } from 'astro:assets';
+
+import img1 from '@images/yw6.jpg';
+import img2 from '@images/yw4.jpg';
+import img3 from '@images/yw3.jpg';
+import img4 from '@images/yw5.jpg';
+import Footer from '@components/Footer/Footer.astro';
+---
+
+<Layout title="IICON">
+    <div class="relative flex flex-col">
+        <div class="fixed top-0 right-0 left-0 z-50 h-fit bg-black">
+            <Navbar />
+        </div>
+        <div
+            class="relative grid h-fit w-full grid-cols-12 gap-fluid-twenty bg-white pt-36 pr-fluid-twenty pb-fluid-eighty pl-fluid-twenty sm:pb-fluid-270"
+        >
+            <div
+                class="col-span-12 flex h-fit flex-col gap-4 self-start text-body-md leading-[100%] tracking-[-3%] sm:sticky sm:top-24 sm:col-span-4 3xl:col-span-3"
+            >
+                <div class="pb-fluid-eighty md:pb-0">
+                    <h1>YWKW</h1>
+                    <h2 class="text-[#3e3e3e]">Product Sourcing, Brand Strategy, Graphic Design</h2>
+                </div>
+                <div class="flex flex-row justify-start">
+                    <a class="hover-underline w-fit text-body-sm tracking-[-1%]" href="/work"
+                        >See all projects ↗</a
+                    >
+                </div>
+                <div
+                    class="desktop-version flex flex-col gap-fluid-twenty bg-[#EEEEEE] p-fluid-thirty text-body-project leading-[120%] tracking-[-2%] text-[#3e3e3e]"
+                >
+                    <h4 class="pb-fluid-twenty text-body-sm">Project Description</h4>
+                    <p>
+                        YWKW partnered with us to create a sustainable, participant‑driven product
+                        that could be sold through their thrift store, supporting skill‑building,
+                        independence, and pride. Instead of apparel, we developed seed paper
+                        sprouting kits featuring indigenous Ontario seeds and plantable packaging—an
+                        accessible, low‑waste option aligned with the store’s audience and values.
+                        Participants contributed original artwork inspired by In Her Shoes, with a
+                        selected illustration featured on the packaging. The result was a meaningful
+                        product created by participants, for others—encouraging creativity,
+                        sustainability, and the confidence that comes from giving back and
+                        supporting oneself through purposeful work.
+                    </p>
+                    <p class="pt-fluid-forty text-body-sm opacity-90">
+                        Winner of the 2024 PPAI International Gold Pyramid<br />
+                    </p>
+                </div>
+            </div>
+
+            <div
+                class="mob-version col-span-12 flex flex-col gap-fluid-twenty bg-[#EEEEEE] px-fluid-forty pt-fluid-forty pb-fluid-eighty text-body-project leading-[120%] tracking-[-2%] text-[#3e3e3e]"
+            >
+                <h4 class="pb-fluid-160 text-body-sm">Project Description</h4>
+                <p>
+                    YWKW partnered with us to create a sustainable, participant‑driven product that
+                    could be sold through their thrift store, supporting skill‑building,
+                    independence, and pride. Instead of apparel, we developed seed paper sprouting
+                    kits featuring indigenous Ontario seeds and plantable packaging—an accessible,
+                    low‑waste option aligned with the store’s audience and values. Participants
+                    contributed original artwork inspired by In Her Shoes, with a selected
+                    illustration featured on the packaging. The result was a meaningful product
+                    created by participants, for others—encouraging creativity, sustainability, and
+                    the confidence that comes from giving back and supporting oneself through
+                    purposeful work.
+                </p>
+            </div>
+            <div
+                class="col-span-12 flex w-full flex-col gap-fluid-twenty sm:col-span-8 3xl:col-span-9"
+            >
+                <Picture
+                    src={img1}
+                    alt="Mobile Tire Apparel"
+                    class="h-auto w-full"
+                    loading="lazy"
+                />
+                <Picture
+                    src={img2}
+                    alt="Mobile Tire Apparel"
+                    class="h-auto w-full"
+                    loading="lazy"
+                />
+                <Picture
+                    src={img4}
+                    alt="Mobile Tire Apparel"
+                    class="h-auto w-full"
+                    loading="lazy"
+                />
+            </div>
+        </div>
+    </div>
+    <Footer />
+</Layout>
