@@ -18,6 +18,15 @@ import isead from '@images/isead-awards-still.jpg';
 
 import yw from '@images/yw3.jpg';
 
+import gall1 from '@images/gall1.jpg';
+import gall2 from '@images/gall2.jpg';
+import gall3 from '@images/gall3.jpg';
+import gall4 from '@images/gall4.jpg';
+import gall5 from '@images/gall5.jpg';
+import gall6 from '@images/gall6.jpg';
+import gall7 from '@images/gall7.jpg';
+import gall8 from '@images/gall8.jpg';
+
 import SplitReveal from '@components/SplitReveal/SplitReveal.astro';
 import SplitRevealAlt from '@components/SplitReveal/SplitRevealAlt.astro';
 
@@ -183,6 +192,67 @@ const services = [
                     </div>
                 </SplitReveal>
             </div>
+
+            <div class="marquee-outer py-16" aria-hidden="true">
+                <div class="marquee-track">
+                    <!-- original set -->
+                    <Picture class="marquee-img" alt="IICON and friends" src={gall1} />
+                    <Picture class="marquee-img" alt="IICON and friends" src={gall2} />
+                    <Picture class="marquee-img" alt="IICON and friends" src={gall3} />
+                    <Picture class="marquee-img" alt="IICON and friends" src={gall4} />
+                    <Picture class="marquee-img" alt="IICON and friends" src={gall5} />
+                    <Picture class="marquee-img" alt="IICON and friends" src={gall6} />
+                    <Picture class="marquee-img" alt="IICON and friends" src={gall7} />
+                    <Picture class="marquee-img" alt="IICON and friends" src={gall8} />
+                    <!-- duplicate set for seamless loop -->
+                    <Picture class="marquee-img" alt="IICON and friends" src={gall1} />
+                    <Picture class="marquee-img" alt="IICON and friends" src={gall2} />
+                    <Picture class="marquee-img" alt="IICON and friends" src={gall3} />
+                    <Picture class="marquee-img" alt="IICON and friends" src={gall4} />
+                    <Picture class="marquee-img" alt="IICON and friends" src={gall5} />
+                    <Picture class="marquee-img" alt="IICON and friends" src={gall6} />
+                    <Picture class="marquee-img" alt="IICON and friends" src={gall7} />
+                    <Picture class="marquee-img" alt="IICON and friends" src={gall8} />
+                </div>
+            </div>
+
+            <style>
+                .marquee-outer {
+                    overflow: hidden;
+                    width: 100%;
+                }
+
+                .marquee-track {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 1rem;
+                    width: max-content;
+                    animation: marquee-scroll 60s linear infinite;
+                }
+
+                .marquee-img {
+                    height: 400px;
+                    width: auto;
+                    flex-shrink: 0;
+                    object-fit: cover;
+                    display: block;
+                }
+
+                @media (max-width: 768px) {
+                    .marquee-img {
+                        height: 300px;
+                    }
+                }
+
+                @keyframes marquee-scroll {
+                    from {
+                        transform: translateX(0);
+                    }
+                    to {
+                        transform: translateX(-50%);
+                    }
+                }
+            </style>
 
             <div class="flex flex-col gap-0">
                 <div
