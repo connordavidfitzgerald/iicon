@@ -5,7 +5,13 @@ import SplitReveal from '@components/SplitReveal/SplitReveal.astro';
 import Button from '@components/Button/Button.astro';
 ---
 
-<Layout title="IICON">
+<Layout
+    title="About Us | IICON Creative Strategies"
+    seo={{
+        description:
+            'Learn about the values and approach of IICON Creative Strategies, a specialist branding studio.'
+    }}
+>
     <div class="relative flex h-screen flex-col">
         <div class="fixed top-0 right-0 left-0 z-50 h-fit bg-black">
             <Navbar />
@@ -70,17 +76,21 @@ import Button from '@components/Button/Button.astro';
                     <div class="col-span-2 flex flex-row gap-fluid-forty xs:col-span-1">
                         <a
                             class="hover-underline"
-                            href="https://www.instagram.com/iiconcreativestrategies">Instagram</a
+                            href="https://www.instagram.com/iiconcreativestrategies"
+                            target="_blank"
+                            rel="noopener noreferrer">Instagram</a
                         >
                         <a
                             class="hover-underline"
                             href="https://www.facebook.com/profile.php?id=100063587556958"
-                            >Facebook</a
+                            target="_blank"
+                            rel="noopener noreferrer">Facebook</a
                         >
                         <a
                             class="hover-underline"
                             href="https://ca.linkedin.com/company/iicon-creative-strategies-inc-"
-                            >LinkedIn</a
+                            target="_blank"
+                            rel="noopener noreferrer">LinkedIn</a
                         >
                     </div>
                 </div>

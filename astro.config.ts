@@ -10,6 +10,8 @@ import { defineConfig } from 'astro/config';
 import { fileURLToPath } from 'url';
 import path from 'path';
 
+import sitemap from '@astrojs/sitemap';
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // https://astro.build/config
@@ -47,7 +49,8 @@ export default defineConfig({
         icon({
             iconDir: './src/assets/svgs'
         }),
-        react()
+        react(),
+        sitemap()
     ],
     devToolbar: {
         enabled: false

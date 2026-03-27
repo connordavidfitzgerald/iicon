@@ -1,27 +1,29 @@
 import metaImage from '@images/meta.png';
 
 export const defaultSeo: Seo = {
-    title: 'Astro boilerplate',
-    description: 'Boilerplate for Astro',
+    title: 'IICON Creative Strategies',
+    description:
+        'IICON Creative Strategies is a specialist branding studio that combines strategic thinking with the science of human connection.',
     social: {
         facebook: {
-            title: 'Astro boilerplate',
+            title: 'IICON Creative Strategies',
             image: {
                 url: metaImage.src
             },
-            description: 'Boilerplate for Astro'
+            description:
+                'IICON Creative Strategies is a specialist branding studio that combines strategic thinking with the science of human connection.'
         },
         twitter: {
-            creator: '@LocomotiveMTL',
-            title: 'Astro boilerplate',
+            title: 'IICON Creative Strategies',
             image: {
                 url: metaImage.src
             },
-            description: 'Boilerplate for Astro'
+            description:
+                'IICON Creative Strategies is a specialist branding studio that combines strategic thinking with the science of human connection.'
         }
     },
     advanced: {
-        robots: ['noindex', 'nofollow'],
-        canonical: 'https://locomotive.ca'
+        robots: ['index', 'follow'],
+        canonical: 'https://iicon.ca'
     }
 };
