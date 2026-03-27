@@ -11,16 +11,11 @@ import Button from '@components/Button/Button.astro';
             <Navbar />
         </div>
         <div
-            class="flex h-fit w-full flex-col justify-start gap-fluid-270 bg-white pt-fluid-270 pr-fluid-twenty pb-fluid-eighty pl-fluid-twenty sm:pt-fluid-160"
+            class="flex h-fit w-full flex-col justify-start gap-fluid-eighty bg-white pt-fluid-270 pr-fluid-twenty pb-fluid-eighty pl-fluid-twenty sm:pt-fluid-160"
         >
             <div class="grid grid-cols-12 gap-fluid-twenty">
-                <h3
-                    class="col-span-12 h-fit text-body-sm font-normal tracking-[-2%] text-black xs:col-span-4"
-                >
-                    Information
-                </h3>
                 <p
-                    class="col-span-12 h-fit w-full pt-2 text-heading-md leading-[115%] font-medium tracking-[-2%] text-black/90 xs:col-span-8"
+                    class="col-span-12 h-fit w-full pt-2 text-heading-lg leading-[112%] font-medium tracking-[-3%] text-black/90"
                 >
                     IICON Creative Strategies is a specialist branding studio that combines
                     strategic thinking with the science of human connection. We source merchandise
@@ -69,13 +64,24 @@ import Button from '@components/Button/Button.astro';
                     class="col-span-8 grid h-fit grid-cols-2 gap-fluid-twenty pt-2 text-nav leading-[110%] font-normal tracking-[-1%] text-black/90"
                 >
                     <div class="col-span-2 flex flex-row gap-fluid-forty xs:col-span-1">
-                        <a class="hover-underline">rose@iicon.ca</a>
-                        <a class="hover-underline">+1 416 509 4715</a>
+                        <a class="hover-underline" href="mailto:rose@iicon.ca">rose@iicon.ca</a>
+                        <a class="hover-underline" href="tel:+14165094715">+1 416 509 4715</a>
                     </div>
                     <div class="col-span-2 flex flex-row gap-fluid-forty xs:col-span-1">
-                        <a class="hover-underline">Instagram</a>
-                        <a class="hover-underline">Facebook</a>
-                        <a class="hover-underline">LinkedIn</a>
+                        <a
+                            class="hover-underline"
+                            href="https://www.instagram.com/iiconcreativestrategies">Instagram</a
+                        >
+                        <a
+                            class="hover-underline"
+                            href="https://www.facebook.com/profile.php?id=100063587556958"
+                            >Facebook</a
+                        >
+                        <a
+                            class="hover-underline"
+                            href="https://ca.linkedin.com/company/iicon-creative-strategies-inc-"
+                            >LinkedIn</a
+                        >
                     </div>
                 </div>
             </div>
