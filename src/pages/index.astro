@@ -11,6 +11,8 @@ import exp from '../assets/images/exp.jpg';
 import strategy from '../assets/images/strategy.png';
 import product from '../assets/images/productsourcing.jpg';
 import graphic from '../assets/images/graphic.png';
+import mattagami from '../assets/images/mattagami.png';
+
 import { Icon } from 'astro-icon/components';
 
 import thirtysix from '@images/36-products-3.jpg';
@@ -20,7 +22,7 @@ import yw from '@images/yw3.jpg';
 
 import gall1 from '@images/gall1.jpg';
 import gall2 from '@images/gall2.jpg';
-import gall3 from '@images/gall3.jpg';
+
 import gall4 from '@images/gall4.jpg';
 import gall5 from '@images/gall5.jpg';
 import gall6 from '@images/gall6.jpg';
@@ -28,7 +30,6 @@ import gall7 from '@images/gall7.jpg';
 import gall8 from '@images/gall8.jpg';
 
 import SplitReveal from '@components/SplitReveal/SplitReveal.astro';
-import SplitRevealAlt from '@components/SplitReveal/SplitRevealAlt.astro';
 
 import Button from '@components/Button/Button.astro';
 import Footer from '@components/Footer/Footer.astro';
@@ -49,7 +50,7 @@ const services = [
     },
     {
         label: 'Visual Identity',
-        image: graphic.src,
+        image: mattagami.src,
         caption:
             'From typography to colour systems, we craft cohesive visual identities that translate seamlessly across every product and platform.'
     },
@@ -203,23 +204,108 @@ const services = [
                     >
                         <div class="col-span-12 grid min-h-200 grid-cols-10 bg-[#EEEEEE] p-7">
                             <div
-                                class="col-span-12 flex flex-col justify-center gap-fluid-eighty sm:col-span-8 sm:col-start-2"
+                                class="testimonial-rotator col-span-12 grid sm:col-span-8 sm:col-start-2"
                             >
-                                <SplitRevealAlt
-                                    class="text-testimonial leading-[115%] font-normal tracking-[-2%] text-black"
+                                <div
+                                    class="testimonial-slide flex flex-col justify-center gap-fluid-eighty"
                                 >
-                                    "Rose has been a pleasure to partner with on our corporate
-                                    branding requirements. She has the patience and experience to
-                                    offer a professional customized approach to our firm’s marketing
-                                    needs. Optics play a key role in perception and IICON’s approach
-                                    is unsurpassable."
-                                </SplitRevealAlt>
-                                <p
-                                    class="text-body-caption leading-[110%] font-normal tracking-[-2%] text-[#111111]"
+                                    <p
+                                        class="text-testimonial leading-[115%] font-normal tracking-[-2%] text-black"
+                                    >
+                                        "Rose was integral in helping us successfully create
+                                        thoughtfully branded hoodies and blankets celebrating our
+                                        60K Customer Milestone. Rose & her team worked incredibly
+                                        hard to meet our high quality bar and our team was thrilled
+                                        with the keepsakes. I would strongly recommend working with
+                                        Rose on your next project if you want it to feel elevated
+                                        and well-tailored to your brand."
+                                    </p>
+                                    <p
+                                        class="text-body-caption leading-[110%] font-normal tracking-[-2%] text-[#111111]"
+                                    >
+                                        Marquisa Zrymiak, <br />
+                                        Employee Experience Coordinator at Janeapp
+                                    </p>
+                                </div>
+                                <div
+                                    class="testimonial-slide flex flex-col justify-center gap-fluid-eighty"
                                 >
-                                    John Krasko, <br />
-                                    Vice President, OHL Construction Canada
-                                </p>
+                                    <p
+                                        class="text-testimonial leading-[115%] font-normal tracking-[-2%] text-black"
+                                    >
+                                        "Rose, thank you for your partnership, creativity, and
+                                        collaboration. Every year, you go above and beyond with your
+                                        support of our efforts and initiatives at Indigenous Skills,
+                                        Employment, Apprenticeship and Development (ISEAD), meeting
+                                        one tight deadline after another. We are so fortunate to
+                                        count you among our friends. Your efforts contribute
+                                        significantly to the success of our events."
+                                    </p>
+                                    <p
+                                        class="text-body-caption leading-[110%] font-normal tracking-[-2%] text-[#111111]"
+                                    >
+                                        Val Vanderwyk, <br />
+                                        Executive Director at ISEAD
+                                    </p>
+                                </div>
+                                <div
+                                    class="testimonial-slide flex flex-col justify-center gap-fluid-eighty"
+                                >
+                                    <p
+                                        class="text-testimonial leading-[115%] font-normal tracking-[-2%] text-black"
+                                    >
+                                        "Rose Fitzgerald and the team at IICON ensured that our logo
+                                        had the brand presence we needed to reach our objectives and
+                                        to balance the professional look to appeal to our clientele
+                                        with apparel suitable for the varying outdoor elements our
+                                        crew have to work in."
+                                    </p>
+                                    <p
+                                        class="text-body-caption leading-[110%] font-normal tracking-[-2%] text-[#111111]"
+                                    >
+                                        Cody Price, <br />
+                                        President & CEO, MobileTire.CA
+                                    </p>
+                                </div>
+                                <div
+                                    class="testimonial-slide flex flex-col justify-center gap-fluid-eighty"
+                                >
+                                    <p
+                                        class="text-testimonial leading-[115%] font-normal tracking-[-2%] text-black"
+                                    >
+                                        "We received positive feedback from our visitors. They
+                                        appreciated the 'gift' packaged in a sturdy retail styled
+                                        gift box. Attendance to our booth increased to at least
+                                        20%-25%, everyone from our team was busy speaking with
+                                        visitors and gathering contact information."
+                                    </p>
+                                    <p
+                                        class="text-body-caption leading-[110%] font-normal tracking-[-2%] text-[#111111]"
+                                    >
+                                        Cheral Muldoon, <br />
+                                        Marketing & Advertising Director, Muldoon's Coffee Company
+                                    </p>
+                                </div>
+                                <div
+                                    class="testimonial-slide flex flex-col justify-center gap-fluid-eighty"
+                                >
+                                    <p
+                                        class="text-testimonial leading-[115%] font-normal tracking-[-2%] text-black"
+                                    >
+                                        "We achieved our goal of commemorating a significant
+                                        anniversary, produced merchandise our members would be proud
+                                        to wear, created awareness of our local within our
+                                        community, and attracted new members. The team at IICON
+                                        Creative Strategies Inc did a great job in selecting the
+                                        apparel, creating the logo design and the execution."
+                                    </p>
+                                    <p
+                                        class="text-body-caption leading-[110%] font-normal tracking-[-2%] text-[#111111]"
+                                    >
+                                        Corey Burke, <br />
+                                        Business Manager and Secretary Treasurer, Ironworkers Local 786
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -231,7 +317,6 @@ const services = [
                     <!-- original set -->
                     <Picture class="marquee-img" alt="IICON and friends" src={gall1} />
                     <Picture class="marquee-img" alt="IICON and friends" src={gall2} />
-                    <Picture class="marquee-img" alt="IICON and friends" src={gall3} />
                     <Picture class="marquee-img" alt="IICON and friends" src={gall4} />
                     <Picture class="marquee-img" alt="IICON and friends" src={gall5} />
                     <Picture class="marquee-img" alt="IICON and friends" src={gall6} />
@@ -240,7 +325,7 @@ const services = [
                     <!-- duplicate set for seamless loop -->
                     <Picture class="marquee-img" alt="IICON and friends" src={gall1} />
                     <Picture class="marquee-img" alt="IICON and friends" src={gall2} />
-                    <Picture class="marquee-img" alt="IICON and friends" src={gall3} />
+
                     <Picture class="marquee-img" alt="IICON and friends" src={gall4} />
                     <Picture class="marquee-img" alt="IICON and friends" src={gall5} />
                     <Picture class="marquee-img" alt="IICON and friends" src={gall6} />
@@ -250,6 +335,12 @@ const services = [
             </div>
 
             <style>
+                /* Stack all testimonials in the same grid cell so the
+                   container sizes to the tallest and they can crossfade. */
+                .testimonial-slide {
+                    grid-area: 1 / 1;
+                }
+
                 .marquee-outer {
                     overflow: hidden;
                     width: 100%;
@@ -524,18 +615,20 @@ const services = [
                             </a>
                             <a
                                 class="projects-slide flex w-full shrink-0 flex-col gap-fluid-twenty px-fluid-twenty"
-                                href="/carpenters"
+                                href="/ywkw"
                             >
                                 <Picture
-                                    src={Carpenters}
-                                    alt="Carpenter's Union"
+                                    src={yw}
+                                    alt="YWKW — In Her Shoes"
                                     class="pointer-events-none aspect-square w-full object-cover grayscale"
                                 />
                                 <div
                                     class="flex flex-col text-body-caption leading-[100%] font-normal tracking-[-2%]"
                                 >
-                                    <p class="text-black">Carpenter's Union</p>
-                                    <p class="text-gray-400">Product Sourcing, Brand Strategy</p>
+                                    <p class="text-black">YWKW — In Her Shoes</p>
+                                    <p class="text-gray-400">
+                                        Product Sourcing, Brand Strategy, Graphic Design
+                                    </p>
                                 </div>
                             </a>
                             <a
@@ -607,7 +700,40 @@ const services = [
 
         gsap.registerPlugin(SplitText, ScrollTrigger);
 
+        // Persists across Swup navigations so we can clear a stale rotator timer.
+        let testimonialTimer = 0;
+
         function initPage() {
+            // ── Testimonials rotator ──────────────────────────────────────────────
+            const testimonialSlides = gsap.utils.toArray<HTMLElement>('.testimonial-slide');
+            if (testimonialSlides.length > 1) {
+                // Clear any timer left over from a previous initPage() run.
+                clearInterval(testimonialTimer);
+
+                let testimonialIndex = 0;
+                gsap.set(testimonialSlides, { autoAlpha: 0 });
+                gsap.set(testimonialSlides[0], { autoAlpha: 1 });
+
+                const showTestimonial = (next: number) => {
+                    if (next === testimonialIndex) return;
+                    gsap.to(testimonialSlides[testimonialIndex], {
+                        autoAlpha: 0,
+                        duration: 0.6,
+                        ease: 'power2.inOut'
+                    });
+                    gsap.fromTo(
+                        testimonialSlides[next],
+                        { autoAlpha: 0 },
+                        { autoAlpha: 1, duration: 0.6, ease: 'power2.inOut' }
+                    );
+                    testimonialIndex = next;
+                };
+
+                testimonialTimer = window.setInterval(() => {
+                    showTestimonial((testimonialIndex + 1) % testimonialSlides.length);
+                }, 6000);
+            }
+
             // ── Marquee ───────────────────────────────────────────────────────────
             const marqueeTrack = document.querySelector<HTMLElement>('.marquee-track');
             if (marqueeTrack) {

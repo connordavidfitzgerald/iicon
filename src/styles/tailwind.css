@@ -57,7 +57,7 @@
     --font-sans: 'ABC Monument Grotesk', sans-serif;
     --text-nav: utopia.clamp(14, 18);
     --text-heading-xl: utopia.clamp(60, 96);
-    --text-heading-lg: utopia.clamp(26, 60);
+    --text-heading-lg: utopia.clamp(24, 40);
     --text-heading-md: utopia.clamp(20, 32);
     --text-body-md: utopia.clamp(16, 24);
     --text-body-lg: utopia.clamp(20, 32);
