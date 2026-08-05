@@ -1,0 +1,22 @@
+---
+import { PortableText as PortableTextInternal } from 'astro-portabletext';
+import type { PortableTextProps } from 'astro-portabletext/types';
+import Link from './Link.astro';
+
+interface Props {
+    /** Nullable: an editor may not have filled the field in yet. */
+    value: PortableTextProps['value'] | null | undefined;
+}
+
+const { value } = Astro.props;
+
+// The richText schema only allows paragraphs, bold, italic and links, so this
+// is the whole component map.
+const components = {
+    mark: {
+        link: Link
+    }
+};
+---
+
+{value && <PortableTextInternal value={value} components={components} />}

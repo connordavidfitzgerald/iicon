@@ -2,11 +2,31 @@
 import '@styles/main.css';
 import { Font, type CssVariable } from 'astro:assets';
 import { SEO } from 'astro-seo';
-import { defaultSeo } from '@data/seo';
-import { getSeo } from '@scripts/utils/seo';
-const { title, seo = {} } = Astro.props;
+import { VisualEditing } from '@sanity/astro/visual-editing';
+import { resolveSeo, type SanitySeo } from '@lib/sanity/seo';
+import { visualEditingEnabled } from '@lib/sanity/loadQuery';
 
-const seoData = getSeo(seo, defaultSeo, title);
+interface Props {
+    /** Fallback title when the page hasn't set one in the Studio. */
+    title?: string | null;
+    seo?: SanitySeo;
+    defaultSeo?: SanitySeo;
+    siteName?: string | null;
+}
+
+const { title = null, seo = null, defaultSeo = null, siteName = null } = Astro.props;
+
+// Astro's directory build format gives `/work/`, but the URL people land on and
+// that ends up in the sitemap is `/work` — so the canonical has to match.
+const canonicalPath = Astro.url.pathname.replace(/(.)\/$/, '$1');
+
+const seoData = resolveSeo({
+    seo,
+    defaults: defaultSeo,
+    fallbackTitle: title,
+    siteName,
+    canonical: new URL(canonicalPath, Astro.site ?? Astro.url.origin).href
+});
 
 // Constants
 const FONTS: CssVariable[] = ['--custom-font-sans'];
@@ -41,5 +61,6 @@ const FONTS: CssVariable[] = ['--custom-font-sans'];
                 <slot />
             </div>
         </main>
+        <VisualEditing enabled={visualEditingEnabled} zIndex={1000} />
     </body>
 </html>

@@ -1,5 +1,12 @@
 ---
 import { Icon } from 'astro-icon/components';
+
+interface Props {
+    links?: { _key?: string; label?: string | null; href?: string | null }[] | null;
+    cta?: { label?: string | null; href?: string | null } | null;
+}
+
+const { links = [], cta = null } = Astro.props;
 ---
 
 <nav
@@ -10,12 +17,22 @@ import { Icon } from 'astro-icon/components';
             <Icon name="iicon" class="pointer-events-auto h-full w-auto" />
         </a>
         <div class="flex h-fit flex-row justify-start gap-fluid-twenty pt-1.5 pb-0.5">
-            <a class="hover-underline" href="/about">About</a>
-            <a class="hover-underline" href="/work">Work</a>
-            <a class="hover-underline" href="/contact">Contact</a>
+            {
+                links?.map((link) => (
+                    <a class="hover-underline" href={link.href}>
+                        {link.label}
+                    </a>
+                ))
+            }
         </div>
     </div>
     <div class="flex h-fit flex-row justify-end pt-1.5">
-        <a class="hover-underline" href="/contact">Get in touch</a>
+        {
+            cta?.href && (
+                <a class="hover-underline" href={cta.href}>
+                    {cta.label}
+                </a>
+            )
+        }
     </div>
 </nav>

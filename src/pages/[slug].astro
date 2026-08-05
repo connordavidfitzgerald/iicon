@@ -1,0 +1,137 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Navbar from '@components/Navbar/Navbar.astro';
+import Footer from '@components/Footer/Footer.astro';
+import SanityImage from '@components/SanityImage/SanityImage.astro';
+import PortableText from '@components/PortableText/PortableText.astro';
+import { loadQuery } from '@lib/sanity/loadQuery';
+import { CASE_STUDY_QUERY, CASE_STUDY_SLUGS_QUERY, SITE_SETTINGS_QUERY } from '@lib/sanity/queries';
+import type { CASE_STUDY_QUERY_RESULT, SITE_SETTINGS_QUERY_RESULT } from '@root/sanity.types';
+
+// Static builds pre-render one page per case study. In the Visual Editing
+// preview build the site renders on demand and this is ignored.
+export async function getStaticPaths() {
+    const slugs = await loadQuery<{ slug: string | null }[]>({ query: CASE_STUDY_SLUGS_QUERY });
+    return (slugs ?? [])
+        .filter((entry) => entry.slug)
+        .map((entry) => ({ params: { slug: entry.slug as string } }));
+}
+
+const { slug } = Astro.params;
+
+const [caseStudy, settings] = await Promise.all([
+    loadQuery<CASE_STUDY_QUERY_RESULT>({ query: CASE_STUDY_QUERY, params: { slug } }),
+    loadQuery<SITE_SETTINGS_QUERY_RESULT>({ query: SITE_SETTINGS_QUERY })
+]);
+
+if (!caseStudy) {
+    return Astro.rewrite('/404');
+}
+
+const disciplines = (caseStudy.disciplines ?? []).filter(Boolean).join(', ');
+---
+
+<Layout
+    title={caseStudy.title}
+    seo={caseStudy.seo}
+    defaultSeo={settings?.defaultSeo}
+    siteName={settings?.siteName}
+>
+    <div class="relative flex flex-col">
+        <div class="fixed top-0 right-0 left-0 z-50 h-fit bg-black">
+            <Navbar links={settings?.navLinks} cta={settings?.navCta} />
+        </div>
+        <div
+            class="relative grid h-fit w-full grid-cols-12 gap-fluid-twenty bg-white pt-36 pr-fluid-twenty pb-fluid-eighty pl-fluid-twenty sm:pb-fluid-270"
+        >
+            <div
+                class="col-span-12 flex h-fit flex-col gap-4 self-start text-body-md leading-[100%] tracking-[-3%] sm:sticky sm:top-24 sm:col-span-4 3xl:col-span-3"
+            >
+                <div class="pb-fluid-eighty md:pb-0">
+                    <h1>{caseStudy.title}</h1>
+                    <h2 class="text-[#3e3e3e]">{disciplines}</h2>
+                </div>
+                <div class="flex flex-row justify-start">
+                    <a class="hover-underline w-fit text-body-sm tracking-[-1%]" href="/work"
+                        >See all projects ↗</a
+                    >
+                </div>
+                <div
+                    class="desktop-version flex flex-col gap-fluid-twenty bg-[#EEEEEE] p-fluid-thirty text-body-project leading-[120%] tracking-[-2%] text-[#3e3e3e]"
+                >
+                    <h4 class="pb-fluid-twenty text-body-sm">Project Description</h4>
+                    <div class="case-body"><PortableText value={caseStudy.description} /></div>
+                    {
+                        caseStudy.recognition?.length ? (
+                            <p class="pt-fluid-forty text-body-sm opacity-90">
+                                {caseStudy.recognitionLabel && (
+                                    <>
+                                        <span class="italic">{caseStudy.recognitionLabel}</span>
+                                        <br />
+                                    </>
+                                )}
+                                {caseStudy.recognition.map((line) => (
+                                    <>
+                                        {line}
+                                        <br />
+                                    </>
+                                ))}
+                            </p>
+                        ) : null
+                    }
+                </div>
+            </div>
+            <div
+                class="mob-version col-span-12 flex flex-col gap-fluid-twenty bg-[#EEEEEE] px-fluid-forty pt-fluid-forty pb-fluid-eighty text-body-project leading-[120%] tracking-[-2%] text-[#3e3e3e]"
+            >
+                <h4 class="pb-fluid-160 text-body-sm">Project Description</h4>
+                <div class="case-body"><PortableText value={caseStudy.description} /></div>
+                {
+                    caseStudy.recognition?.length ? (
+                        <p class="pt-fluid-forty text-body-sm opacity-90">
+                            {caseStudy.recognitionLabel && (
+                                <>
+                                    <span class="italic">{caseStudy.recognitionLabel}</span>
+                                    <br />
+                                </>
+                            )}
+                            {caseStudy.recognition.map((line) => (
+                                <>
+                                    {line}
+                                    <br />
+                                </>
+                            ))}
+                        </p>
+                    ) : null
+                }
+            </div>
+            <div
+                class="col-span-12 flex w-full flex-col gap-fluid-twenty sm:col-span-8 3xl:col-span-9"
+            >
+                {
+                    caseStudy.images?.map((image) => (
+                        <SanityImage
+                            image={image}
+                            class="h-auto w-full"
+                            sizes="(min-width: 640px) 66vw, 100vw"
+                        />
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+    <Footer
+        headline={settings?.footerHeadline}
+        email={settings?.email}
+        phone={settings?.phone}
+        form={settings?.form}
+    />
+</Layout>
+
+<style>
+    /* The grey panel used to be a stack of <p> tags with flex gap; Portable Text
+       emits its own paragraphs, so restore that spacing here. */
+    .case-body :global(p + p) {
+        margin-top: var(--space-twenty, 1.25rem);
+    }
+</style>

@@ -1,0 +1,64 @@
+---
+import { buildSrcSet, urlFor, type SanityFigure } from '@lib/sanity/image';
+
+interface Props {
+    image: SanityFigure | null | undefined;
+    class?: string;
+    /** Widths the image occupies at each breakpoint. Defaults to full-bleed. */
+    sizes?: string;
+    loading?: 'lazy' | 'eager';
+    /** Force a square crop — used by the project thumbnails. */
+    square?: boolean;
+    /** Overrides the alt text stored in Sanity (rare; prefer editing it there). */
+    alt?: string;
+}
+
+const {
+    image,
+    class: className,
+    sizes = '100vw',
+    loading = 'lazy',
+    square = false,
+    alt
+} = Astro.props;
+
+const asset = image?.asset;
+const dimensions = asset?.metadata?.dimensions;
+
+// A missing image shouldn't take the page down — an editor may simply not have
+// uploaded one yet.
+const src = asset
+    ? square
+        ? urlFor(image as SanityFigure)
+              .width(1200)
+              .height(1200)
+              .fit('crop')
+              .url()
+        : urlFor(image as SanityFigure)
+              .width(1920)
+              .url()
+    : null;
+
+const srcset = asset && !square ? buildSrcSet(image as SanityFigure) : undefined;
+---
+
+{
+    src && (
+        <img
+            src={src}
+            srcset={srcset}
+            sizes={srcset ? sizes : undefined}
+            width={square ? 1200 : dimensions?.width}
+            height={square ? 1200 : dimensions?.height}
+            alt={alt ?? image?.alt ?? ''}
+            loading={loading}
+            decoding={loading === 'eager' ? 'sync' : 'async'}
+            class={className}
+            style={
+                asset?.metadata?.lqip
+                    ? `background-image:url(${asset.metadata.lqip});background-size:cover;background-position:center;`
+                    : undefined
+            }
+        />
+    )
+}

@@ -1,0 +1,47 @@
+---
+import SanityImage from '@components/SanityImage/SanityImage.astro';
+import type { SanityFigure } from '@lib/sanity/image';
+
+interface Props {
+    project: {
+        _id?: string;
+        title?: string | null;
+        slug?: string | null;
+        thumbnail?: SanityFigure | null;
+        disciplines?: (string | null)[] | null;
+    } | null;
+    /** Slider variant on mobile drops the hover treatment and grid columns. */
+    variant?: 'grid' | 'slide';
+}
+
+const { project, variant = 'grid' } = Astro.props;
+
+const disciplines = (project?.disciplines ?? []).filter(Boolean).join(', ');
+
+const wrapperClass =
+    variant === 'grid'
+        ? 'project col-span-6 flex flex-col gap-fluid-twenty'
+        : 'projects-slide flex w-full shrink-0 flex-col gap-fluid-twenty px-fluid-twenty';
+
+const imageClass =
+    variant === 'grid'
+        ? '-lazy-load aspect-square w-full object-cover grayscale transition duration-300 hover:grayscale-0'
+        : 'pointer-events-none aspect-square w-full object-cover grayscale';
+---
+
+{
+    project?.slug && (
+        <a class={wrapperClass} href={`/${project.slug}`}>
+            <SanityImage
+                image={project.thumbnail}
+                square
+                class={imageClass}
+                sizes="(min-width: 768px) 50vw, 100vw"
+            />
+            <div class="flex flex-col text-body-caption leading-[100%] font-normal tracking-[-2%]">
+                <p class="text-black">{project.title}</p>
+                <p class="text-gray-400">{disciplines}</p>
+            </div>
+        </a>
+    )
+}

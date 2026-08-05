@@ -2,6 +2,23 @@
 import Button from '@components/Button/Button.astro';
 import SplitRevealColour from '@components/SplitReveal/SplitRevealColour.astro';
 import SplitReveal from '@components/SplitReveal/SplitReveal.astro';
+
+interface Props {
+    headline?: string | null;
+    email?: string | null;
+    phone?: string | null;
+    form?: {
+        nameLabel?: string | null;
+        emailLabel?: string | null;
+        messageLabel?: string | null;
+        submitLabel?: string | null;
+    } | null;
+}
+
+const { headline = null, email = null, phone = null, form = null } = Astro.props;
+
+// The headline is authored as a textarea so the editor controls where it wraps.
+const headlineLines = (headline ?? '').split('\n');
 ---
 
 <div
@@ -12,9 +29,16 @@ import SplitReveal from '@components/SplitReveal/SplitReveal.astro';
     >
         <SplitReveal
             class="col-span-12 pt-fluid-eighty pb-fluid-270 text-footer leading-[115%] md:col-span-8 md:pt-0 md:pb-0"
-            >Let's build something<br />
-            meaningful.</SplitReveal
         >
+            {
+                headlineLines.map((line, i) => (
+                    <>
+                        {i > 0 && <br />}
+                        {line}
+                    </>
+                ))
+            }
+        </SplitReveal>
         <form
             id="contact-form"
             class="col-span-12 flex flex-col justify-start gap-fluid-ten leading-[120%] md:col-span-4"
@@ -23,7 +47,7 @@ import SplitReveal from '@components/SplitReveal/SplitReveal.astro';
         >
             <input type="hidden" name="access_key" value="1eafa823-ab11-4e6e-9dec-ec22f75c228c" />
             <label for="name" class="block text-body-sm font-medium opacity-75">
-                What's your name?*
+                {form?.nameLabel}
             </label>
             <input
                 type="text"
@@ -33,7 +57,7 @@ import SplitReveal from '@components/SplitReveal/SplitReveal.astro';
                 required
             />
             <label for="email" class="block text-body-sm font-medium opacity-75">
-                Your email*
+                {form?.emailLabel}
             </label>
             <input
                 type="email"
@@ -43,7 +67,7 @@ import SplitReveal from '@components/SplitReveal/SplitReveal.astro';
                 required
             />
             <label for="message" class="block text-body-sm font-medium opacity-75">
-                What did you have in mind?*
+                {form?.messageLabel}
             </label>
             <textarea
                 name="message"
@@ -53,7 +77,7 @@ import SplitReveal from '@components/SplitReveal/SplitReveal.astro';
                 required></textarea>
             <div class="h-fit w-full">
                 <Button class="h-fit w-fit text-body-sm leading-[100%] font-medium" type="submit"
-                    >Submit</Button
+                    >{form?.submitLabel}</Button
                 >
             </div>
         </form>
@@ -64,7 +88,7 @@ import SplitReveal from '@components/SplitReveal/SplitReveal.astro';
         >
             <h3 class="pt-1 text-body-sm">Email</h3>
             <SplitRevealColour color="#ff922d" class="text-body-lg leading-[120%]"
-                >rose@iicon.ca</SplitRevealColour
+                >{email}</SplitRevealColour
             >
         </div>
         <div
@@ -72,7 +96,7 @@ import SplitReveal from '@components/SplitReveal/SplitReveal.astro';
         >
             <h3 class="pt-1 text-body-sm">Phone</h3>
             <SplitRevealColour color="#ff922d" class="z-10 text-body-lg leading-[120%]" tag="p"
-                >+1 416 509 4715</SplitRevealColour
+                >{phone}</SplitRevealColour
             >
         </div>
     </div>

@@ -1,0 +1,19 @@
+---
+import { stegaClean } from '@sanity/client/stega';
+
+const { node } = Astro.props;
+
+// href ends up in an attribute, where stega's invisible characters would break
+// the URL, so it has to be cleaned.
+const href = stegaClean(node?.markDef?.href) ?? '#';
+const isExternal = /^https?:\/\//.test(href);
+---
+
+<a
+    class="hover-underline"
+    href={href}
+    target={isExternal ? '_blank' : undefined}
+    rel={isExternal ? 'noopener noreferrer' : undefined}
+>
+    <slot />
+</a>

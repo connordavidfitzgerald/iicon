@@ -6,8 +6,16 @@
 <h1 align="center">Locomotive Astro Boilerplate</h1>
 <p align="center">Astro boilerplate for projects by <a href="https://locomotive.ca/">Locomotive</a>.</p>
 
+## Content
+
+All page content lives in Sanity. The Studio is served from `/studio`.
+
+- [docs/CMS.md](docs/CMS.md) — schema, build modes, environment, deployment
+- [docs/EDITING-GUIDE.md](docs/EDITING-GUIDE.md) — a plain-language guide for editors
+
 ## Features
 
+- [Sanity] as the CMS, with Visual Editing on the preview deploy.
 - [PostCSS] for a feature rich superset of CSS.
 - [Tailwind CSS] for a sane and scalable CSS architecture.
 - [Locomotive Scroll] for smooth scrolling with parallax effects.
@@ -65,6 +73,7 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 | `npm run format`          | Format files using prettier                      |
+| `npm run typegen`         | Regenerate `schema.json` and `sanity.types.ts`   |
 
 ## Documentation
 
@@ -76,6 +85,7 @@ All commands are run from the root of the project, from a terminal:
 - [Nanostores]
 
 [Astro]: https://docs.astro.build/en/getting-started/
+[Sanity]: https://www.sanity.io/docs
 [Tailwind CSS]: https://tailwindcss.com/docs/installation
 [Locomotive Scroll]: https://scroll.locomotive.ca/docs
 [Swup]: https://swup.js.org/getting-started/

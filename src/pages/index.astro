@@ -1,74 +1,39 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import Navbar from '@components/Navbar/Navbar.astro';
-import { Picture } from 'astro:assets';
-import bwImage from '../assets/images/iicon_bw.jpg';
-import mountains from '../assets/images/mountains.png';
-import mbTire from '../assets/images/mobtire.jpg';
-import Usc from '../assets/images/usc.png';
-import Carpenters from '../assets/images/carpenters.png';
-import exp from '../assets/images/exp.jpg';
-import strategy from '../assets/images/strategy.png';
-import product from '../assets/images/productsourcing.jpg';
-import graphic from '../assets/images/graphic.png';
-import mattagami from '../assets/images/mattagami.png';
-
-import { Icon } from 'astro-icon/components';
-
-import thirtysix from '@images/36-products-3.jpg';
-import isead from '@images/isead-awards-still.jpg';
-
-import yw from '@images/yw3.jpg';
-
-import gall1 from '@images/gall1.jpg';
-import gall2 from '@images/gall2.jpg';
-
-import gall4 from '@images/gall4.jpg';
-import gall5 from '@images/gall5.jpg';
-import gall6 from '@images/gall6.jpg';
-import gall7 from '@images/gall7.jpg';
-import gall8 from '@images/gall8.jpg';
-
-import SplitReveal from '@components/SplitReveal/SplitReveal.astro';
-
-import Button from '@components/Button/Button.astro';
 import Footer from '@components/Footer/Footer.astro';
-import SplitRevealColour from '../components/SplitReveal/SplitRevealColour.astro';
+import SanityImage from '@components/SanityImage/SanityImage.astro';
+import ProjectCard from '@components/ProjectCard/ProjectCard.astro';
+import SplitReveal from '@components/SplitReveal/SplitReveal.astro';
+import SplitRevealColour from '@components/SplitReveal/SplitRevealColour.astro';
+import Button from '@components/Button/Button.astro';
+import { Icon } from 'astro-icon/components';
+import { urlFor } from '@lib/sanity/image';
+import { loadQuery } from '@lib/sanity/loadQuery';
+import { HOME_PAGE_QUERY, SITE_SETTINGS_QUERY } from '@lib/sanity/queries';
+import type { HOME_PAGE_QUERY_RESULT, SITE_SETTINGS_QUERY_RESULT } from '@root/sanity.types';
 
-const services = [
-    {
-        label: 'Product Sourcing',
-        image: product.src,
-        caption:
-            'Every product is personally selected with your brand and values in mind, with a focus on Canadian-made and sustainably sourced merchandise — no catalogs, no guesswork.'
-    },
-    {
-        label: 'Brand Strategy',
-        image: strategy.src,
-        caption:
-            'We develop intentional brand strategies that align your merchandise with your core identity — ensuring every touchpoint reinforces what your brand stands for.'
-    },
-    {
-        label: 'Visual Identity',
-        image: mattagami.src,
-        caption:
-            'From typography to colour systems, we craft cohesive visual identities that translate seamlessly across every product and platform.'
-    },
-    {
-        label: 'Experiential Marketing',
-        image: exp.src,
-        caption:
-            'We design immersive brand experiences and activations that leave a lasting impression — turning moments into memories and customers into advocates.'
-    }
-];
+const [page, settings] = await Promise.all([
+    loadQuery<HOME_PAGE_QUERY_RESULT>({ query: HOME_PAGE_QUERY }),
+    loadQuery<SITE_SETTINGS_QUERY_RESULT>({ query: SITE_SETTINGS_QUERY })
+]);
+
+const services = page?.services ?? [];
+const testimonials = page?.testimonials ?? [];
+const awards = page?.awards ?? [];
+const featuredProjects = page?.featuredProjects ?? [];
+
+// The marquee scrolls to -50% and repeats, so the set has to appear twice for
+// the loop to be seamless.
+const gallery = page?.galleryImages ?? [];
+const marqueeImages = [...gallery, ...gallery];
 ---
 
 <Layout
-    title="IICON Creative Strategies | Specialist Branding Studio"
-    seo={{
-        description:
-            'IICON Creative Strategies is a specialist branding studio that combines strategic thinking with the science of human connection.'
-    }}
+    title="Specialist Branding Studio"
+    seo={page?.seo}
+    defaultSeo={settings?.defaultSeo}
+    siteName={settings?.siteName}
 >
     <div class="bg-white">
         <div class="flex h-fit w-full flex-col justify-end pt-fluid-160">
@@ -77,13 +42,13 @@ const services = [
             </div>
         </div>
         <div class="sticky top-0 z-50">
-            <Navbar />
+            <Navbar links={settings?.navLinks} cta={settings?.navCta} />
         </div>
         <div class="h-fit w-full pr-fluid-twenty pl-fluid-twenty">
-            <Picture
-                src={bwImage}
+            <SanityImage
+                image={page?.heroImage}
+                loading="eager"
                 class="h-screen max-h-[1080px] min-h-[800px] min-w-full object-cover md:max-h-[1200px] md:min-h-full"
-                alt="IICON BW Image"
             />
         </div>
 
@@ -93,7 +58,7 @@ const services = [
                 class="sticky top-9 z-10 col-span-12 flex h-fit flex-row items-center justify-start bg-white pt-fluid-thirty pr-fluid-twenty pb-fluid-ten pl-fluid-twenty"
             >
                 <SplitRevealColour class="text-body-sm font-normal tracking-[-2%] text-black"
-                    >Our Approach</SplitRevealColour
+                    >{page?.approachLabel}</SplitRevealColour
                 >
             </div>
             <div
@@ -102,28 +67,28 @@ const services = [
                 <SplitReveal
                     class="col-span-12 text-heading-lg leading-[115%] font-normal tracking-[-3%] text-black"
                 >
-                    We believe your merchandise should honour the values of your brand. Every item
-                    we source is chosen with care, selected to reflect the story and standards that
-                    set your business apart.
+                    {page?.approachStatement}
                     <div
                         class="col-span-12 flex flex-col pt-fluid-540 md:col-span-11 md:col-start-2 md:pt-fluid-160"
                     >
-                        <Picture src={mountains} class="w-full" alt="Canadian Mountains" />
+                        <SanityImage
+                            image={page?.approachImage}
+                            class="w-full"
+                            sizes="(min-width: 768px) 92vw, 100vw"
+                        />
                         <div class="grid grid-cols-11 font-normal text-black md:pt-fluid-ten">
                             <div
                                 class="col-span-12 pt-fluid-twenty text-body-md leading-[120%] tracking-[-2%] md:col-span-6 md:pt-0"
                             >
-                                We take a personalized, intentional approach, curating merchandise
-                                from Union Made, Canadian Made, and Canadian‑owned suppliers, each
-                                chosen for their story of sustainability, responsible manufacturing,
-                                and reduced environmental impact.
+                                {page?.approachBody}
                             </div>
                             <div
                                 class="col-span-12 flex flex-row items-end justify-start pt-fluid-forty pr-5 pb-fluid-forty text-body-sm leading-[110%] tracking-[0%] md:col-span-5 md:justify-end md:pt-0 md:pb-0"
                             >
                                 <Button
                                     class="h-fit w-fit text-body-sm leading-[100%] font-medium tracking-[-2%]"
-                                    href="/about">Learn More</Button
+                                    href={page?.approachCta?.href ?? undefined}
+                                    >{page?.approachCta?.label}</Button
                                 >
                             </div>
                         </div>
@@ -131,71 +96,23 @@ const services = [
                             class="grid grid-cols-12 pt-fluid-eighty text-[1.2rem] leading-[110%] font-normal tracking-[-1%] text-black md:grid-cols-10"
                         >
                             <div class="col-span-12 pb-fluid-forty md:col-span-2 md:pb-0">
-                                Awards
+                                {page?.awardsLabel}
                             </div>
                             <div class="col-span-12 flex flex-col md:col-span-8">
-                                <div
-                                    class="col-span-8 grid grid-cols-8 border-b border-b-black pt-1.5 pb-1.5"
-                                >
-                                    <div class="col-span-2">2026</div>
-                                    <div class="col-span-2">PPAI</div>
-                                    <div class="col-span-4">
-                                        <p>International Gold Pyramid Award</p>
-                                        <p class="opacity-70">Not for Profit</p>
-                                    </div>
-                                </div>
-                                <div
-                                    class="col-span-8 grid grid-cols-8 border-b border-b-black pt-1.5 pb-1.5"
-                                >
-                                    <div class="col-span-2">2025</div>
-                                    <div class="col-span-2">PPAI</div>
-                                    <div class="col-span-4">
-                                        <p>International Silver Pyramid Award</p>
-                                        <p class="opacity-70">Employee Incentives & Recognition</p>
-                                    </div>
-                                </div>
-                                <div
-                                    class="col-span-8 grid grid-cols-8 border-b border-b-black pt-1.5 pb-1.5"
-                                >
-                                    <div class="col-span-2">2025</div>
-                                    <div class="col-span-2">PPPC</div>
-                                    <div class="col-span-4">
-                                        <p>Canadian Silver Image Award</p>
-                                        <p class="opacity-70">Cause or Charity Marketing</p>
-                                    </div>
-                                </div>
-                                <div
-                                    class="col-span-8 grid grid-cols-8 border-b border-b-black pt-1.5 pb-1.5"
-                                >
-                                    <div class="col-span-2">2024</div>
-                                    <div class="col-span-2">PPAI</div>
-                                    <div class="col-span-4">
-                                        <p>International Gold Pyramid Award</p>
-                                        <p class="opacity-70">Not for Profit</p>
-                                    </div>
-                                </div>
-                                <div
-                                    class="col-span-8 grid grid-cols-8 border-b border-b-black pt-1.5 pb-1.5"
-                                >
-                                    <div class="col-span-2">2023</div>
-                                    <div class="col-span-2">PPAI</div>
-                                    <div class="col-span-4">
-                                        <p>International Silver Pyramid Award</p>
-                                        <p class="opacity-70">
-                                            Employee Incentives and Recognition
-                                        </p>
-                                    </div>
-                                </div>
-                                <div
-                                    class="col-span-8 grid grid-cols-8 border-b border-b-black pt-1.5 pb-1.5"
-                                >
-                                    <div class="col-span-2">2021</div>
-                                    <div class="col-span-2">PPAI</div>
-                                    <div class="col-span-4">
-                                        <p>International Gold Pyramid Award</p>
-                                        <p class="opacity-70">Client Branding</p>
-                                    </div>
-                                </div>
+                                {
+                                    awards.map((award) => (
+                                        <div class="col-span-8 grid grid-cols-8 border-b border-b-black pt-1.5 pb-1.5">
+                                            <div class="col-span-2">{award.year}</div>
+                                            <div class="col-span-2">{award.organization}</div>
+                                            <div class="col-span-4">
+                                                <p>{award.title}</p>
+                                                {award.category && (
+                                                    <p class="opacity-70">{award.category}</p>
+                                                )}
+                                            </div>
+                                        </div>
+                                    ))
+                                }
                             </div>
                         </div>
                     </div>
@@ -206,106 +123,19 @@ const services = [
                             <div
                                 class="testimonial-rotator col-span-12 grid sm:col-span-8 sm:col-start-2"
                             >
-                                <div
-                                    class="testimonial-slide flex flex-col justify-center gap-fluid-eighty"
-                                >
-                                    <p
-                                        class="text-testimonial leading-[115%] font-normal tracking-[-2%] text-black"
-                                    >
-                                        "Rose was integral in helping us successfully create
-                                        thoughtfully branded hoodies and blankets celebrating our
-                                        60K Customer Milestone. Rose & her team worked incredibly
-                                        hard to meet our high quality bar and our team was thrilled
-                                        with the keepsakes. I would strongly recommend working with
-                                        Rose on your next project if you want it to feel elevated
-                                        and well-tailored to your brand."
-                                    </p>
-                                    <p
-                                        class="text-body-caption leading-[110%] font-normal tracking-[-2%] text-[#111111]"
-                                    >
-                                        Marquisa Zrymiak, <br />
-                                        Employee Experience Coordinator at Janeapp
-                                    </p>
-                                </div>
-                                <div
-                                    class="testimonial-slide flex flex-col justify-center gap-fluid-eighty"
-                                >
-                                    <p
-                                        class="text-testimonial leading-[115%] font-normal tracking-[-2%] text-black"
-                                    >
-                                        "Rose, thank you for your partnership, creativity, and
-                                        collaboration. Every year, you go above and beyond with your
-                                        support of our efforts and initiatives at Indigenous Skills,
-                                        Employment, Apprenticeship and Development (ISEAD), meeting
-                                        one tight deadline after another. We are so fortunate to
-                                        count you among our friends. Your efforts contribute
-                                        significantly to the success of our events."
-                                    </p>
-                                    <p
-                                        class="text-body-caption leading-[110%] font-normal tracking-[-2%] text-[#111111]"
-                                    >
-                                        Val Vanderwyk, <br />
-                                        Executive Director at ISEAD
-                                    </p>
-                                </div>
-                                <div
-                                    class="testimonial-slide flex flex-col justify-center gap-fluid-eighty"
-                                >
-                                    <p
-                                        class="text-testimonial leading-[115%] font-normal tracking-[-2%] text-black"
-                                    >
-                                        "Rose Fitzgerald and the team at IICON ensured that our logo
-                                        had the brand presence we needed to reach our objectives and
-                                        to balance the professional look to appeal to our clientele
-                                        with apparel suitable for the varying outdoor elements our
-                                        crew have to work in."
-                                    </p>
-                                    <p
-                                        class="text-body-caption leading-[110%] font-normal tracking-[-2%] text-[#111111]"
-                                    >
-                                        Cody Price, <br />
-                                        President & CEO, MobileTire.CA
-                                    </p>
-                                </div>
-                                <div
-                                    class="testimonial-slide flex flex-col justify-center gap-fluid-eighty"
-                                >
-                                    <p
-                                        class="text-testimonial leading-[115%] font-normal tracking-[-2%] text-black"
-                                    >
-                                        "We received positive feedback from our visitors. They
-                                        appreciated the 'gift' packaged in a sturdy retail styled
-                                        gift box. Attendance to our booth increased to at least
-                                        20%-25%, everyone from our team was busy speaking with
-                                        visitors and gathering contact information."
-                                    </p>
-                                    <p
-                                        class="text-body-caption leading-[110%] font-normal tracking-[-2%] text-[#111111]"
-                                    >
-                                        Cheral Muldoon, <br />
-                                        Marketing & Advertising Director, Muldoon's Coffee Company
-                                    </p>
-                                </div>
-                                <div
-                                    class="testimonial-slide flex flex-col justify-center gap-fluid-eighty"
-                                >
-                                    <p
-                                        class="text-testimonial leading-[115%] font-normal tracking-[-2%] text-black"
-                                    >
-                                        "We achieved our goal of commemorating a significant
-                                        anniversary, produced merchandise our members would be proud
-                                        to wear, created awareness of our local within our
-                                        community, and attracted new members. The team at IICON
-                                        Creative Strategies Inc did a great job in selecting the
-                                        apparel, creating the logo design and the execution."
-                                    </p>
-                                    <p
-                                        class="text-body-caption leading-[110%] font-normal tracking-[-2%] text-[#111111]"
-                                    >
-                                        Corey Burke, <br />
-                                        Business Manager and Secretary Treasurer, Ironworkers Local 786
-                                    </p>
-                                </div>
+                                {
+                                    testimonials.map((testimonial) => (
+                                        <div class="testimonial-slide flex flex-col justify-center gap-fluid-eighty">
+                                            <p class="text-testimonial leading-[115%] font-normal tracking-[-2%] text-black">
+                                                "{testimonial.quote}"
+                                            </p>
+                                            <p class="text-body-caption leading-[110%] font-normal tracking-[-2%] text-[#111111]">
+                                                {testimonial.name}, <br />
+                                                {testimonial.role}
+                                            </p>
+                                        </div>
+                                    ))
+                                }
                             </div>
                         </div>
                     </div>
@@ -314,23 +144,11 @@ const services = [
 
             <div class="marquee-outer py-16" aria-hidden="true">
                 <div class="marquee-track">
-                    <!-- original set -->
-                    <Picture class="marquee-img" alt="IICON and friends" src={gall1} />
-                    <Picture class="marquee-img" alt="IICON and friends" src={gall2} />
-                    <Picture class="marquee-img" alt="IICON and friends" src={gall4} />
-                    <Picture class="marquee-img" alt="IICON and friends" src={gall5} />
-                    <Picture class="marquee-img" alt="IICON and friends" src={gall6} />
-                    <Picture class="marquee-img" alt="IICON and friends" src={gall7} />
-                    <Picture class="marquee-img" alt="IICON and friends" src={gall8} />
-                    <!-- duplicate set for seamless loop -->
-                    <Picture class="marquee-img" alt="IICON and friends" src={gall1} />
-                    <Picture class="marquee-img" alt="IICON and friends" src={gall2} />
-
-                    <Picture class="marquee-img" alt="IICON and friends" src={gall4} />
-                    <Picture class="marquee-img" alt="IICON and friends" src={gall5} />
-                    <Picture class="marquee-img" alt="IICON and friends" src={gall6} />
-                    <Picture class="marquee-img" alt="IICON and friends" src={gall7} />
-                    <Picture class="marquee-img" alt="IICON and friends" src={gall8} />
+                    {
+                        marqueeImages.map((image) => (
+                            <SanityImage image={image} class="marquee-img" sizes="60vw" />
+                        ))
+                    }
                 </div>
             </div>
 
@@ -374,7 +192,7 @@ const services = [
                     class="sticky top-9 z-10 col-span-12 flex h-fit flex-row items-center justify-start bg-white pt-fluid-thirty pr-fluid-twenty pb-fluid-ten pl-fluid-twenty"
                 >
                     <SplitRevealColour class="text-body-sm font-normal tracking-[-2%] text-black"
-                        >Services</SplitRevealColour
+                        >{page?.servicesLabel}</SplitRevealColour
                     >
                 </div>
 
@@ -394,7 +212,7 @@ const services = [
                                         class="service-label relative w-full cursor-default text-services leading-[115%] font-normal tracking-[-4%]"
                                         data-index={i}
                                     >
-                                        {service.label}
+                                        {service.title}
                                     </SplitReveal>
                                 ))
                             }
@@ -410,10 +228,19 @@ const services = [
                                 {
                                     services.map((service, i) => (
                                         <img
-                                            src={service.image}
-                                            alt={service.label}
+                                            src={
+                                                service.image?.asset
+                                                    ? urlFor(service.image)
+                                                          .width(1200)
+                                                          .height(900)
+                                                          .fit('crop')
+                                                          .url()
+                                                    : undefined
+                                            }
+                                            alt={service.image?.alt ?? ''}
                                             class="service-image absolute inset-0 h-full w-full object-cover"
                                             data-index={i}
+                                            loading="lazy"
                                         />
                                     ))
                                 }
@@ -431,7 +258,7 @@ const services = [
                                             data-index={i}
                                             style="opacity: 0"
                                         >
-                                            {service.caption}
+                                            {service.description}
                                         </p>
                                     ))
                                 }
@@ -448,7 +275,7 @@ const services = [
                                         aria-expanded="false"
                                     >
                                         <span class="text-services leading-[115%] font-normal tracking-[-4%] text-[#111111]">
-                                            {service.label}
+                                            {service.title}
                                         </span>
                                         {/* SVG plus / X icon */}
                                         <span
@@ -495,13 +322,22 @@ const services = [
                                     >
                                         <div class="mob-accordion-inner flex flex-col gap-4 pb-6">
                                             <img
-                                                src={service.image}
-                                                alt={service.label}
+                                                src={
+                                                    service.image?.asset
+                                                        ? urlFor(service.image)
+                                                              .width(1000)
+                                                              .height(750)
+                                                              .fit('crop')
+                                                              .url()
+                                                        : undefined
+                                                }
+                                                alt={service.image?.alt ?? ''}
                                                 class="w-full object-cover mix-blend-multiply"
                                                 style="aspect-ratio: 4/3;"
+                                                loading="lazy"
                                             />
                                             <p class="text-body-md leading-[120%] font-normal tracking-[-2%] text-[#111111]">
-                                                {service.caption}
+                                                {service.description}
                                             </p>
                                         </div>
                                     </div>
@@ -520,73 +356,14 @@ const services = [
                     class="sticky top-9 z-10 col-span-12 flex h-fit flex-row items-center justify-start bg-white pt-fluid-thirty pr-fluid-twenty pb-fluid-ten pl-fluid-twenty"
                 >
                     <SplitRevealColour class="text-body-sm font-normal tracking-[-2%] text-black"
-                        >Selected Projects</SplitRevealColour
+                        >{page?.projectsLabel}</SplitRevealColour
                     >
                 </div>
                 <!-- Desktop: 2x2 grid (hidden on mobile) -->
                 <div
                     class="desktop-version grid h-fit grid-cols-12 items-start gap-fluid-twenty pr-fluid-twenty pb-fluid-eighty pl-fluid-twenty"
                 >
-                    <a
-                        class="project col-span-6 flex flex-col gap-fluid-twenty"
-                        href="/mobile-tire"
-                    >
-                        <Picture
-                            src={mbTire}
-                            alt="Mobile Tire"
-                            class="-lazy-load aspect-square w-full object-cover grayscale transition duration-300 hover:grayscale-0"
-                        />
-                        <div
-                            class="flex flex-col text-body-caption leading-[100%] font-normal tracking-[-2%]"
-                        >
-                            <p class="text-black">Mobile Tire</p>
-                            <p class="text-gray-400">Product Sourcing, Brand Strategy</p>
-                        </div>
-                    </a>
-                    <a class="project col-span-6 flex flex-col gap-fluid-twenty" href="/ywkw">
-                        <Picture
-                            src={yw}
-                            alt="YWKW — In Her Shoes"
-                            class="-lazy-load aspect-square w-full object-cover grayscale transition duration-300 hover:grayscale-0"
-                        />
-                        <div
-                            class="flex flex-col text-body-caption leading-[100%] font-normal tracking-[-2%]"
-                        >
-                            <p class="text-black">YWKW — In Her Shoes</p>
-                            <p class="text-gray-400">
-                                Product Sourcing, Brand Strategy, Graphic Design
-                            </p>
-                        </div>
-                    </a>
-                    <a
-                        class="project col-span-6 flex flex-col gap-fluid-twenty"
-                        href="/thirty6Xposures"
-                    >
-                        <Picture
-                            src={thirtysix}
-                            alt="thirty6xposures"
-                            class="-lazy-load aspect-square w-full object-cover grayscale duration-300 hover:grayscale-0"
-                        />
-                        <div
-                            class="flex flex-col text-body-caption leading-[100%] font-normal tracking-[-2%]"
-                        >
-                            <p class="text-black">Thirty6Xposures</p>
-                            <p class="text-gray-400">Product Sourcing, Event</p>
-                        </div>
-                    </a>
-                    <a class="project col-span-6 flex flex-col gap-fluid-twenty" href="/isead">
-                        <Picture
-                            src={isead}
-                            alt="ISEAD Awards"
-                            class="-lazy-load aspect-square w-full object-cover grayscale duration-300 hover:grayscale-0"
-                        />
-                        <div
-                            class="flex flex-col text-body-caption leading-[100%] font-normal tracking-[-2%]"
-                        >
-                            <p class="text-black">ISEAD</p>
-                            <p class="text-gray-400">Product Sourcing, Event</p>
-                        </div>
-                    </a>
+                    {featuredProjects.map((project) => <ProjectCard project={project} />)}
                 </div>
 
                 <!-- Mobile: horizontal slider (hidden on md+) -->
@@ -597,72 +374,11 @@ const services = [
                             class="flex will-change-transform"
                             style="touch-action: pan-y;"
                         >
-                            <a
-                                class="projects-slide flex w-full shrink-0 flex-col gap-fluid-twenty px-fluid-twenty"
-                                href="/mobile-tire"
-                            >
-                                <Picture
-                                    src={mbTire}
-                                    alt="Mobile Tire"
-                                    class="pointer-events-none aspect-square w-full object-cover grayscale"
-                                />
-                                <div
-                                    class="flex flex-col text-body-caption leading-[100%] font-normal tracking-[-2%]"
-                                >
-                                    <p class="text-black">Mobile Tire</p>
-                                    <p class="text-gray-400">Product Sourcing, Brand Strategy</p>
-                                </div>
-                            </a>
-                            <a
-                                class="projects-slide flex w-full shrink-0 flex-col gap-fluid-twenty px-fluid-twenty"
-                                href="/ywkw"
-                            >
-                                <Picture
-                                    src={yw}
-                                    alt="YWKW — In Her Shoes"
-                                    class="pointer-events-none aspect-square w-full object-cover grayscale"
-                                />
-                                <div
-                                    class="flex flex-col text-body-caption leading-[100%] font-normal tracking-[-2%]"
-                                >
-                                    <p class="text-black">YWKW — In Her Shoes</p>
-                                    <p class="text-gray-400">
-                                        Product Sourcing, Brand Strategy, Graphic Design
-                                    </p>
-                                </div>
-                            </a>
-                            <a
-                                class="projects-slide flex w-full shrink-0 flex-col gap-fluid-twenty px-fluid-twenty"
-                                href="/thirty6Xposures"
-                            >
-                                <Picture
-                                    src={thirtysix}
-                                    alt="thirty6Xposures"
-                                    class="pointer-events-none aspect-square w-full object-cover grayscale"
-                                />
-                                <div
-                                    class="flex flex-col text-body-caption leading-[100%] font-normal tracking-[-2%]"
-                                >
-                                    <p class="text-black">Thirty6Xposures</p>
-                                    <p class="text-gray-400">Product Sourcing, Event</p>
-                                </div>
-                            </a>
-                            <a
-                                class="projects-slide flex w-full shrink-0 flex-col gap-fluid-twenty px-fluid-twenty"
-                                href="/isead"
-                            >
-                                <Picture
-                                    src={isead}
-                                    alt="ISEAD Awards"
-                                    class="pointer-events-none aspect-square w-full object-cover grayscale"
-                                />
-                                <div
-                                    class="flex flex-col text-body-caption leading-[100%] font-normal tracking-[-2%]"
-                                >
-                                    <p class="text-black">ISEAD</p>
-                                    <p class="text-gray-400">Product Sourcing, Event</p>
-                                </div>
-                            </a>
+                            {
+                                featuredProjects.map((project) => (
+                                    <ProjectCard project={project} variant="slide" />
+                                ))
+                            }
                         </div>
                     </div>
                     <!-- Dot indicators -->
@@ -670,27 +386,28 @@ const services = [
                         id="projects-slider-dots"
                         class="flex items-center justify-center gap-2 pt-fluid-twenty"
                     >
-                        <button
-                            class="slider-dot h-1.5 w-1.5 rounded-full bg-black opacity-100 transition-all duration-300"
-                            data-index="0"
-                            aria-label="Go to slide 1"></button>
-                        <button
-                            class="slider-dot h-1.5 w-1.5 rounded-full bg-black opacity-30 transition-all duration-300"
-                            data-index="1"
-                            aria-label="Go to slide 2"></button>
-                        <button
-                            class="slider-dot h-1.5 w-1.5 rounded-full bg-black opacity-30 transition-all duration-300"
-                            data-index="2"
-                            aria-label="Go to slide 3"></button>
-                        <button
-                            class="slider-dot h-1.5 w-1.5 rounded-full bg-black opacity-30 transition-all duration-300"
-                            data-index="3"
-                            aria-label="Go to slide 4"></button>
+                        {
+                            featuredProjects.map((_, i) => (
+                                <button
+                                    class:list={[
+                                        'slider-dot h-1.5 w-1.5 rounded-full bg-black transition-all duration-300',
+                                        i === 0 ? 'opacity-100' : 'opacity-30'
+                                    ]}
+                                    data-index={i}
+                                    aria-label={`Go to slide ${i + 1}`}
+                                />
+                            ))
+                        }
                     </div>
                 </div>
             </div>
         </div>
-        <Footer />
+        <Footer
+            headline={settings?.footerHeadline}
+            email={settings?.email}
+            phone={settings?.phone}
+            form={settings?.form}
+        />
     </div>
 
     <script>
@@ -842,14 +559,15 @@ const services = [
                 });
             });
 
-            gsap.delayedCall(0.1, () => activateService(0));
+            if (labels.length) gsap.delayedCall(0.1, () => activateService(0));
 
             // ── Projects Horizontal Slider ────────────────────────────────────────
             const sliderTrack = document.getElementById(
                 'projects-slider-track'
             ) as HTMLElement | null;
             const sliderDots = document.querySelectorAll<HTMLElement>('.slider-dot');
-            const SLIDE_COUNT = 4;
+            // Driven by however many projects the Studio has featured.
+            const SLIDE_COUNT = document.querySelectorAll('.projects-slide').length;
             let sliderCurrent = 0;
             let sliderStartX = 0;
             let sliderDragDelta = 0;
@@ -875,7 +593,7 @@ const services = [
                 dot.addEventListener('click', () => goToSlide(i));
             });
 
-            if (sliderTrack) {
+            if (sliderTrack && SLIDE_COUNT > 0) {
                 sliderTrack.addEventListener(
                     'touchstart',
                     (e) => {
