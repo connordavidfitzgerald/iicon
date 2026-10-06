@@ -1,5 +1,9 @@
 {
     "name": "iicon",
     "compatibility_date": "2026-03-11", // Update to the day you deploy
-    "pages_build_output_dir": "./dist"
+    "pages_build_output_dir": "./dist",
+    "vars": {
+        "PUBLIC_SANITY_PROJECT_ID": "rkp7m27a",
+        "PUBLIC_SANITY_DATASET": "production"
+    }
 }
