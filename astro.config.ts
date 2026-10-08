@@ -36,9 +36,22 @@ export default defineConfig({
     },
     vite: {
         resolve: {
-            alias: {
-                '@lib': path.resolve(__dirname, './src/lib')
-            }
+            alias: [
+                { find: '@lib', replacement: path.resolve(__dirname, './src/lib') },
+                // With Visual Editing off, swap the overlay for a no-op so the
+                // Studio's CSS isn't dragged onto every page. See the stub.
+                ...(visualEditingEnabled
+                    ? []
+                    : [
+                          {
+                              find: /^@sanity\/astro\/visual-editing$/,
+                              replacement: path.resolve(
+                                  __dirname,
+                                  './src/lib/sanity/visual-editing-off/index.ts'
+                              )
+                          }
+                      ])
+            ]
         },
         css: {
             postcss: {
