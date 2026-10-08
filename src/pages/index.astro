@@ -172,7 +172,9 @@ const marqueeImages = [...gallery, ...gallery];
                     will-change: transform;
                 }
 
-                .marquee-img {
+                /* The <img> is rendered inside SanityImage, out of reach of this
+                   file's scoped styles, so the selector has to be global. */
+                .marquee-track :global(.marquee-img) {
                     height: 400px;
                     width: auto;
                     flex-shrink: 0;
@@ -181,7 +183,7 @@ const marqueeImages = [...gallery, ...gallery];
                 }
 
                 @media (max-width: 768px) {
-                    .marquee-img {
+                    .marquee-track :global(.marquee-img) {
                         height: 300px;
                     }
                 }
